@@ -1,0 +1,8 @@
+1) Make sure that NPM is installed
+2) npm install -g gulp
+3) npm install gulp-webserver
+4) npm install typescript
+5) Run build task: tsc -w
+6) F5
+
+

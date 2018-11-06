@@ -4,5 +4,5 @@ node_modules/**/*
 
 .tempChromeProfileForDebug/**/*
 
-**/*.js
+GlareSim/**/*.js
 **/*.js.map

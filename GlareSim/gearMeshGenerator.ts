@@ -3,20 +3,16 @@ module GlareSim {
         Vertices: Vertex[];
         Faces: Face[];
 
-        constructor(
-            radius: number,
-            toothAmplitude: number,
-            toothCount: number,
-            height: number) {
+        constructor(intrinsics: GearIntrinsics){
             this.Vertices = [];
             this.Faces = [];
 
             var centerVertexIndex1 = 0;
-            var lastVertexIndex1 = this.addSunflowerVerticesAndReturnLastVertexIndex(centerVertexIndex1, radius, toothAmplitude, toothCount, height / 2);
+            var lastVertexIndex1 = this.addSunflowerVerticesAndReturnLastVertexIndex(centerVertexIndex1, intrinsics.Radius, intrinsics.ToothAmplitude, intrinsics.ToothCount, intrinsics.Height / 2);
             var lastFaceIndex1 = this.addSunflowerFacesAndReturnLastFaceIndex(centerVertexIndex1, centerVertexIndex1 + 1, lastVertexIndex1, 0);
 
             var centerVertexIndex2 = lastVertexIndex1 + 1;
-            var lastVertexIndex2 = this.addSunflowerVerticesAndReturnLastVertexIndex(centerVertexIndex2, radius, toothAmplitude, toothCount, -height / 2);
+            var lastVertexIndex2 = this.addSunflowerVerticesAndReturnLastVertexIndex(centerVertexIndex2, intrinsics.Radius, intrinsics.ToothAmplitude, intrinsics.ToothCount, -intrinsics.Height / 2);
             var lastFaceIndex2 = this.addSunflowerFacesAndReturnLastFaceIndex(centerVertexIndex2, centerVertexIndex2 + 1, lastVertexIndex2, lastFaceIndex1 + 1, true);
 
             var lastFaceIndex3 = this.addLateralFacesAndReturnLastFaceIndex(centerVertexIndex1 + 1, centerVertexIndex2 + 1, lastVertexIndex1, lastFaceIndex2 + 1);

@@ -3,7 +3,6 @@ var engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
 
 /******* Add the create scene function ******/
 var createScene = function () {
-
     // Create the scene space
     var scene = new BABYLON.Scene(engine);
 
@@ -18,13 +17,13 @@ var createScene = function () {
     // Add and manipulate meshes in the scene
     var customMesh = new BABYLON.Mesh("custom", scene);
 
-    //Set arrays for positions and indices
-    var radius = 1;
-    var height = 0.8;
-    var toothAmplitude = 0.2;
-    var toothCount = 18;
+    var gearIntrinsics = new GlareSim.GearIntrinsics()
+    gearIntrinsics.Radius = 1;
+    gearIntrinsics.Height = 0.8;
+    gearIntrinsics.ToothAmplitude = 0.2;
+    gearIntrinsics.ToothCount = 18;
     
-    var gearMeshGen = new GlareSim.GearMeshGenerator(radius, toothAmplitude, toothCount, height);
+    var gearMeshGen = new GlareSim.GearMeshGenerator(gearIntrinsics);
     var gearGeometry = gearMeshGen.GenerateGeometry();    
     
     //Create a vertexData object lmb.

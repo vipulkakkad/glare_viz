@@ -3,7 +3,7 @@ module GlareSim {
         Vertices: Vertex[];
         Faces: Face[];
 
-        constructor(intrinsics: GearIntrinsics){
+        constructor(intrinsics: GearIntrinsics) {
             this.Vertices = [];
             this.Faces = [];
 

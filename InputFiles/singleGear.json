@@ -1,0 +1,16 @@
+{
+    "gears": [
+        {
+            "Radius": 2.1,
+            "Height": 0.8,
+            "ToothAmplitude": 0.2,
+            "ToothCount": 18
+        }
+    ],
+    "pegPositions": [
+        {
+            "x": 0,
+            "y": 0
+        }
+    ]
+}

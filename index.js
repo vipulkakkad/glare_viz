@@ -2,7 +2,7 @@ var canvas = document.getElementById("renderCanvas"); // Get the canvas element
 var engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
 
 /******* Add the create scene function ******/
-var createScene = function () {
+var createScene = function (gameParameters) {    
     // Create the scene space
     var scene = new BABYLON.Scene(engine);
 
@@ -14,47 +14,37 @@ var createScene = function () {
     var light1 = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 1, 0), scene);
     var light2 = new BABYLON.PointLight("light2", new BABYLON.Vector3(0, 1, -1), scene);
 
-    // Add and manipulate meshes in the scene
-    var customMesh = new BABYLON.Mesh("custom", scene);
-
-    var gearIntrinsics = new GlareSim.GearIntrinsics()
-    gearIntrinsics.Radius = 1;
-    gearIntrinsics.Height = 0.8;
-    gearIntrinsics.ToothAmplitude = 0.2;
-    gearIntrinsics.ToothCount = 18;
+    var gearIntrinsics = gameParameters.gears[0];
     
+    var meshManager = new GlareSim.MeshManager();
+
     var gearMeshGen = new GlareSim.GearMeshGenerator(gearIntrinsics);
     var gearGeometry = gearMeshGen.GenerateGeometry();    
     
-    //Create a vertexData object lmb.
-    var vertexData = new BABYLON.VertexData();
-
-    //Assign positions and indices to vertexData
-    vertexData.positions = gearGeometry.VerticesAsPositionTriplets;
-    vertexData.indices = gearGeometry.FacesAsVertexIndexTriplets;
-
-    //Apply vertexData to custom mesh
-    vertexData.applyToMesh(customMesh);
+    var meshId = addMeshWithIdAndGeometry(scene, meshManager, gearGeometry);
 
     scene.registerBeforeRender(function () {
         // rotations
-        customMesh.rotation.y += 0.01;        
+        var mesh = meshManager.Meshes[meshId];
+        mesh.rotation.y += 0.01;        
     });
 
-    return scene;
+    return scene;    
 };
 
 
 /******* End of the create scene function ******/
+var fileIo = new GlareSim.FileIo();
+fileIo.LoadParametersFromFileAsync("InputFiles/singleGear.json", () => {
+    var scene = createScene(fileIo.GameParameters); //Call the createScene function
 
-var scene = createScene(); //Call the createScene function
+    // Register a render loop to repeatedly render the scene
+    engine.runRenderLoop(function () {
+        scene.render();
+    });
 
-// Register a render loop to repeatedly render the scene
-engine.runRenderLoop(function () {
-    scene.render();
-});
-
-// Watch for browser/canvas resize events
-window.addEventListener("resize", function () {
-    engine.resize();
+    // Watch for browser/canvas resize events
+    window.addEventListener("resize", function () {
+        engine.resize();
+    });
 });

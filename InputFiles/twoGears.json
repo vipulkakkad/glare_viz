@@ -5,20 +5,12 @@
             "Height": 0.8,
             "ToothAmplitude": 0.2,
             "ToothCount": 18
-        }, {
-            "Radius": 1.3,
-            "Height": 0.4,
-            "ToothAmplitude": 0.3,
-            "ToothCount": 40
         }
     ],
     "pegPositions": [
         {
             "x": 0,
             "y": 0
-        },{
-            "x": 3,
-            "y": 3
         }
     ]
 }

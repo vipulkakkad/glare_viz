@@ -1,4 +1,16 @@
-function addMeshWithIdAndGeometry(scene, meshManager, geometry) {
+function addGearFromIntrinsics(scene, meshManager, gearIntrinsics, pegPosition) {
+    var gearMeshGen = new GlareSim.GearMeshGenerator(gearIntrinsics);
+    var gearGeometry = gearMeshGen.GenerateGeometry();    
+    
+    var meshId = addMeshFromGeometry(scene, meshManager, gearGeometry);
+
+    meshManager.Meshes[meshId].position.x = pegPosition.x;
+    meshManager.Meshes[meshId].position.y = pegPosition.y;
+
+    return meshId;
+}
+
+function addMeshFromGeometry(scene, meshManager, geometry) {
     // Reserve
     var meshId = meshManager.ClaimAndGetMeshId();
 

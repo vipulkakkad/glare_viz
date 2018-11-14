@@ -14,19 +14,23 @@ var createScene = function (gameParameters) {
     var light1 = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 1, 0), scene);
     var light2 = new BABYLON.PointLight("light2", new BABYLON.Vector3(0, 1, -1), scene);
 
-    var gearIntrinsics = gameParameters.gears[0];
-    
     var meshManager = new GlareSim.MeshManager();
 
-    var gearMeshGen = new GlareSim.GearMeshGenerator(gearIntrinsics);
-    var gearGeometry = gearMeshGen.GenerateGeometry();    
-    
-    var meshId = addMeshWithIdAndGeometry(scene, meshManager, gearGeometry);
+    for (var i = 0; i < gameParameters.gears.length; i++)
+    {
+        var gearIntrinsics = gameParameters.gears[i];
+        var pegPosition = gameParameters.pegPositions[i];    
+
+        var meshId = addGearFromIntrinsics(scene, meshManager, gearIntrinsics, pegPosition);
+    }    
 
     scene.registerBeforeRender(function () {
         // rotations
-        var mesh = meshManager.Meshes[meshId];
-        mesh.rotation.y += 0.01;        
+        for (var i = 0; i < gameParameters.gears.length; i++)
+        {
+            var mesh = meshManager.Meshes[i];
+            mesh.rotation.y += 0.01;        
+        }            
     });
 
     return scene;    

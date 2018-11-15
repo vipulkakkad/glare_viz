@@ -17,12 +17,20 @@ function addMeshFromGeometry(scene, meshManager, geometry) {
     // Add and manipulate meshes in the scene
     var mesh = new BABYLON.Mesh(meshId.toString(), scene);
 
+    var positions = geometry.VerticesAsPositionTriplets;
+    var indices = geometry.FacesAsVertexIndexTriplets;
+    var colors = geometry.FaceColorsAsRgbaQuadruplets;
+    var normals = [];
+    BABYLON.VertexData.ComputeNormals(positions, indices, normals);
+
     //Create a vertexData object lmb.
     var vertexData = new BABYLON.VertexData();
 
     //Assign positions and indices to vertexData
-    vertexData.positions = geometry.VerticesAsPositionTriplets;
-    vertexData.indices = geometry.FacesAsVertexIndexTriplets;
+    vertexData.positions = positions;
+    vertexData.indices = indices;
+    vertexData.colors = colors;
+    // vertexData.normals = normals;
 
     //Apply vertexData to custom mesh
     vertexData.applyToMesh(mesh);

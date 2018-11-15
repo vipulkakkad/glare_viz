@@ -7,15 +7,68 @@ module GlareSim {
             this.Vertices = [];
             this.Faces = [];
 
+            var gearColor = new Color(0, 1, 1, 1);
+            var circleColor = new Color(1, 0, 0, 1);
+
+            // top edge vertices
             var centerVertexIndex1 = 0;
-            var lastVertexIndex1 = this.addSunflowerVerticesAndReturnLastVertexIndex(centerVertexIndex1, intrinsics.Radius, intrinsics.ToothAmplitude, intrinsics.ToothCount, intrinsics.Height / 2);
-            var lastFaceIndex1 = this.addSunflowerFacesAndReturnLastFaceIndex(centerVertexIndex1, centerVertexIndex1 + 1, lastVertexIndex1, 0);
+            var lastVertexIndex1 = this.addSunflowerVerticesAndReturnLastVertexIndex(
+                centerVertexIndex1, 
+                intrinsics.Radius, 
+                intrinsics.ToothAmplitude, 
+                intrinsics.ToothCount, 
+                intrinsics.Height / 2);
+            
+            // top faces
+            var lastFaceIndex1 = this.addSunflowerFacesAndReturnLastFaceIndex(
+                centerVertexIndex1, 
+                centerVertexIndex1 + 1, 
+                lastVertexIndex1,
+                0,
+                gearColor);
 
+            // bottom edge vertices
             var centerVertexIndex2 = lastVertexIndex1 + 1;
-            var lastVertexIndex2 = this.addSunflowerVerticesAndReturnLastVertexIndex(centerVertexIndex2, intrinsics.Radius, intrinsics.ToothAmplitude, intrinsics.ToothCount, -intrinsics.Height / 2);
-            var lastFaceIndex2 = this.addSunflowerFacesAndReturnLastFaceIndex(centerVertexIndex2, centerVertexIndex2 + 1, lastVertexIndex2, lastFaceIndex1 + 1, true);
+            var lastVertexIndex2 = this.addSunflowerVerticesAndReturnLastVertexIndex(
+                centerVertexIndex2,
+                intrinsics.Radius,
+                intrinsics.ToothAmplitude,
+                intrinsics.ToothCount, 
+                -intrinsics.Height / 2);
 
-            var lastFaceIndex3 = this.addLateralFacesAndReturnLastFaceIndex(centerVertexIndex1 + 1, centerVertexIndex2 + 1, lastVertexIndex1, lastFaceIndex2 + 1);
+            // bottom face
+            var lastFaceIndex2 = this.addSunflowerFacesAndReturnLastFaceIndex(
+                centerVertexIndex2,
+                centerVertexIndex2 + 1,
+                lastVertexIndex2,
+                lastFaceIndex1 + 1,
+                gearColor,
+                true);
+
+            // lateral faces
+            var lastFaceIndex3 = this.addLateralFacesAndReturnLastFaceIndex(
+                centerVertexIndex1 + 1,
+                centerVertexIndex2 + 1,
+                lastVertexIndex1,
+                lastFaceIndex2 + 1,
+                gearColor);
+                
+            // center circle vertices
+            var centerVertexIndex3 = lastVertexIndex2 + 1;
+            var lastVertexIndex3 = this.addSunflowerVerticesAndReturnLastVertexIndex(
+                centerVertexIndex3,
+                (intrinsics.Radius - intrinsics.ToothAmplitude) * 0.8,
+                0,
+                6, 
+                (intrinsics.Height / 2) + 1);
+
+            // center circle face
+            var lastFaceIndex4 = this.addSunflowerFacesAndReturnLastFaceIndex(
+                centerVertexIndex3,
+                centerVertexIndex3 + 1,
+                lastVertexIndex3,
+                lastFaceIndex3 + 1,
+                circleColor);
         }
 
         public GenerateGeometry(): Geometry {
@@ -55,16 +108,17 @@ module GlareSim {
             firstEdgeVertexIndex: number,
             lastEdgeVertexIndex: number,
             startFaceIndex: number,
+            color: Color,
             invert: boolean = false): number {
             this.Faces[startFaceIndex] = invert ?
-                new Face(firstEdgeVertexIndex, lastEdgeVertexIndex, centerVertexIndex) :
-                new Face(lastEdgeVertexIndex, firstEdgeVertexIndex, centerVertexIndex);
+                new Face(firstEdgeVertexIndex, lastEdgeVertexIndex, centerVertexIndex, color) :
+                new Face(lastEdgeVertexIndex, firstEdgeVertexIndex, centerVertexIndex, color);
 
             var f = startFaceIndex + 1;
             for (var i = firstEdgeVertexIndex; i < lastEdgeVertexIndex; i++) {
                 this.Faces[f] = invert ?
-                    new Face(i + 1, i, centerVertexIndex) :
-                    new Face(i, i + 1, centerVertexIndex);
+                    new Face(i + 1, i, centerVertexIndex, color) :
+                    new Face(i, i + 1, centerVertexIndex, color);
 
                 f++;
             }
@@ -76,16 +130,17 @@ module GlareSim {
             startVertexIndex1: number,
             startVertexIndex2: number,
             endVertexIndex1: number,
-            startFaceIndex: number): number {
+            startFaceIndex: number,
+            color: Color): number {
             var endVertexIndex2 = startVertexIndex2 + (endVertexIndex1 - startVertexIndex1);
-            this.addSquare(endVertexIndex1, endVertexIndex2, startVertexIndex1, startVertexIndex2, startFaceIndex);
+            this.addSquare(endVertexIndex1, endVertexIndex2, startVertexIndex1, startVertexIndex2, color, startFaceIndex);
 
             var v1 = startVertexIndex1;
             var v2 = startVertexIndex2;
 
             var f = startFaceIndex + 2;
             for (var i = startVertexIndex1; i < endVertexIndex1; i++) {
-                this.addSquare(v1, v2, v1 + 1, v2 + 1, f);
+                this.addSquare(v1, v2, v1 + 1, v2 + 1, color, f);
                 v1++;
                 v2++;
                 f += 2;
@@ -99,9 +154,10 @@ module GlareSim {
             a2: number,
             b1: number,
             b2: number,
+            color: Color,
             startFaceIndex: number) {
-            this.Faces[startFaceIndex + 0] = new Face(a1, a2, b1);
-            this.Faces[startFaceIndex + 1] = new Face(b1, a2, b2);
+            this.Faces[startFaceIndex + 0] = new Face(a1, a2, b1, color);
+            this.Faces[startFaceIndex + 1] = new Face(b1, a2, b2, color);
         }
     }
 }

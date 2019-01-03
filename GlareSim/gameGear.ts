@@ -1,7 +1,11 @@
 module GlareSim {
     export class GameGear {
         Intrinsics: GearIntrinsics;
-        MeshId: number;
+        MeshId: number;        
         Extrinsics: GearExtrinsics;
+
+        constructor(intrinsics: GearIntrinsics) {
+
+        }
     }
 }

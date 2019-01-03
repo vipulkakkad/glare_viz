@@ -2,6 +2,8 @@ module GlareSim {
     export class GearMeshGenerator {
         Vertices: Vertex[];
         Faces: Face[];
+        FirstCircleVertex: number;
+        LastCircleVertex: number;
 
         constructor(intrinsics: GearIntrinsics) {
             this.Vertices = [];
@@ -10,10 +12,36 @@ module GlareSim {
             var gearColor = new Color(0, 1, 1, 1);
             var circleColor = new Color(1, 0, 0, 1);
 
+            // Circle setup
+            var circleCenterVID = 0;
+            var circleFirstFID = 0;
+
+            // center circle vertices
+            var circleLastVID = this.addSunflowerVerticesAndReturnLastVertexIndex(
+                circleCenterVID,
+                (intrinsics.Radius - intrinsics.ToothAmplitude) * 0.8,
+                0,
+                6, 
+                (intrinsics.Height / 2) + 0.01,
+                circleColor);
+
+            // center circle face
+            var circleLastFID = this.addSunflowerFacesAndReturnLastFaceIndex(
+                circleCenterVID,
+                circleCenterVID + 1,
+                circleLastVID,
+                circleFirstFID);
+            
+            this.FirstCircleVertex = circleCenterVID;
+            this.LastCircleVertex = circleLastVID;
+
+            // Top setup
+            var topCenterVID = circleLastVID + 1;
+            var topFirstFID = circleLastFID + 1;
+            
             // top edge vertices
-            var centerVertexIndex1 = 0;
-            var lastVertexIndex1 = this.addSunflowerVerticesAndReturnLastVertexIndex(
-                centerVertexIndex1, 
+            var topLastVID = this.addSunflowerVerticesAndReturnLastVertexIndex(
+                topCenterVID, 
                 intrinsics.Radius, 
                 intrinsics.ToothAmplitude, 
                 intrinsics.ToothCount, 
@@ -21,54 +49,40 @@ module GlareSim {
                 gearColor);
             
             // top faces
-            var lastFaceIndex1 = this.addSunflowerFacesAndReturnLastFaceIndex(
-                centerVertexIndex1, 
-                centerVertexIndex1 + 1, 
-                lastVertexIndex1,
-                0);
+            var topLastFID = this.addSunflowerFacesAndReturnLastFaceIndex(
+                topCenterVID, 
+                topCenterVID + 1, 
+                topLastVID,
+                topFirstFID);
+          
+            // Bottom setup
+            var bottomCenterVID = topLastVID + 1;
+            var bottomFirstFID = topLastFID + 1;
 
             // bottom edge vertices
-            var centerVertexIndex2 = lastVertexIndex1 + 1;
-            var lastVertexIndex2 = this.addSunflowerVerticesAndReturnLastVertexIndex(
-                centerVertexIndex2,
-                intrinsics.Radius,
-                intrinsics.ToothAmplitude,
+            var bottomLastVID = this.addSunflowerVerticesAndReturnLastVertexIndex(
+                bottomCenterVID, 
+                intrinsics.Radius, 
+                intrinsics.ToothAmplitude, 
                 intrinsics.ToothCount, 
                 -intrinsics.Height / 2,
                 gearColor);
-
-            // bottom face
-            var lastFaceIndex2 = this.addSunflowerFacesAndReturnLastFaceIndex(
-                centerVertexIndex2,
-                centerVertexIndex2 + 1,
-                lastVertexIndex2,
-                lastFaceIndex1 + 1,
-                true);
+            
+            // bottom faces
+            var bottomLastFID = this.addSunflowerFacesAndReturnLastFaceIndex(
+                bottomCenterVID, 
+                bottomCenterVID + 1, 
+                bottomLastVID,
+                bottomFirstFID,
+                true);                
 
             // lateral faces
             var lastFaceIndex3 = this.addLateralFacesAndReturnLastFaceIndex(
-                centerVertexIndex1 + 1,
-                centerVertexIndex2 + 1,
-                lastVertexIndex1,
-                lastFaceIndex2 + 1,
-                gearColor);
-                
-            // center circle vertices
-            var centerVertexIndex3 = lastVertexIndex2 + 1;
-            var lastVertexIndex3 = this.addSunflowerVerticesAndReturnLastVertexIndex(
-                centerVertexIndex3,
-                (intrinsics.Radius - intrinsics.ToothAmplitude) * 0.8,
-                0,
-                6, 
-                (intrinsics.Height / 2) + 1,
-                circleColor);
-
-            // center circle face
-            var lastFaceIndex4 = this.addSunflowerFacesAndReturnLastFaceIndex(
-                centerVertexIndex3,
-                centerVertexIndex3 + 1,
-                lastVertexIndex3,
-                lastFaceIndex3 + 1);
+                topCenterVID + 1,
+                bottomCenterVID + 1,
+                topLastVID,
+                bottomLastFID + 1,
+                gearColor);            
         }
 
         public GenerateGeometry(): Geometry {

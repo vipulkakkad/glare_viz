@@ -1,8 +1,8 @@
-1) Make sure that NPM is installed
-2) npm install -g gulp
-3) npm install gulp-webserver
-4) npm install typescript
-5) Run build task: tsc -w
-6) F5
-
-
+> Make sure that NPM is installed
+> Make sure debugger for Chrome is installed
+> npm install -g gulp
+> npm install gulp-webserver
+> npm install typescript
+> Run build task: tsc -w
+> In new terminal: gulp
+> F5

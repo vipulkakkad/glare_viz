@@ -17,15 +17,15 @@ module GlareSim {
                 intrinsics.Radius, 
                 intrinsics.ToothAmplitude, 
                 intrinsics.ToothCount, 
-                intrinsics.Height / 2);
+                intrinsics.Height / 2,
+                gearColor);
             
             // top faces
             var lastFaceIndex1 = this.addSunflowerFacesAndReturnLastFaceIndex(
                 centerVertexIndex1, 
                 centerVertexIndex1 + 1, 
                 lastVertexIndex1,
-                0,
-                gearColor);
+                0);
 
             // bottom edge vertices
             var centerVertexIndex2 = lastVertexIndex1 + 1;
@@ -34,7 +34,8 @@ module GlareSim {
                 intrinsics.Radius,
                 intrinsics.ToothAmplitude,
                 intrinsics.ToothCount, 
-                -intrinsics.Height / 2);
+                -intrinsics.Height / 2,
+                gearColor);
 
             // bottom face
             var lastFaceIndex2 = this.addSunflowerFacesAndReturnLastFaceIndex(
@@ -42,7 +43,6 @@ module GlareSim {
                 centerVertexIndex2 + 1,
                 lastVertexIndex2,
                 lastFaceIndex1 + 1,
-                gearColor,
                 true);
 
             // lateral faces
@@ -60,15 +60,15 @@ module GlareSim {
                 (intrinsics.Radius - intrinsics.ToothAmplitude) * 0.8,
                 0,
                 6, 
-                (intrinsics.Height / 2) + 1);
+                (intrinsics.Height / 2) + 1,
+                circleColor);
 
             // center circle face
             var lastFaceIndex4 = this.addSunflowerFacesAndReturnLastFaceIndex(
                 centerVertexIndex3,
                 centerVertexIndex3 + 1,
                 lastVertexIndex3,
-                lastFaceIndex3 + 1,
-                circleColor);
+                lastFaceIndex3 + 1);
         }
 
         public GenerateGeometry(): Geometry {
@@ -80,12 +80,13 @@ module GlareSim {
             radius: number,
             toothAmplitude: number,
             toothCount: number,
-            axialDeviation: number): number {
+            axialDeviation: number,
+            color: Color): number {
 
             var sideCount = toothCount * 2;
             var y = axialDeviation;
 
-            this.Vertices[startIndex] = new Vertex(0, y, 0);
+            this.Vertices[startIndex] = new Vertex(0, y, 0, color);
 
             var v = startIndex + 1;
             for (var i = 0; i < sideCount; i++) {
@@ -96,7 +97,7 @@ module GlareSim {
                 var x = radius_cur * Math.cos(theta);
                 var z = radius_cur * Math.sin(theta);
 
-                this.Vertices[v] = new Vertex(x, y, z);
+                this.Vertices[v] = new Vertex(x, y, z, color);
                 v++;
             }
 
@@ -108,17 +109,16 @@ module GlareSim {
             firstEdgeVertexIndex: number,
             lastEdgeVertexIndex: number,
             startFaceIndex: number,
-            color: Color,
             invert: boolean = false): number {
             this.Faces[startFaceIndex] = invert ?
-                new Face(firstEdgeVertexIndex, lastEdgeVertexIndex, centerVertexIndex, color) :
-                new Face(lastEdgeVertexIndex, firstEdgeVertexIndex, centerVertexIndex, color);
+                new Face(firstEdgeVertexIndex, lastEdgeVertexIndex, centerVertexIndex) :
+                new Face(lastEdgeVertexIndex, firstEdgeVertexIndex, centerVertexIndex);
 
             var f = startFaceIndex + 1;
             for (var i = firstEdgeVertexIndex; i < lastEdgeVertexIndex; i++) {
                 this.Faces[f] = invert ?
-                    new Face(i + 1, i, centerVertexIndex, color) :
-                    new Face(i, i + 1, centerVertexIndex, color);
+                    new Face(i + 1, i, centerVertexIndex) :
+                    new Face(i, i + 1, centerVertexIndex);
 
                 f++;
             }
@@ -156,8 +156,8 @@ module GlareSim {
             b2: number,
             color: Color,
             startFaceIndex: number) {
-            this.Faces[startFaceIndex + 0] = new Face(a1, a2, b1, color);
-            this.Faces[startFaceIndex + 1] = new Face(b1, a2, b2, color);
+            this.Faces[startFaceIndex + 0] = new Face(a1, a2, b1);
+            this.Faces[startFaceIndex + 1] = new Face(b1, a2, b2);
         }
     }
 }

@@ -19,7 +19,7 @@ function addMeshFromGeometry(scene, meshManager, geometry) {
 
     var positions = geometry.VerticesAsPositionTriplets;
     var indices = geometry.FacesAsVertexIndexTriplets;
-    var colors = geometry.FaceColorsAsRgbaQuadruplets;
+    var colors = geometry.VertexColorsAsRgbaQuadruplets;
     var normals = [];
     BABYLON.VertexData.ComputeNormals(positions, indices, normals);
 

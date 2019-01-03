@@ -4,10 +4,14 @@ module GlareSim {
         public y: number;
         public z: number;
 
-        constructor(X: number, Y: number, Z: number){
+        public Color: Color;
+
+        constructor(X: number, Y: number, Z: number, color :Color){
             this.x = X;
             this.y = Y;
             this.z = Z;
+
+            this.Color = color;
         }
     }
 }

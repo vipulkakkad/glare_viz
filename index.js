@@ -21,7 +21,8 @@ var createScene = function (gameParameters) {
         var gearIntrinsics = gameParameters.gears[i];
         var pegPosition = gameParameters.pegPositions[i];    
 
-        var meshId = addGearFromIntrinsics(scene, meshManager, gearIntrinsics, pegPosition);
+        var gameGear = addGearFromIntrinsics(scene, meshManager, gearIntrinsics);
+        gameGear.SetPosition(pegPosition.x, pegPosition.y);
     }    
 
     scene.registerBeforeRender(function () {
@@ -29,7 +30,10 @@ var createScene = function (gameParameters) {
         for (var i = 0; i < gameParameters.gears.length; i++)
         {
             var mesh = meshManager.Meshes[i];
-            mesh.rotation.y += 0.01;        
+            mesh.rotation.y += 0.01;
+
+            var s = 1 + (0.5 * Math.sin(mesh.rotation.y));
+            gameGear.SetCircleColor(new GlareSim.Color(s, s, s, 1));
         }            
     });
 
@@ -39,7 +43,7 @@ var createScene = function (gameParameters) {
 
 /******* End of the create scene function ******/
 var fileIo = new GlareSim.FileIo();
-fileIo.LoadParametersFromFileAsync("InputFiles/twoGears.json", () => {
+fileIo.LoadParametersFromFileAsync("InputFiles/oneGear.json", () => {
     var scene = createScene(fileIo.GameParameters); //Call the createScene function
 
     // Register a render loop to repeatedly render the scene

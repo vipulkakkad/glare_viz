@@ -15,13 +15,17 @@ var createScene = function (gameParameters) {
     var light2 = new BABYLON.PointLight("light2", new BABYLON.Vector3(0, 1, -1), scene);
 
     var meshManager = new GlareSim.MeshManager();
+    var yGearRow = -5;
+    var xGearRow = -5;
 
     for (var i = 0; i < gameParameters.gears.length; i++)
     {
-        var gearIntrinsics = gameParameters.gears[i];
+        var gearSpec = gameParameters.gears[i];
+        var gearIntrinsics = new GlareSim.GearIntrinsics(gearSpec, gameParameters.gearHeight, gameParameters.pegRadius);
         var gameGear = addGearFromIntrinsics(scene, meshManager, gearIntrinsics);
-     
-        gameGear.SetPosition(5, 5);
+
+        gameGear.SetPosition(xGearRow, yGearRow);
+        xGearRow += (2 * gearSpec.Radius) + 0.5;
     }    
 
     var boardMeshGen = new GlareSim.BoardMeshGenerator(gameParameters);

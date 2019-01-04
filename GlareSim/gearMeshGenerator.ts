@@ -2,45 +2,45 @@ module GlareSim {
     export class GearMeshGenerator {
         Vertices: Vertex[];
         Faces: Face[];
-        FirstCircleVertex: number;
-        LastCircleVertex: number;
+        FirstWindowVertex: number;
+        LastWindowVertex: number;
         
         constructor(intrinsics: GearIntrinsics) {
             this.Vertices = [];
             this.Faces = [];
 
-            var gearColor = new Color(0, 1, 1, 1);
-            var circleColor = new Color(1, 0, 0, 1);
+            var gearColor = new Color(0.2, 0.7, 1, 1);
+            var windowColor = new Color(0.5, 0.3, 0.9, 1);
 
-            // Circle setup
-            var circleCenterVID = 0;
-            var circleFirstFID = 0;
+            // Window setup
+            var windowCenterVID = 0;
+            var windowFirstFID = 0;
 
-            // center circle vertices
-            var circleLastVID = MeshUtilities.addSunflowerVerticesAndReturnLastVertexIndex(
+            // center window vertices
+            var windowLastVID = MeshUtilities.addSunflowerVerticesAndReturnLastVertexIndex(
                 this.Vertices,
-                circleCenterVID,
-                (intrinsics.Radius - intrinsics.ToothAmplitude) * 0.8,
+                windowCenterVID,
+                intrinsics.WindowRadius,
                 0,
                 6, 
                 - (intrinsics.Height + 0.01),
-                circleColor);
+                windowColor);
 
-            // center circle face
-            var circleLastFID = MeshUtilities.addSunflowerFacesAndReturnLastFaceIndex(
+            // center window face
+            var windowLastFID = MeshUtilities.addSunflowerFacesAndReturnLastFaceIndex(
                 this.Faces,
-                circleCenterVID,
-                circleCenterVID + 1,
-                circleLastVID,
-                circleFirstFID,
+                windowCenterVID,
+                windowCenterVID + 1,
+                windowLastVID,
+                windowFirstFID,
                 false);
             
-            this.FirstCircleVertex = circleCenterVID;
-            this.LastCircleVertex = circleLastVID;
+            this.FirstWindowVertex = windowCenterVID;
+            this.LastWindowVertex = windowLastVID;
 
             // Top setup
-            var topCenterVID = circleLastVID + 1;
-            var topFirstFID = circleLastFID + 1;
+            var topCenterVID = windowLastVID + 1;
+            var topFirstFID = windowLastFID + 1;
             
             // top edge vertices
             var topLastVID = MeshUtilities.addSunflowerVerticesAndReturnLastVertexIndex(

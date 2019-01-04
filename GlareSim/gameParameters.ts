@@ -7,11 +7,18 @@ module GlareSim {
             }
         }
 
-        public gears: GearIntrinsics[];
+        public gears: GearSpec[];
         public pegPositions: GamePegPosition[];
         public xMax: number;
         public yMax: number;
         public pegRadius: number;
         public boardHeight: number;
+        public gearHeight: number;
+    }
+
+    export class GearSpec {
+        Radius: number;
+        ToothCount: number;
+        ToothAmplitude: number;
     }
 }

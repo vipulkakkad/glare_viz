@@ -23,7 +23,7 @@ module GlareSim {
                 (intrinsics.Radius - intrinsics.ToothAmplitude) * 0.8,
                 0,
                 6, 
-                (intrinsics.Height / 2) + 0.01,
+                - (intrinsics.Height + 0.01),
                 circleColor);
 
             // center circle face
@@ -32,7 +32,8 @@ module GlareSim {
                 circleCenterVID,
                 circleCenterVID + 1,
                 circleLastVID,
-                circleFirstFID);
+                circleFirstFID,
+                false);
             
             this.FirstCircleVertex = circleCenterVID;
             this.LastCircleVertex = circleLastVID;
@@ -48,7 +49,7 @@ module GlareSim {
                 intrinsics.Radius, 
                 intrinsics.ToothAmplitude, 
                 intrinsics.ToothCount, 
-                intrinsics.Height / 2,
+                -intrinsics.Height,
                 gearColor);
             
             // top faces
@@ -58,7 +59,7 @@ module GlareSim {
                 topCenterVID + 1, 
                 topLastVID,
                 topFirstFID,
-                true);
+                false);
           
             // Bottom setup
             var bottomCenterVID = topLastVID + 1;
@@ -71,7 +72,7 @@ module GlareSim {
                 intrinsics.Radius, 
                 intrinsics.ToothAmplitude, 
                 intrinsics.ToothCount, 
-                -intrinsics.Height / 2,
+                0,
                 gearColor);
             
             // bottom faces
@@ -81,7 +82,7 @@ module GlareSim {
                 bottomCenterVID + 1, 
                 bottomLastVID,
                 bottomFirstFID,
-                false);                
+                true);                
 
             // lateral faces
             var lastFaceIndex3 = MeshUtilities.addLateralFacesAndReturnLastFaceIndex(
@@ -90,7 +91,7 @@ module GlareSim {
                 bottomCenterVID + 1,
                 topLastVID,
                 bottomLastFID + 1,
-                true);
+                false);
         }
 
         public GenerateGeometry(): Geometry {

@@ -11,5 +11,7 @@ module GlareSim {
         public pegPositions: GamePegPosition[];
         public xMax: number;
         public yMax: number;
+        public pegRadius: number;
+        public boardHeight: number;
     }
 }

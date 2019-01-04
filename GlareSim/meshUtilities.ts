@@ -7,12 +7,14 @@ module GlareSim {
             toothAmplitude: number,
             toothCount: number,
             axialDeviation: number,
-            color: Color): number {
+            color: Color,
+            xDeviation: number = 0,
+            yDeviation: number = 0): number {
 
             var sideCount = toothCount * 2;
             var z = axialDeviation;
 
-            vertices[startIndex] = new Vertex(0, 0, z, color);
+            vertices[startIndex] = new Vertex(xDeviation, yDeviation, z, color);
 
             var v = startIndex + 1;
             for (var i = 0; i < sideCount; i++) {
@@ -20,8 +22,8 @@ module GlareSim {
 
                 var radius_cur = radius + ((i % 2 === 0) ? toothAmplitude : -toothAmplitude);
 
-                var x = radius_cur * Math.cos(theta);
-                var y = radius_cur * Math.sin(theta);
+                var x = xDeviation + radius_cur * Math.cos(theta);
+                var y = yDeviation + radius_cur * Math.sin(theta);
 
                 vertices[v] = new Vertex(x, y, z, color);
                 v++;

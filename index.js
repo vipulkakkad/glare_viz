@@ -19,15 +19,12 @@ var createScene = function (gameParameters) {
     for (var i = 0; i < gameParameters.gears.length; i++)
     {
         var gearIntrinsics = gameParameters.gears[i];
-        var pegPosition = gameParameters.pegPositions[i];    
-
         var gameGear = addGearFromIntrinsics(scene, meshManager, gearIntrinsics);
-        gameGear.SetPosition(pegPosition.x, pegPosition.y);
      
         gameGear.SetPosition(5, 5);
     }    
 
-    var boardMeshGen = new GlareSim.BoardMeshGenerator(gameParameters.xMax, gameParameters.yMax, gameParameters.pegPositions);
+    var boardMeshGen = new GlareSim.BoardMeshGenerator(gameParameters);
     var boardGeometry = boardMeshGen.GenerateGeometry();
 
     addBabylonMeshFromGeometry(scene, meshManager, boardGeometry);
@@ -41,8 +38,6 @@ var createScene = function (gameParameters) {
 
             var s = 1 + (0.5 * Math.sin(mesh.rotation.z));
             gameGear.SetCircleColor(new GlareSim.Color(s, s, s, 1));
-
-            gameGear.SetPosition(mesh.rotation.z, pegPosition.y);
         }            
     });
 
@@ -52,7 +47,7 @@ var createScene = function (gameParameters) {
 
 /******* End of the create scene function ******/
 var fileIo = new GlareSim.FileIo();
-fileIo.LoadParametersFromFileAsync("InputFiles/oneGear.json", () => {
+fileIo.LoadParametersFromFileAsync("InputFiles/twoGears.json", () => {
     var scene = createScene(fileIo.GameParameters); //Call the createScene function
 
     // Register a render loop to repeatedly render the scene

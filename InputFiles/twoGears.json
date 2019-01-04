@@ -1,6 +1,8 @@
 {
     "xMax": 10,
     "yMax": 8,
+    "boardHeight": 1,
+    "pegRadius" : 0.5,
     "gears": [
         {
             "Radius": 2.1,
@@ -16,11 +18,14 @@
     ],
     "pegPositions": [
         {
-            "x": 0,
-            "y": 0
-        },{
             "x": 3,
             "y": 3
+        },{
+            "x": 2,
+            "y": 2
+        },{
+            "x": 1,
+            "y": 1
         }
     ]
 }

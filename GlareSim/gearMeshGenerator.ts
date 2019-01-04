@@ -57,7 +57,8 @@ module GlareSim {
                 topCenterVID, 
                 topCenterVID + 1, 
                 topLastVID,
-                topFirstFID);
+                topFirstFID,
+                true);
           
             // Bottom setup
             var bottomCenterVID = topLastVID + 1;
@@ -80,7 +81,7 @@ module GlareSim {
                 bottomCenterVID + 1, 
                 bottomLastVID,
                 bottomFirstFID,
-                true);                
+                false);                
 
             // lateral faces
             var lastFaceIndex3 = MeshUtilities.addLateralFacesAndReturnLastFaceIndex(
@@ -88,7 +89,8 @@ module GlareSim {
                 topCenterVID + 1,
                 bottomCenterVID + 1,
                 topLastVID,
-                bottomLastFID + 1);            
+                bottomLastFID + 1,
+                true);
         }
 
         public GenerateGeometry(): Geometry {

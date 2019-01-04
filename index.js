@@ -16,6 +16,11 @@ var createScene = function (gameParameters) {
 
     var meshManager = new GlareSim.MeshManager();
 
+    var boardMeshGen = new GlareSim.BoardMeshGenerator(gameParameters.xMax, gameParameters.yMax, gameParameters.pegPositions);
+    var boardGeometry = boardMeshGen.GenerateGeometry();
+
+    addBabylonMeshFromGeometry(scene, meshManager, boardGeometry);
+
     for (var i = 0; i < gameParameters.gears.length; i++)
     {
         var gearIntrinsics = gameParameters.gears[i];
@@ -34,6 +39,8 @@ var createScene = function (gameParameters) {
 
             var s = 1 + (0.5 * Math.sin(mesh.rotation.y));
             gameGear.SetCircleColor(new GlareSim.Color(s, s, s, 1));
+
+            gameGear.SetPosition(pegPosition.x + s, pegPosition.y + s);
         }            
     });
 

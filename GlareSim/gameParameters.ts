@@ -8,6 +8,8 @@ module GlareSim {
         }
 
         public gears: GearIntrinsics[];
-        public pegPositions: GamePegPosition[];        
+        public pegPositions: GamePegPosition[];
+        public xMax: number;
+        public yMax: number;
     }
 }

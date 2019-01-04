@@ -1,4 +1,6 @@
 {
+    "xMax": 10,
+    "yMax": 8,
     "gears": [
         {
             "Radius": 2.1,

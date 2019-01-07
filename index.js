@@ -41,7 +41,7 @@ var createScene = function (gameParameters) {
             mesh.rotation.z += 0.01;
 
             var s = 1 + (0.5 * Math.sin(mesh.rotation.z));
-            gameGear.SetCircleColor(new GlareSim.Color(s, s, s, 1));
+            gameGear.SetWindowColor(new GlareSim.Color(s, s, s, 1));
         }            
     });
 

@@ -7,8 +7,8 @@ module GlareSim {
         private Mesh: any; // BABYLON.Mesh
 
         private SetVertexColor: UiMeshVertexColorSetter;
-        private firstCircleVertexId: number;
-        private lastCircleVertexId: number;
+        private firstWindowVertexId: number;
+        private lastWindowVertexId: number;
 
         private SetMeshPosition: UiMeshPositionSetter;
 
@@ -20,8 +20,8 @@ module GlareSim {
                 
             var gearMeshGen = new GlareSim.GearMeshGenerator(gearIntrinsics);
 
-            this.firstCircleVertexId = gearMeshGen.FirstCircleVertex;
-            this.lastCircleVertexId = gearMeshGen.LastCircleVertex
+            this.firstWindowVertexId = gearMeshGen.FirstWindowVertex;
+            this.lastWindowVertexId = gearMeshGen.LastWindowVertex
             var gearGeometry = gearMeshGen.GenerateGeometry();
             
             this.Mesh = uiMeshMaker(gearGeometry);
@@ -30,8 +30,8 @@ module GlareSim {
             this.SetMeshPosition = uiPositionSetter;
         }
 
-        public SetCircleColor(color: Color): void {
-            for (var i = this.firstCircleVertexId; i <= this.lastCircleVertexId; i++) {
+        public SetWindowColor(color: Color): void {
+            for (var i = this.firstWindowVertexId; i <= this.lastWindowVertexId; i++) {
                 this.SetVertexColor(this.Mesh, i, color);
             }
         }

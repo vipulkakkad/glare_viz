@@ -7,36 +7,41 @@ module GlareSim {
         FirstGearVertex: number;
         LastGearVertex: number;
         
-        constructor(intrinsics: GearIntrinsics) {
+        constructor(intrinsics: GearIntrinsics, createWindow: boolean) {
             this.Vertices = [];
             this.Faces = [];
 
             var gearColor = new Color(0.2, 0.7, 1, 1);
             var windowColor = new Color(0.5, 0.3, 0.9, 1);
 
-            // Window setup
-            var windowCenterVID = 0;
-            var windowFirstFID = 0;
+            var windowLastVID = -1;
+            var windowLastFID = -1;    
 
-            // center window vertices
-            var windowLastVID = MeshUtilities.addSunflowerVerticesAndReturnLastVertexIndex(
-                this.Vertices,
-                windowCenterVID,
-                intrinsics.WindowRadius,
-                0,
-                6, 
-                - (intrinsics.Height + 0.01),
-                windowColor);
+            if (createWindow){
+                // Window setup
+                var windowCenterVID = 0;
+                var windowFirstFID = 0;
 
-            // center window face
-            var windowLastFID = MeshUtilities.addSunflowerFacesAndReturnLastFaceIndex(
-                this.Faces,
-                windowCenterVID,
-                windowCenterVID + 1,
-                windowLastVID,
-                windowFirstFID,
-                false);
-            
+                // center window vertices
+                var windowLastVID = MeshUtilities.addSunflowerVerticesAndReturnLastVertexIndex(
+                    this.Vertices,
+                    windowCenterVID,
+                    intrinsics.WindowRadius,
+                    0,
+                    6, 
+                    - (intrinsics.Height + 0.01),
+                    windowColor);
+
+                // center window face
+                var windowLastFID = MeshUtilities.addSunflowerFacesAndReturnLastFaceIndex(
+                    this.Faces,
+                    windowCenterVID,
+                    windowCenterVID + 1,
+                    windowLastVID,
+                    windowFirstFID,
+                    false);
+            }
+
             this.FirstWindowVertex = windowCenterVID;
             this.LastWindowVertex = windowLastVID;
 

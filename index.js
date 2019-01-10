@@ -9,7 +9,7 @@ var createScene = function (gameParameters) {
     // Add a camera to the scene and attach it to the canvas
     // var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 2, new BABYLON.Vector3(0, 0, 5), scene);
     // camera.attachControl(canvas, true);
-    var camera = new BABYLON.FreeCamera("Camera", new BABYLON.Vector3(50, 37, -100), scene);
+    var camera = new BABYLON.FreeCamera("Camera", new BABYLON.Vector3(50, 37, -110), scene);
 
     // Add lights to the scene
     var light1 = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 1, 0), scene);
@@ -52,7 +52,7 @@ var createScene = function (gameParameters) {
                 console.log("POINTER DOWN");
                 var gameGear = pointerInfo.pickInfo.pickedMesh.metadata;
                 if (pointerInfo.pickInfo.pickedMesh.metadata != null) {
-                    gameGear.SetGearColor(new GlareSim.Color(0, 1, 0, 1));
+                    gameGear.SetWindowColor(new GlareSim.Color(0, 1, 0, 1));
                 }
 				break;
 			case BABYLON.PointerEventTypes.POINTERUP:

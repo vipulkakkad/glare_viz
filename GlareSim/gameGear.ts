@@ -22,7 +22,7 @@ module GlareSim {
             uiPositionSetter: UiMeshPositionSetter,
             uiMeshMetadatSetter: UiMeshMetadataSetter) {
                 
-            var gearMeshGen = new GlareSim.GearMeshGenerator(gearIntrinsics);
+            var gearMeshGen = new GlareSim.GearMeshGenerator(gearIntrinsics, true);
 
             this.firstWindowVertexId = gearMeshGen.FirstWindowVertex;
             this.lastWindowVertexId = gearMeshGen.LastWindowVertex
@@ -53,7 +53,9 @@ module GlareSim {
 
         public SetVertexRangeColor(start: number, end: number, color: Color): void {
             for (var i = start; i <= end; i++) {
-                this.SetVertexColor(this.Mesh, i, color);
+                if (i >= 0) {
+                    this.SetVertexColor(this.Mesh, i, color);
+                }
             }
         }        
     }

@@ -21,4 +21,9 @@ module GlareSim {
         ToothCount: number;
         ToothAmplitude: number;
     }
+
+    export class GamePegPosition {
+        x: number;
+        y: number;
+    }
 }

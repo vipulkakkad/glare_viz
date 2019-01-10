@@ -1,6 +1,14 @@
 var canvas = document.getElementById("renderCanvas"); // Get the canvas element 
 var engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
 
+function getMeshFromPick(pointerInfo) {
+    if (pointerInfo.pickInfo.pickedMesh != null) {
+        return (" ON " + pointerInfo.pickInfo.pickedMesh.id);
+    } else {
+        return "";
+    }
+}
+
 /******* Add the create scene function ******/
 var createScene = function (gameParameters) {    
     // Create the scene space
@@ -49,36 +57,35 @@ var createScene = function (gameParameters) {
     scene.onPointerObservable.add((pointerInfo) => {
 		switch (pointerInfo.type) {
 			case BABYLON.PointerEventTypes.POINTERDOWN:
-                console.log("POINTER DOWN");
-                var gameGear = pointerInfo.pickInfo.pickedMesh.metadata;
-                if (pointerInfo.pickInfo.pickedMesh.metadata != null) {
+                console.log("POINTER DOWN" + getMeshFromPick(pointerInfo));                
+                if (pointerInfo.pickInfo.pickedMesh != null) {
+                    var gameGear = pointerInfo.pickInfo.pickedMesh.metadata;
                     gameGear.SetWindowColor(new GlareSim.Color(0, 1, 0, 1));
                 }
 				break;
 			case BABYLON.PointerEventTypes.POINTERUP:
-				console.log("POINTER UP");
+				console.log("POINTER UP" + getMeshFromPick(pointerInfo));
 				break;
 			case BABYLON.PointerEventTypes.POINTERMOVE:
-                console.log("POINTER MOVE");
+                console.log("POINTER MOVE" + getMeshFromPick(pointerInfo));
 				break;
 			case BABYLON.PointerEventTypes.POINTERWHEEL:
-				console.log("POINTER WHEEL");
+				console.log("POINTER WHEEL" + getMeshFromPick(pointerInfo));
 				break;
 			case BABYLON.PointerEventTypes.POINTERPICK:
-				console.log("POINTER PICK");
+				console.log("POINTER PICK" + getMeshFromPick(pointerInfo));
 				break;
 			case BABYLON.PointerEventTypes.POINTERTAP:
-				console.log("POINTER TAP");
+				console.log("POINTER TAP" + getMeshFromPick(pointerInfo));
 				break;
 			case BABYLON.PointerEventTypes.POINTERDOUBLETAP:
-				console.log("POINTER DOUBLE-TAP");
+				console.log("POINTER DOUBLE-TAP" + getMeshFromPick(pointerInfo));
 				break;
         }
     });
 
     return scene;    
 };
-
 
 /******* End of the create scene function ******/
 var fileIo = new GlareSim.FileIo();

@@ -50,7 +50,8 @@ function addGearFromIntrinsics(scene, meshManager, gearIntrinsics) {
         gearIntrinsics,
         function (geometry) { return addBabylonMeshFromGeometry(scene, meshManager, geometry); },
         function (mesh, vertexId, color) { setBabylonMeshVertexColor(mesh, vertexId, color); },
-        function (mesh, x, y) { setBabylonMeshPosition(mesh, x, y); });
+        function (mesh, x, y) { setBabylonMeshPosition(mesh, x, y); },
+        function (mesh, gameGear) { mesh.metadata = gameGear; });
     
     return gameGear;
 }

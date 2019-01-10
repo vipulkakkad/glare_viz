@@ -4,6 +4,8 @@ module GlareSim {
         Faces: Face[];
         FirstWindowVertex: number;
         LastWindowVertex: number;
+        FirstGearVertex: number;
+        LastGearVertex: number;
         
         constructor(intrinsics: GearIntrinsics) {
             this.Vertices = [];
@@ -85,13 +87,16 @@ module GlareSim {
                 true);                
 
             // lateral faces
-            var lastFaceIndex3 = MeshUtilities.addLateralFacesAndReturnLastFaceIndex(
+            var lateralLastFID = MeshUtilities.addLateralFacesAndReturnLastFaceIndex(
                 this.Faces,
                 topCenterVID + 1,
                 bottomCenterVID + 1,
                 topLastVID,
                 bottomLastFID + 1,
                 false);
+
+            this.FirstGearVertex = topCenterVID;
+            this.LastGearVertex = bottomLastVID;
         }
 
         public GenerateGeometry(): Geometry {

@@ -2,7 +2,7 @@ module GlareSim {
     export type UiMeshMaker = (geometry: Geometry) => any;
     export type UiMeshVertexColorSetter = (mesh:any, vertexId: number, color: Color) => void;
     export type UiMeshPositionSetter = (mesh:any, x: number, y: number) => void;
-    export type UiMeshMetadataSetter = (mesh:any, gameGear: GameGear) => void;
+    export type UiGearMeshMetadataSetter = (mesh:any, gameGear: GameGear) => void;
     
     export class GameGear {
         private Mesh: any; // BABYLON.Mesh
@@ -15,22 +15,23 @@ module GlareSim {
 
         private SetMeshPosition: UiMeshPositionSetter;
 
+        public Type: string = "GameGear";
+
         constructor(
             gearIntrinsics: GearIntrinsics,
             uiMeshMaker: UiMeshMaker,
             uiVertexColorSetter: UiMeshVertexColorSetter,
             uiPositionSetter: UiMeshPositionSetter,
-            uiMeshMetadatSetter: UiMeshMetadataSetter) {
+            uiMeshMetadatSetter: UiGearMeshMetadataSetter) {
                 
-            var gearMeshGen = new GlareSim.GearMeshGenerator(gearIntrinsics, true);
+            var gearMeshGen = new GearMeshGenerator(gearIntrinsics, true);
 
             this.firstWindowVertexId = gearMeshGen.FirstWindowVertex;
             this.lastWindowVertexId = gearMeshGen.LastWindowVertex
             this.firstGearVertexId = gearMeshGen.FirstGearVertex;
             this.lastGearVertexId = gearMeshGen.LastGearVertex
 
-            var gearGeometry = gearMeshGen.GenerateGeometry();
-            
+            var gearGeometry = gearMeshGen.GenerateGeometry();           
             this.Mesh = uiMeshMaker(gearGeometry);
 
             this.SetVertexColor = uiVertexColorSetter;

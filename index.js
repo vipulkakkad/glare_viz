@@ -29,16 +29,21 @@ var createScene = function (gameParameters) {
 
     for (var i = 0; i < gameParameters.gears.length; i++)
     {
-        var gearSpec = gameParameters.gears[i];
-        var gearIntrinsics = new GlareSim.GearIntrinsics(gearSpec, gameParameters.gearHeight, gameParameters.pegRadius);
-        var gameGear = addGearFromIntrinsics(scene, meshManager, gearIntrinsics);
+        var gearSpec = gameParameters.gears[i];        
+        var gameGear = addGearFromSpec(scene, meshManager, gameParameters, gearSpec);
 
         gameGear.SetPosition(xGearRow, yGearRow);
         xGearRow += (2 * gearSpec.Radius) + 0.5;
     }    
 
-    var boardMeshGen = new GlareSim.BoardMeshGenerator(gameParameters);
+    var boardMeshGen = new GlareSim.BoardMeshGenerator(gameParameters, false); // false => don't show peg positions
     var boardGeometry = boardMeshGen.GenerateGeometry();
+
+    for (var i = 0; i < gameParameters.pegPositions.length; i++)
+    {
+        var pegPosition = gameParameters.pegPositions[i];
+        var gamePeg = addPegAtPosition(scene, meshManager, gameParameters, pegPosition);
+    }        
 
     addBabylonMeshFromGeometry(scene, meshManager, boardGeometry);
 

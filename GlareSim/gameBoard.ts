@@ -10,10 +10,10 @@ module GlareSim {
             this.Pegs = [];
         
             for (var i = 0; i < gamePegPositions.length; i++) {
-                var peg = new GamePeg();
-                peg.id = i;
-                peg.position = gamePegPositions[i];
-                this.Pegs[i] = peg;
+                // var peg = new GamePeg();
+                // peg.id = i;
+                // peg.position = gamePegPositions[i];
+                // this.Pegs[i] = peg;
             }
         }
     }

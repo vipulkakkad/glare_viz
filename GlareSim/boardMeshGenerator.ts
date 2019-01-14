@@ -3,7 +3,7 @@ module GlareSim {
         Vertices: Vertex[];
         Faces: Face[];
 
-        constructor(parameters: GameParameters) {          
+        constructor(parameters: GameParameters, showPegPositions: boolean) {          
             this.Vertices = [];
             this.Faces = [];
     
@@ -40,39 +40,41 @@ module GlareSim {
             MeshUtilities.addSquare(this.Faces, 4, 7, 5, 6, lastBoardFID + 1);
             lastBoardFID += 2;
 
-            var nextPegCenterVID = 8;
-            var nextPegFirstFID = lastBoardFID + 1;
-
-            var thisPegLastVID;
-            var thisPegLastFID;
-            for (var i = 0; i < pegPositions.length; i++) {
-                // set IDs for 'this' iteration
-                var thisPegCenterVID = nextPegCenterVID;
-                var thisPegFirstFID = nextPegFirstFID;
-
-                // peg vertices for 'this' peg
-                thisPegLastVID = MeshUtilities.addSunflowerVerticesAndReturnLastVertexIndex(
-                    this.Vertices,
-                    thisPegCenterVID,
-                    pegRadius,
-                    0,
-                    6, 
-                    -0.01,
-                    pegColor,
-                    pegPositions[i].x,
-                    pegPositions[i].y);
-
-                // peg faces for 'this' peg
-                thisPegLastFID = MeshUtilities.addSunflowerFacesAndReturnLastFaceIndex(
-                    this.Faces,
-                    thisPegCenterVID,
-                    thisPegCenterVID + 1,
-                    thisPegLastVID,
-                    thisPegFirstFID);    
-
-                // populate indices for 'next' peg
-                nextPegCenterVID = thisPegLastVID + 1;
-                nextPegFirstFID = thisPegLastFID + 1;
+            if (showPegPositions) {
+                var nextPegCenterVID = 8;
+                var nextPegFirstFID = lastBoardFID + 1;
+    
+                var thisPegLastVID;
+                var thisPegLastFID;
+                for (var i = 0; i < pegPositions.length; i++) {
+                    // set IDs for 'this' iteration
+                    var thisPegCenterVID = nextPegCenterVID;
+                    var thisPegFirstFID = nextPegFirstFID;
+    
+                    // peg vertices for 'this' peg
+                    thisPegLastVID = MeshUtilities.addSunflowerVerticesAndReturnLastVertexIndex(
+                        this.Vertices,
+                        thisPegCenterVID,
+                        pegRadius,
+                        0,
+                        6, 
+                        -0.01,
+                        pegColor,
+                        pegPositions[i].x,
+                        pegPositions[i].y);
+    
+                    // peg faces for 'this' peg
+                    thisPegLastFID = MeshUtilities.addSunflowerFacesAndReturnLastFaceIndex(
+                        this.Faces,
+                        thisPegCenterVID,
+                        thisPegCenterVID + 1,
+                        thisPegLastVID,
+                        thisPegFirstFID);    
+    
+                    // populate indices for 'next' peg
+                    nextPegCenterVID = thisPegLastVID + 1;
+                    nextPegFirstFID = thisPegLastFID + 1;
+                }
             }
         }
 

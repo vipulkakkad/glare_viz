@@ -45,7 +45,8 @@ function addBabylonMeshFromGeometry(scene, meshManager, geometry) {
     return mesh;
 }
 
-function addGearFromIntrinsics(scene, meshManager, gearIntrinsics) {
+function addGearFromSpec(scene, meshManager, gameParameters, gearSpec) {
+    var gearIntrinsics = new GlareSim.GearIntrinsics(gearSpec, gameParameters.gearHeight, gameParameters.pegRadius);
     var gameGear = new GlareSim.GameGear(
         gearIntrinsics,
         function (geometry) { return addBabylonMeshFromGeometry(scene, meshManager, geometry); },
@@ -54,4 +55,17 @@ function addGearFromIntrinsics(scene, meshManager, gearIntrinsics) {
         function (mesh, gameGear) { mesh.metadata = gameGear; });
     
     return gameGear;
+}
+
+function addPegAtPosition(scene, meshManager, gameParameters, pegPosition) {
+    var gamePeg = new GlareSim.GamePeg(
+        gameParameters.pegRadius,
+        gameParameters.boardHeight,
+        pegPosition,
+        function (geometry) { return addBabylonMeshFromGeometry(scene, meshManager, geometry); },
+        function (mesh, vertexId, color) { setBabylonMeshVertexColor(mesh, vertexId, color); },
+        function (mesh, x, y) { setBabylonMeshPosition(mesh, x, y); },
+        function (mesh, gamePeg) { mesh.metadata = gamePeg; });
+
+    return gamePeg;
 }

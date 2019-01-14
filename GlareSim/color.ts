@@ -11,5 +11,17 @@ module GlareSim {
             this.B = B;            
             this.A = A;
         }
+
+        public Perturb(magnitude: number) : Color {
+            return new Color(
+                this.Clamp(this.R + magnitude * Math.random()),
+                this.Clamp(this.G + magnitude * Math.random()),
+                this.Clamp(this.B + magnitude * Math.random()),
+                this.A);
+        }
+
+        private Clamp(num: number) : number {
+            return Math.min(Math.max(num, 0), 1);
+        };
     }
 }

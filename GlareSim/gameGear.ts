@@ -95,7 +95,7 @@ module GlareSim {
         private SetVertexRangeColor(start: number, end: number, color: Color): void {
             for (var i = start; i <= end; i++) {
                 if (i >= 0) {
-                    this.SetVertexColor(this.Mesh, i, color);
+                    this.SetVertexColor(this.Mesh, i, color.Perturb(0.3));
                 }
             }
         }        

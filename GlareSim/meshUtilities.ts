@@ -14,7 +14,7 @@ module GlareSim {
             var sideCount = toothCount * 2;
             var z = axialDeviation;
 
-            vertices[startIndex] = new Vertex(xDeviation, yDeviation, z, color);
+            vertices[startIndex] = new Vertex(xDeviation, yDeviation, z, color.Perturb(0.1));
 
             var v = startIndex + 1;
             for (var i = 0; i < sideCount; i++) {
@@ -25,7 +25,7 @@ module GlareSim {
                 var x = xDeviation + radius_cur * Math.cos(theta);
                 var y = yDeviation + radius_cur * Math.sin(theta);
 
-                vertices[v] = new Vertex(x, y, z, color);
+                vertices[v] = new Vertex(x, y, z, color.Perturb(0.3));
                 v++;
             }
 

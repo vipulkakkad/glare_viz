@@ -2,7 +2,7 @@ module GlareSim {
     export type UiPegMeshMetadataSetter = (mesh:any, gamePeg: GamePeg) => void;
 
     export class GamePeg {
-        position: GamePegPosition
+        public position: GamePegPosition
         id: number;
 
         private Mesh: any; // BABYLON.Mesh
@@ -38,7 +38,8 @@ module GlareSim {
 
             this.SetVertexColor = uiVertexColorSetter;
     
-            uiPositionSetter(this.Mesh, gamePegPosition.x, gamePegPosition.y);
+            this.position = gamePegPosition;
+            uiPositionSetter(this.Mesh, this.position.x, this.position.y);
 
             uiMeshMetadatSetter(this.Mesh, this);
         }

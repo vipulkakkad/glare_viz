@@ -69,3 +69,25 @@ function addPegAtPosition(scene, meshManager, gameParameters, pegPosition) {
 
     return gamePeg;
 }
+
+function onMeshClicked(mesh) {
+    var gameObject = mesh.metadata;
+
+    if (gameObject != null) {
+        switch(gameObject.Type)
+        {
+            case "GameGear":
+                console.log("Gear clicked: " + mesh.id);
+                break;
+            case "GamePeg":
+                console.log("Peg clicked: " + mesh.id);  
+                break;
+            default:
+                console.log("WAT? Game object clicked: " + mesh.id);  
+                break;
+        }    
+    }
+    else {
+        console.log("Mesh clicked: " + mesh.id);
+    }
+}

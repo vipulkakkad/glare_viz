@@ -16,6 +16,10 @@ module GlareSim {
             this.SelectGear(clickedGear);
         }
 
+        public OnGearDoubleClicked(clickedGear: GameGear) {
+            this.ResetGearPosition(clickedGear);
+        }
+
         public OnPegClicked(clickedPeg: GamePeg) {
             if (this.SelectedGear != null) {
                 this.SelectedGear.SetToPegPosition(clickedPeg.position);
@@ -36,6 +40,10 @@ module GlareSim {
         private SelectGear(gear: GameGear) {
             this.SelectedGear = gear;
             gear.SetGearColor(this.selectedGearColor);
+        }
+
+        private ResetGearPosition(gear: GameGear) {
+            gear.SetToDefaultPosition();
         }
     }
 }

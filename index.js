@@ -62,6 +62,11 @@ var createScene = function (gameParameters) {
                 if (pointerInfo.pickInfo.pickedMesh != null) {
                     onMeshClicked(pointerInfo.pickInfo.pickedMesh, game);
                 }
+                break;
+            case BABYLON.PointerEventTypes.POINTERDOUBLETAP:
+                if (pointerInfo.pickInfo.pickedMesh != null) {
+                    onMeshDoubleClicked(pointerInfo.pickInfo.pickedMesh, game);
+                }
 				break;
         }
     });

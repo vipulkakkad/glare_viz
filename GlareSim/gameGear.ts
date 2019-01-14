@@ -42,7 +42,11 @@ module GlareSim {
 
             uiMeshMetadataSetter(this.Mesh, this);
 
-            this.defaultPosition = defaultPosition;
+            // deep copy default position
+            this.defaultPosition = new GamePegPosition();
+            this.defaultPosition.x = defaultPosition.x;
+            this.defaultPosition.y = defaultPosition.y;
+
             this.SetToDefaultPosition();
         }
 

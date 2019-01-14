@@ -106,3 +106,22 @@ function onMeshClicked(mesh, game) {
         console.log("Mesh clicked: " + mesh.id);
     }
 }
+
+function onMeshDoubleClicked(mesh, game) {
+    var gameObject = mesh.metadata;
+
+    if (gameObject != null) {
+        switch(gameObject.Type)
+        {
+            case "GameGear":
+                game.OnGearDoubleClicked(gameObject);
+                break;
+            default:
+                console.log("Double click does nothing on non-gear meshes.");
+                break;
+        }    
+    }
+    else {
+        console.log("Mesh clicked: " + mesh.id);
+    }
+}

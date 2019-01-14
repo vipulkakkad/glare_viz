@@ -2,7 +2,7 @@ module GlareSim {
     export type UiPegMeshMetadataSetter = (mesh:any, gamePeg: GamePeg) => void;
 
     export class GamePeg {
-        public position: GamePegPosition
+        public Spec: PegSpec;
         id: number;
 
         private Mesh: any; // BABYLON.Mesh
@@ -16,7 +16,7 @@ module GlareSim {
         constructor(
             pegRadius: number,
             pegHeight: number,
-            gamePegPosition: GamePegPosition,
+            pegSpec: PegSpec,
             uiMeshMaker: UiMeshMaker,
             uiVertexColorSetter: UiMeshVertexColorSetter,
             uiPositionSetter: UiMeshPositionSetter,
@@ -38,8 +38,8 @@ module GlareSim {
 
             this.SetVertexColor = uiVertexColorSetter;
     
-            this.position = gamePegPosition;
-            uiPositionSetter(this.Mesh, this.position.x, this.position.y);
+            this.Spec = pegSpec;
+            uiPositionSetter(this.Mesh, this.Spec.x, this.Spec.y);
 
             uiMeshMetadataSetter(this.Mesh, this);
         }

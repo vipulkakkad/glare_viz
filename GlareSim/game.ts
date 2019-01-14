@@ -22,7 +22,7 @@ module GlareSim {
 
         public OnPegClicked(clickedPeg: GamePeg) {
             if (this.SelectedGear != null) {
-                this.SelectedGear.SetToPegPosition(clickedPeg.position);
+                this.SelectedGear.SetToPegPosition(clickedPeg.Spec);
             }
         }
 

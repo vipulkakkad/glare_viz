@@ -13,7 +13,7 @@ module GlareSim {
         private firstGearVertexId: number;
         private lastGearVertexId: number;
 
-        private defaultPosition: GamePegPosition;
+        private defaultPegSpec: PegSpec;
 
         private SetMeshPosition: UiMeshPositionSetter;
 
@@ -21,7 +21,7 @@ module GlareSim {
 
         constructor(
             gearIntrinsics: GearIntrinsics,
-            defaultPosition: GamePegPosition,
+            defaultPegSpec: PegSpec,
             uiMeshMaker: UiMeshMaker,
             uiVertexColorSetter: UiMeshVertexColorSetter,
             uiPositionSetter: UiMeshPositionSetter,
@@ -43,9 +43,10 @@ module GlareSim {
             uiMeshMetadataSetter(this.Mesh, this);
 
             // deep copy default position
-            this.defaultPosition = new GamePegPosition();
-            this.defaultPosition.x = defaultPosition.x;
-            this.defaultPosition.y = defaultPosition.y;
+            this.defaultPegSpec = new PegSpec();
+            this.defaultPegSpec.x = defaultPegSpec.x;
+            this.defaultPegSpec.y = defaultPegSpec.y;
+            this.defaultPegSpec.axisAngle = 0;
 
             this.SetToDefaultPosition();
         }
@@ -59,11 +60,11 @@ module GlareSim {
         }
 
         public SetToDefaultPosition(): void {
-            this.SetToPegPosition(this.defaultPosition);
+            this.SetToPegPosition(this.defaultPegSpec);
         }
 
-        public SetToPegPosition(pegPosition: GamePegPosition): void {
-            this.SetMeshPosition(this.Mesh, pegPosition.x, pegPosition.y);
+        public SetToPegPosition(pegSpec: PegSpec): void {
+            this.SetMeshPosition(this.Mesh, pegSpec.x, pegSpec.y);
         }
 
         private SetVertexRangeColor(start: number, end: number, color: Color): void {

@@ -18,24 +18,25 @@ var createScene = function (gameParameters) {
     var meshManager = new GlareSim.MeshManager();
     var yGearRow = -5;
     var xGearRow = -5;
-    var defaultPosition = new GlareSim.GamePegPosition();
+    var defaultPegSpec = new GlareSim.PegSpec();
 
     // Add gears
     for (var i = 0; i < gameParameters.gears.length; i++) {
-        defaultPosition.x = xGearRow;
-        defaultPosition.y = yGearRow;
+        defaultPegSpec.x = xGearRow;
+        defaultPegSpec.y = yGearRow;
+        defaultPegSpec.axisAngle = 0;
 
         var gearSpec = gameParameters.gears[i];
-        var gameGear = addGearFromSpec(scene, meshManager, gameParameters, gearSpec, defaultPosition);
+        var gameGear = addGearFromSpec(scene, meshManager, gameParameters, gearSpec, defaultPegSpec);
 
         xGearRow += (2 * gearSpec.Radius) + 0.5;
     }    
 
     // Add pegs
-    for (var i = 0; i < gameParameters.pegPositions.length; i++)
+    for (var i = 0; i < gameParameters.pegs.length; i++)
     {
-        var pegPosition = gameParameters.pegPositions[i];
-        var gamePeg = addPegAtPosition(scene, meshManager, gameParameters, pegPosition);
+        var pegSpec = gameParameters.pegs[i];
+        var gamePeg = addPegAtPosition(scene, meshManager, gameParameters, pegSpec);
     }        
 
     // Add board

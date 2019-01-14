@@ -15,16 +15,19 @@
             "ToothCount": 9
         }
     ],
-    "pegPositions": [
+    "pegs": [
         {
             "x": 37,
-            "y": 72
+            "y": 72,
+            "axisAngle": 0
         },{
             "x": 51,
-            "y": 20
+            "y": 20,
+            "axisAngle": 1.57079632679
         },{
             "x": 82,
-            "y": 48
+            "y": 48,
+            "axisAngle": 3.14159265359
         }
     ]
 }

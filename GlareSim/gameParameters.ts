@@ -8,7 +8,7 @@ module GlareSim {
         }
 
         public gears: GearSpec[];
-        public pegPositions: GamePegPosition[];
+        public pegs: PegSpec[];
         public xMax: number;
         public yMax: number;
         public pegRadius: number;
@@ -22,8 +22,9 @@ module GlareSim {
         ToothAmplitude: number;
     }
 
-    export class GamePegPosition {
+    export class PegSpec {
         x: number;
         y: number;
+        axisAngle: number;
     }
 }

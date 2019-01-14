@@ -13,6 +13,8 @@ module GlareSim {
         private firstGearVertexId: number;
         private lastGearVertexId: number;
 
+        private currentAxisAngle: number = 0;
+
         private defaultPegSpec: PegSpec;
 
         private SetMeshPosition: UiMeshPositionSetter;
@@ -65,6 +67,9 @@ module GlareSim {
 
         public SetToPegPosition(pegSpec: PegSpec): void {
             this.SetMeshPosition(this.Mesh, pegSpec.x, pegSpec.y);
+            
+            var c = Math.abs(Math.cos(this.currentAxisAngle - pegSpec.axisAngle));
+            this.SetWindowColor(new Color(c, c, c, 1));
         }
 
         private SetVertexRangeColor(start: number, end: number, color: Color): void {

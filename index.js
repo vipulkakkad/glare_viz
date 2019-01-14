@@ -30,7 +30,7 @@ var createScene = function (gameParameters) {
         var gameGear = addGearFromSpec(scene, meshManager, gameParameters, gearSpec, defaultPegSpec);
 
         xGearRow += (2 * gearSpec.Radius) + 0.5;
-    }    
+    }
 
     // Add pegs
     for (var i = 0; i < gameParameters.pegs.length; i++)
@@ -68,7 +68,10 @@ var createScene = function (gameParameters) {
                 if (pointerInfo.pickInfo.pickedMesh != null) {
                     onMeshDoubleClicked(pointerInfo.pickInfo.pickedMesh, game);
                 }
-				break;
+                break;
+            case BABYLON.PointerEventTypes.POINTERWHEEL:
+                console.log("POINTER WHEEL");
+                break;
         }
     });
 

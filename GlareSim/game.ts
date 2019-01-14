@@ -11,7 +11,7 @@ module GlareSim {
 
         public OnGearClicked(clickedGear: GameGear) {
             if (this.SelectedGear != null) {
-                this.UnSelectGear(this.SelectedGear);
+                this.UnSelectGear();
             }
             this.SelectGear(clickedGear);
         }
@@ -22,8 +22,15 @@ module GlareSim {
             }
         }
 
-        private UnSelectGear(gear: GameGear) {
-            gear.SetGearColor(this.defaultGearColor);
+        public OnBoardClicked() {
+            if (this.SelectedGear != null) {
+                this.UnSelectGear()
+            }
+        }
+
+        private UnSelectGear() {
+            this.SelectedGear.SetGearColor(this.defaultGearColor);
+            this.SelectedGear = null;
         }
 
         private SelectGear(gear: GameGear) {

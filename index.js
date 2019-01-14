@@ -39,9 +39,7 @@ var createScene = function (gameParameters) {
     }        
 
     // Add board
-    var boardMeshGen = new GlareSim.BoardMeshGenerator(gameParameters, false); // false => don't show peg positions
-    var boardGeometry = boardMeshGen.GenerateGeometry();
-    addBabylonMeshFromGeometry(scene, meshManager, boardGeometry);
+    var gameBoard = addBoard(scene, meshManager, gameParameters);
 
     // Setup game
     var game = new GlareSim.Game();  

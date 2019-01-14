@@ -1,20 +1,24 @@
 module GlareSim {
+    export type UiBoardMeshMetadataSetter = (mesh:any, gameBoard: GameBoard) => void;
+
     export class GameBoard {
-        Pegs: GamePeg[];
+        private Mesh: any; // BABYLON.Mesh
+
+        public Type: string = "GameBoard";
 
         constructor(
             xMax: number,
             yMax: number,
-            gamePegPositions: GamePegPosition[]) {
-        
-            this.Pegs = [];
-        
-            for (var i = 0; i < gamePegPositions.length; i++) {
-                // var peg = new GamePeg();
-                // peg.id = i;
-                // peg.position = gamePegPositions[i];
-                // this.Pegs[i] = peg;
-            }
+            boardHeight: number,
+            uiMeshMaker: UiMeshMaker,
+            uiMeshMetadataSetter: UiBoardMeshMetadataSetter) {
+
+            var meshGen = new BoardMeshGenerator(xMax, yMax, boardHeight);
+
+            var geometry = meshGen.GenerateGeometry();           
+            this.Mesh = uiMeshMaker(geometry);
+
+            uiMeshMetadataSetter(this.Mesh, this);    
         }
     }
 }

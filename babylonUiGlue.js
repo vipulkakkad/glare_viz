@@ -61,7 +61,7 @@ function addGearFromSpec(scene, meshManager, gameParameters, gearSpec, defaultPo
 function addPegAtPosition(scene, meshManager, gameParameters, pegPosition) {
     var gamePeg = new GlareSim.GamePeg(
         gameParameters.pegRadius,
-        gameParameters.boardHeight,
+        gameParameters.boardHeight / 2,
         pegPosition,
         function (geometry) { return addBabylonMeshFromGeometry(scene, meshManager, geometry); },
         function (mesh, vertexId, color) { setBabylonMeshVertexColor(mesh, vertexId, color); },
@@ -69,6 +69,17 @@ function addPegAtPosition(scene, meshManager, gameParameters, pegPosition) {
         function (mesh, gamePeg) { mesh.metadata = gamePeg; });
 
     return gamePeg;
+}
+
+function addBoard(scene, meshManager, gameParameters) {
+    var gameBoard = new GlareSim.GameBoard(
+        gameParameters.xMax,
+        gameParameters.yMax,
+        gameParameters.boardHeight,
+        function (geometry) { return addBabylonMeshFromGeometry(scene, meshManager, geometry); },
+        function (mesh, gamePeg) { mesh.metadata = gamePeg; });
+
+    return gameBoard;
 }
 
 function onMeshClicked(mesh, game) {
@@ -83,8 +94,11 @@ function onMeshClicked(mesh, game) {
             case "GamePeg":
                 game.OnPegClicked(gameObject);
                 break;
+            case "GameBoard":
+                game.OnBoardClicked();
+                break;
             default:
-                console.log("WAT? Game object clicked: " + mesh.id);  
+                console.log("WAT... what type of mesh got clicked? Mesh ID: " + mesh.id);
                 break;
         }    
     }

@@ -20,7 +20,7 @@ module GlareSim {
             uiMeshMaker: UiMeshMaker,
             uiVertexColorSetter: UiMeshVertexColorSetter,
             uiPositionSetter: UiMeshPositionSetter,
-            uiMeshMetadatSetter: UiPegMeshMetadataSetter) {
+            uiMeshMetadataSetter: UiPegMeshMetadataSetter) {
 
             // Re-using the GearMeshGen
             var pegGearSpec = new GearSpec();
@@ -41,14 +41,14 @@ module GlareSim {
             this.position = gamePegPosition;
             uiPositionSetter(this.Mesh, this.position.x, this.position.y);
 
-            uiMeshMetadatSetter(this.Mesh, this);
+            uiMeshMetadataSetter(this.Mesh, this);
         }
 
         public SetColor(color: Color): void {
             this.SetVertexRangeColor(this.firstVertexId, this.lastVertexId, color);
         }
 
-        public SetVertexRangeColor(start: number, end: number, color: Color): void {
+        private SetVertexRangeColor(start: number, end: number, color: Color): void {
             for (var i = start; i <= end; i++) {
                 if (i >= 0) {
                     this.SetVertexColor(this.Mesh, i, color);

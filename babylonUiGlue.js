@@ -45,10 +45,11 @@ function addBabylonMeshFromGeometry(scene, meshManager, geometry) {
     return mesh;
 }
 
-function addGearFromSpec(scene, meshManager, gameParameters, gearSpec) {
+function addGearFromSpec(scene, meshManager, gameParameters, gearSpec, defaultPosition) {
     var gearIntrinsics = new GlareSim.GearIntrinsics(gearSpec, gameParameters.gearHeight, gameParameters.pegRadius);
     var gameGear = new GlareSim.GameGear(
         gearIntrinsics,
+        defaultPosition,
         function (geometry) { return addBabylonMeshFromGeometry(scene, meshManager, geometry); },
         function (mesh, vertexId, color) { setBabylonMeshVertexColor(mesh, vertexId, color); },
         function (mesh, x, y) { setBabylonMeshPosition(mesh, x, y); },
@@ -70,17 +71,17 @@ function addPegAtPosition(scene, meshManager, gameParameters, pegPosition) {
     return gamePeg;
 }
 
-function onMeshClicked(mesh) {
+function onMeshClicked(mesh, game) {
     var gameObject = mesh.metadata;
 
     if (gameObject != null) {
         switch(gameObject.Type)
         {
             case "GameGear":
-                console.log("Gear clicked: " + mesh.id);
+                game.OnGearClicked(gameObject);
                 break;
             case "GamePeg":
-                console.log("Peg clicked: " + mesh.id);  
+                game.OnPegClicked(gameObject);
                 break;
             default:
                 console.log("WAT? Game object clicked: " + mesh.id);  

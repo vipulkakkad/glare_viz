@@ -13,31 +13,38 @@ var createScene = function (gameParameters) {
 
     // Add lights to the scene
     var light1 = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 1, 0), scene);
-    var light2 = new BABYLON.PointLight("light2", new BABYLON.Vector3(0, 1, -1), scene);
+    //var light2 = new BABYLON.PointLight("light2", new BABYLON.Vector3(0, 1, -1), scene);
 
     var meshManager = new GlareSim.MeshManager();
     var yGearRow = -5;
     var xGearRow = -5;
+    var defaultPosition = new GlareSim.GamePegPosition();
 
-    for (var i = 0; i < gameParameters.gears.length; i++)
-    {
-        var gearSpec = gameParameters.gears[i];        
-        var gameGear = addGearFromSpec(scene, meshManager, gameParameters, gearSpec);
+    // Add gears
+    for (var i = 0; i < gameParameters.gears.length; i++) {
+        defaultPosition.x = xGearRow;
+        defaultPosition.y = yGearRow;
 
-        gameGear.SetPosition(xGearRow, yGearRow);
+        var gearSpec = gameParameters.gears[i];
+        var gameGear = addGearFromSpec(scene, meshManager, gameParameters, gearSpec, defaultPosition);
+
         xGearRow += (2 * gearSpec.Radius) + 0.5;
     }    
 
-    var boardMeshGen = new GlareSim.BoardMeshGenerator(gameParameters, false); // false => don't show peg positions
-    var boardGeometry = boardMeshGen.GenerateGeometry();
-
+    // Add pegs
     for (var i = 0; i < gameParameters.pegPositions.length; i++)
     {
         var pegPosition = gameParameters.pegPositions[i];
         var gamePeg = addPegAtPosition(scene, meshManager, gameParameters, pegPosition);
     }        
 
+    // Add board
+    var boardMeshGen = new GlareSim.BoardMeshGenerator(gameParameters, false); // false => don't show peg positions
+    var boardGeometry = boardMeshGen.GenerateGeometry();
     addBabylonMeshFromGeometry(scene, meshManager, boardGeometry);
+
+    // Setup game
+    var game = new GlareSim.Game();  
 
     scene.registerBeforeRender(function () {
         // rotations
@@ -55,7 +62,7 @@ var createScene = function (gameParameters) {
 		switch (pointerInfo.type) {
 			case BABYLON.PointerEventTypes.POINTERDOWN:
                 if (pointerInfo.pickInfo.pickedMesh != null) {
-                    onMeshClicked(pointerInfo.pickInfo.pickedMesh);
+                    onMeshClicked(pointerInfo.pickInfo.pickedMesh, game);
                 }
 				break;
         }

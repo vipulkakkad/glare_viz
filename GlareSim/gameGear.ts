@@ -15,6 +15,7 @@ module GlareSim {
         private lastGearVertexId: number;
 
         private currentAxisAngle: number;
+        private currentPegSpec: PegSpec;
 
         private defaultPegSpec: PegSpec;
 
@@ -22,6 +23,7 @@ module GlareSim {
         private SetMeshRotation: UiMeshZRotationSetter;
 
         public Type: string = "GameGear";
+
 
         constructor(
             gearIntrinsics: GearIntrinsics,
@@ -73,14 +75,21 @@ module GlareSim {
 
         public SetToPegPosition(pegSpec: PegSpec): void {
             this.SetMeshPosition(this.Mesh, pegSpec.x, pegSpec.y);
-            
-            var c = Math.abs(Math.cos(this.currentAxisAngle - pegSpec.axisAngle));
-            this.SetWindowColor(new Color(c, c, c, 1));
+            this.currentPegSpec = pegSpec;
+
+            this.OnExtrinsicsUpdate();
         }
 
         public SpinOneClick(clockwise: boolean): void {
             this.currentAxisAngle += (clockwise ? 0.1 : -0.1);
             this.SetMeshRotation(this.Mesh, this.currentAxisAngle);
+
+            this.OnExtrinsicsUpdate();
+        }
+
+        private OnExtrinsicsUpdate() {
+            var c = Math.abs(Math.cos(this.currentAxisAngle - this.currentPegSpec.axisAngle));
+            this.SetWindowColor(new Color(c, c, c, 1));
         }
 
         private SetVertexRangeColor(start: number, end: number, color: Color): void {

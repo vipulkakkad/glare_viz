@@ -45,18 +45,6 @@ var createScene = function (gameParameters) {
     // Setup game
     var game = new GlareSim.Game();  
 
-    scene.registerBeforeRender(function () {
-        // rotations
-        for (var i = 0; i < gameParameters.gears.length; i++)
-        {
-            var mesh = meshManager.Meshes[i];
-            mesh.rotation.z += 0.01;
-
-            var s = 1 + (0.5 * Math.sin(mesh.rotation.z));
-            gameGear.SetWindowColor(new GlareSim.Color(s, s, s, 1));
-        }            
-    });
-
     scene.onPointerObservable.add((pointerInfo) => {
 		switch (pointerInfo.type) {
 			case BABYLON.PointerEventTypes.POINTERDOWN:
@@ -70,7 +58,7 @@ var createScene = function (gameParameters) {
                 }
                 break;
             case BABYLON.PointerEventTypes.POINTERWHEEL:
-                console.log("POINTER WHEEL");
+                onScroll(game, pointerInfo.event.wheelDelta < 0); // < 0 = upwards
                 break;
         }
     });

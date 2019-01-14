@@ -1,7 +1,8 @@
 module GlareSim {
     export type UiMeshMaker = (geometry: Geometry) => any;
     export type UiMeshVertexColorSetter = (mesh:any, vertexId: number, color: Color) => void;
-    export type UiMeshPositionSetter = (mesh:any, x: number, y: number) => void;
+    export type UiMeshXYPositionSetter = (mesh:any, x: number, y: number) => void;
+    export type UiMeshZRotationSetter = (mesh:any, theta: number) => void;
     export type UiGearMeshMetadataSetter = (mesh:any, gameGear: GameGear) => void;
     
     export class GameGear {
@@ -13,11 +14,12 @@ module GlareSim {
         private firstGearVertexId: number;
         private lastGearVertexId: number;
 
-        private currentAxisAngle: number = 0;
+        private currentAxisAngle: number;
 
         private defaultPegSpec: PegSpec;
 
-        private SetMeshPosition: UiMeshPositionSetter;
+        private SetMeshPosition: UiMeshXYPositionSetter;
+        private SetMeshRotation: UiMeshZRotationSetter;
 
         public Type: string = "GameGear";
 
@@ -26,7 +28,8 @@ module GlareSim {
             defaultPegSpec: PegSpec,
             uiMeshMaker: UiMeshMaker,
             uiVertexColorSetter: UiMeshVertexColorSetter,
-            uiPositionSetter: UiMeshPositionSetter,
+            uiPositionSetter: UiMeshXYPositionSetter,
+            uiRotationSetter: UiMeshZRotationSetter,
             uiMeshMetadataSetter: UiGearMeshMetadataSetter) {
                 
             var gearMeshGen = new GearMeshGenerator(gearIntrinsics, true);
@@ -41,6 +44,7 @@ module GlareSim {
 
             this.SetVertexColor = uiVertexColorSetter;
             this.SetMeshPosition = uiPositionSetter;
+            this.SetMeshRotation = uiRotationSetter;
 
             uiMeshMetadataSetter(this.Mesh, this);
 
@@ -49,8 +53,10 @@ module GlareSim {
             this.defaultPegSpec.x = defaultPegSpec.x;
             this.defaultPegSpec.y = defaultPegSpec.y;
             this.defaultPegSpec.axisAngle = 0;
-
             this.SetToDefaultPosition();
+
+            this.currentAxisAngle = 0;
+            this.SetMeshRotation(this.Mesh, this.currentAxisAngle);
         }
 
         public SetWindowColor(color: Color): void {
@@ -70,6 +76,11 @@ module GlareSim {
             
             var c = Math.abs(Math.cos(this.currentAxisAngle - pegSpec.axisAngle));
             this.SetWindowColor(new Color(c, c, c, 1));
+        }
+
+        public SpinOneClick(clockwise: boolean): void {
+            this.currentAxisAngle += (clockwise ? 0.1 : -0.1);
+            this.SetMeshRotation(this.Mesh, this.currentAxisAngle);
         }
 
         private SetVertexRangeColor(start: number, end: number, color: Color): void {

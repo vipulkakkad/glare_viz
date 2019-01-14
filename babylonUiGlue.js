@@ -3,6 +3,10 @@ function setBabylonMeshPosition(mesh, x, y) {
     mesh.position.y = y;
 }
 
+function setBabylonMeshRotation(mesh, theta) {
+    mesh.rotation.z = theta;
+}
+
 function setBabylonMeshVertexColor(mesh, vertexId, color) {
 
     var meshColors = mesh.getVerticesData(BABYLON.VertexBuffer.ColorKind);
@@ -53,6 +57,7 @@ function addGearFromSpec(scene, meshManager, gameParameters, gearSpec, defaultPo
         function (geometry) { return addBabylonMeshFromGeometry(scene, meshManager, geometry); },
         function (mesh, vertexId, color) { setBabylonMeshVertexColor(mesh, vertexId, color); },
         function (mesh, x, y) { setBabylonMeshPosition(mesh, x, y); },
+        function (mesh, theta) { setBabylonMeshRotation(mesh, theta); },
         function (mesh, gameGear) { mesh.metadata = gameGear; });
     
     return gameGear;
@@ -124,4 +129,8 @@ function onMeshDoubleClicked(mesh, game) {
     else {
         console.log("Mesh clicked: " + mesh.id);
     }
+}
+
+function onScroll(game, isUpwards) {
+    game.OnScroll(isUpwards);
 }

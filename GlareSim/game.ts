@@ -19,6 +19,12 @@ module GlareSim {
             this.ResetGearPosition(clickedGear);
         }
 
+        public OnScroll(isUpwards: boolean) {
+            if (this.SelectedGear != null) {
+                this.SelectedGear.SpinOneClick(isUpwards);
+            }
+        }
+
         public OnPegClicked(clickedPeg: GamePeg) {
             if (this.SelectedGear != null) {
                 this.SelectedGear.SetToPegPosition(clickedPeg.Spec);

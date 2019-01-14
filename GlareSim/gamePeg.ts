@@ -19,7 +19,7 @@ module GlareSim {
             pegSpec: PegSpec,
             uiMeshMaker: UiMeshMaker,
             uiVertexColorSetter: UiMeshVertexColorSetter,
-            uiPositionSetter: UiMeshPositionSetter,
+            uiPositionSetter: UiMeshXYPositionSetter,
             uiMeshMetadataSetter: UiPegMeshMetadataSetter) {
 
             // Re-using the GearMeshGen

@@ -7,12 +7,11 @@ module GlareSim {
         FirstGearVertex: number;
         LastGearVertex: number;
         
-        constructor(intrinsics: GearIntrinsics, createWindow: boolean) {
+        constructor(intrinsics: GearIntrinsics, createWindow: boolean, gearColor: Color) {
             this.Vertices = [];
             this.Faces = [];
 
-            var gearColor = new Color(0.2, 0.7, 1, 1);
-            var windowColor = new Color(0.5, 0.3, 0.9, 1);
+            var windowColor = new Color(0.5, 0.5, 0.5, 1);
 
             var windowLastVID = -1;
             var windowLastFID = -1;    

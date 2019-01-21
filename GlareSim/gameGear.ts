@@ -37,7 +37,7 @@ module GlareSim {
             uiRotationSetter: UiMeshZRotationSetter,
             uiMeshMetadataSetter: UiGearMeshMetadataSetter) {
                 
-            var gearMeshGen = new GearMeshGenerator(gearIntrinsics, true);
+            var gearMeshGen = new GearMeshGenerator(gearIntrinsics, true, new Color(0.2, 0.7, 1, 1));
 
             this.firstWindowVertexId = gearMeshGen.FirstWindowVertex;
             this.lastWindowVertexId = gearMeshGen.LastWindowVertex

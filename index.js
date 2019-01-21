@@ -44,6 +44,8 @@ var createScene = function (gameParameters) {
         var gamePeg = addPegAtPosition(scene, meshManager, gameParameters, pegSpec);
 
         game.Pegs[i] = gamePeg;
+        var white = new GlareSim.Color(1, 1, 1, 1);
+        gamePeg.SetLabelColor(white);
     }        
 
     // Add board

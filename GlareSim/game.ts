@@ -6,16 +6,21 @@ module GlareSim {
         private defaultGearColor: Color = new Color(0.2, 0.7, 1, 1);
 
         public Pegs: GamePeg[];
+        private allGearsInPlace: boolean = false;
 
         constructor() {
             this.Pegs = [];
         }
 
         public OnGearClicked(clickedGear: GameGear) {
+            if (this.allGearsInPlace) {
+                return;
+            }
+
             if (clickedGear == this.SelectedGear) {
                 return;
             }
-            
+
             if (this.SelectedGear != null) {
                 this.UnSelectGear();
             }
@@ -23,17 +28,29 @@ module GlareSim {
         }
 
         public OnGearDoubleClicked(clickedGear: GameGear) {
+            if (this.allGearsInPlace) {
+                return;
+            }
+
             this.ResetGearPosition(clickedGear);
             this.EvaluateGearStates();
         }
 
-        public OnScroll(isUpwards: boolean) {
+        public OnScroll(isUpwards: boolean) {            
+            if (this.allGearsInPlace) {
+                return;
+            }
+            
             if (this.SelectedGear != null) {
                 this.SelectedGear.SpinOneClick(isUpwards);
             }
         }
 
-        public OnPegClicked(clickedPeg: GamePeg) {
+        public OnPegClicked(clickedPeg: GamePeg) {            
+            if (this.allGearsInPlace) {
+                return;
+            }
+            
             if (this.SelectedGear != null) {
                 this.SelectedGear.PlaceAtPeg(clickedPeg);
                 this.EvaluateGearStates();
@@ -41,6 +58,10 @@ module GlareSim {
         }
 
         public OnBoardClicked() {
+            if (this.allGearsInPlace) {
+                return;
+            }
+
             if (this.SelectedGear != null) {
                 this.UnSelectGear()
             }
@@ -77,6 +98,7 @@ module GlareSim {
             if (numPegsWithCorrectGear == this.Pegs.length)
             {
                 alert("Congrats!");
+                this.allGearsInPlace = true;
             }
         }
     }

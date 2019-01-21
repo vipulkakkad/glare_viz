@@ -38,9 +38,10 @@ module GlareSim {
 
         public OnScroll(isUpwards: boolean) {            
             if (this.allGearsInPlace) {
+                this.SpinAllGears(0.1, isUpwards);
                 return;
             }
-            
+
             if (this.SelectedGear != null) {
                 this.SelectedGear.SpinOneClick(isUpwards);
             }
@@ -81,6 +82,16 @@ module GlareSim {
             gear.RemoveFromBoard();
         }
 
+        private SpinAllGears(tangentialDistance: number, clockwise: boolean)
+        {
+            for (var i = 0; i < this.Pegs.length; i++)
+            {
+                var gear = this.Pegs[i].CurrentGear;
+                var spinAngle = tangentialDistance / gear.Radius;
+                gear.SpinByAngle(spinAngle, this.Pegs[i].Spec.clockwise ? clockwise : !clockwise)
+            }                
+        }
+
         private EvaluateGearStates() : void {
             console.log("Expected radii");
 
@@ -97,8 +108,9 @@ module GlareSim {
 
             if (numPegsWithCorrectGear == this.Pegs.length)
             {
-                alert("Congrats!");
+                this.UnSelectGear();
                 this.allGearsInPlace = true;
+                alert("Congrats!");
             }
         }
     }

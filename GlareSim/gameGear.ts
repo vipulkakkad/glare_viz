@@ -94,7 +94,11 @@ module GlareSim {
         }
 
         public SpinOneClick(clockwise: boolean): void {
-            this.currentAxisAngle += (this.axisAngleIncrement * (clockwise ? 1 : -1));
+            this.SpinByAngle(this.axisAngleIncrement, clockwise);
+        }
+
+        public SpinByAngle(angle: number, clockwise: boolean): void {
+            this.currentAxisAngle += (angle * (clockwise ? 1 : -1));
             this.SetMeshRotation(this.Mesh, this.currentAxisAngle);
 
             this.OnExtrinsicsUpdate();

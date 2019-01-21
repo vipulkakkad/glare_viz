@@ -27,6 +27,6 @@ module GlareSim {
         y: number;
         axisAngle: number;
         expectedGearRadius: number;
-        clockwise: boolean;
+        startsClear: boolean;
     }
 }

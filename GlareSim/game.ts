@@ -44,6 +44,7 @@ module GlareSim {
 
             if (this.SelectedGear != null) {
                 this.SelectedGear.SpinOneClick(isUpwards);
+                this.EvaluateGearStates();
             }
         }
 
@@ -88,30 +89,28 @@ module GlareSim {
             {
                 var gear = this.Pegs[i].CurrentGear;
                 var spinAngle = tangentialDistance / gear.Radius;
-                gear.SpinByAngle(spinAngle, this.Pegs[i].Spec.clockwise ? clockwise : !clockwise)
-            }                
+                gear.SpinByAngle(spinAngle, this.Pegs[i].Spec.startsClear ? clockwise : !clockwise)
+            }
         }
 
         private EvaluateGearStates() : void {
-            console.log("Expected radii");
-
-            var numPegsWithCorrectGear = this.Pegs.reduce( function (n, peg) {
-                if (peg.CurrentGear != null)
-                {
-                    return n + ((peg.CurrentGear.Radius == peg.Spec.expectedGearRadius) ? 1 : 0)
-                } else {
-                    return n;
-                }
-            }, 0);
-            
-            console.log("numPegsWithCorrectGear = " + numPegsWithCorrectGear);
-
-            if (numPegsWithCorrectGear == this.Pegs.length)
+            for (var i = 0; i < this.Pegs.length; i++)
             {
-                this.UnSelectGear();
-                this.allGearsInPlace = true;
-                alert("Congrats!");
+                var peg = this.Pegs[i];
+                if (peg.CurrentGear == null) {
+                    return;
+                } else if (peg.CurrentGear.Radius != peg.Spec.expectedGearRadius) {
+                    return;
+                } else if (peg.Spec.startsClear && peg.CurrentGear.WindowColor < 0.9) {
+                    return;
+                } else if (!peg.Spec.startsClear && peg.CurrentGear.WindowColor > 0.1) {
+                    return;
+                }
             }
+
+            this.UnSelectGear();
+            this.allGearsInPlace = true;
+            alert("Nicely done - you can scroll to spin all the gears together now! (all other interactions disabled)");
         }
     }
 }

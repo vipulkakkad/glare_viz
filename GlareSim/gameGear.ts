@@ -26,7 +26,7 @@ module GlareSim {
         public Type: string = "GameGear";
         public CurrentPeg: GamePeg;
         public Radius: number;
-        public WindowColor: number;
+        public WindowShade: number;
 
         constructor(
             gearIntrinsics: GearIntrinsics,
@@ -113,8 +113,15 @@ module GlareSim {
         }
 
         private OnExtrinsicsUpdate() {
-            this.WindowColor = Math.abs(Math.cos(this.currentAxisAngle - this.currentPegSpec.axisAngle));
-            this.SetWindowColor(new Color(this.WindowColor, this.WindowColor, this.WindowColor, 1));
+            this.WindowShade = Math.abs(Math.cos(this.currentAxisAngle - this.currentPegSpec.axisAngle));
+            
+            var windowColor = new Color(this.WindowShade, this.WindowShade, this.WindowShade, 1);
+            
+            this.SetWindowColor(windowColor);
+            if (this.CurrentPeg != null)
+            {
+                this.CurrentPeg.SetLabelColor(windowColor);
+            }
         }
 
         private SetVertexRangeColor(start: number, end: number, color: Color, colorPerturbation: number = 0): void {

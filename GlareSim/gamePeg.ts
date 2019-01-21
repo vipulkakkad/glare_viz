@@ -62,7 +62,7 @@ module GlareSim {
         }
 
         public SetLabelColor(color: Color): void {
-            this.SetLabelTextAndColor(this.LabelTexture, "", color);
+            this.SetLabelTextAndColor(this.LabelTexture, this.Spec.letter, color);
         }
 
         private SetVertexRangeColor(start: number, end: number, color: Color): void {

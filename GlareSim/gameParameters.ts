@@ -28,5 +28,6 @@ module GlareSim {
         axisAngle: number;
         expectedGearRadius: number;
         startsClear: boolean;
+        letter: string;
     }
 }

@@ -37,8 +37,6 @@ var createScene = function (gameParameters) {
         xGearRow += gearSpec.Radius + nextGearRadius + 0.5;
     }
 
-    var x = 0;
-
     // Add pegs
     for (var i = 0; i < gameParameters.pegs.length; i++)
     {
@@ -69,12 +67,7 @@ var createScene = function (gameParameters) {
         }
     });
 
-    scene.registerBeforeRender(() => {
-        x += 0.01;
-
-        var color = new GlareSim.Color(Math.sin(x),Math.sin(x),Math.sin(x),1);
-        gamePeg.SetLabelColor(color);
-    })
+    scene.registerBeforeRender(() => {})
 
     return scene;    
 };

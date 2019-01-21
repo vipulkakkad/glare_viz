@@ -29,25 +29,29 @@
             "y": 37.5,
             "axisAngle": 0,
             "expectedGearRadius": 1.5,
-            "startsClear": true
+            "startsClear": true,
+            "letter": "R"
         },{
             "x": 53,
             "y": 37.5,
             "axisAngle": 1.57079632679,
             "expectedGearRadius": 1.5,
-            "startsClear": true
+            "startsClear": true,
+            "letter": "H"
         },{  
             "x": 50,
             "y": 41.5,
             "axisAngle": 1.57079632679,
             "expectedGearRadius": 3.5,
-            "startsClear": false
+            "startsClear": false,
+            "letter": "M"
         },{
             "x": 50,
             "y": 33.5,
             "axisAngle": 3.14159265359,
             "expectedGearRadius": 3.5,
-            "startsClear": false
+            "startsClear": false,
+            "letter": "B"
         }
     ]
 }

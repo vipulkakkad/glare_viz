@@ -113,11 +113,13 @@ module GlareSim {
         }
 
         private OnExtrinsicsUpdate() {
-            this.WindowShade = Math.abs(Math.cos(this.currentAxisAngle - this.currentPegSpec.axisAngle));
-            
-            var windowColor = new Color(this.WindowShade, this.WindowShade, this.WindowShade, 1);
-            
+            this.WindowShade = (this.CurrentPeg == null) ?
+                0.5 :
+                Math.abs(Math.cos(this.currentAxisAngle - this.currentPegSpec.axisAngle));
+
+            var windowColor = new Color(this.WindowShade, this.WindowShade, this.WindowShade, 1);    
             this.SetWindowColor(windowColor);
+
             if (this.CurrentPeg != null)
             {
                 this.CurrentPeg.SetLabelColor(windowColor);

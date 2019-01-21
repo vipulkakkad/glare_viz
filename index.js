@@ -32,7 +32,9 @@ var createScene = function (gameParameters) {
         var gearSpec = gameParameters.gears[i];
         var gameGear = addGearFromSpec(scene, meshManager, gameParameters, gearSpec, defaultPegSpec);
 
-        xGearRow += (2 * gearSpec.Radius) + 0.5;
+        var nextGearRadius = ((i + 1) < gameParameters.gears.length) ?
+            gameParameters.gears[i + 1].Radius : 0;
+        xGearRow += gearSpec.Radius + nextGearRadius + 0.5;
     }
 
     // Add pegs

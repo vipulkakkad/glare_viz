@@ -12,6 +12,10 @@ module GlareSim {
         }
 
         public OnGearClicked(clickedGear: GameGear) {
+            if (clickedGear == this.SelectedGear) {
+                return;
+            }
+            
             if (this.SelectedGear != null) {
                 this.UnSelectGear();
             }

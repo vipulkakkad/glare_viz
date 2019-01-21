@@ -49,6 +49,17 @@ function addBabylonMeshFromGeometry(scene, meshManager, geometry) {
     return mesh;
 }
 
+function addBoard(scene, meshManager, gameParameters) {
+    var gameBoard = new GlareSim.GameBoard(
+        gameParameters.xMax,
+        gameParameters.yMax,
+        gameParameters.boardHeight,
+        function (geometry) { return addBabylonMeshFromGeometry(scene, meshManager, geometry); },
+        function (mesh, gamePeg) { mesh.metadata = gamePeg; });
+
+    return gameBoard;
+}
+
 function addGearFromSpec(scene, meshManager, gameParameters, gearSpec, defaultPosition) {
     var gearIntrinsics = new GlareSim.GearIntrinsics(gearSpec, gameParameters.gearHeight, gameParameters.pegRadius);
     var gameGear = new GlareSim.GameGear(
@@ -71,20 +82,35 @@ function addPegAtPosition(scene, meshManager, gameParameters, pegPosition) {
         function (geometry) { return addBabylonMeshFromGeometry(scene, meshManager, geometry); },
         function (mesh, vertexId, color) { setBabylonMeshVertexColor(mesh, vertexId, color); },
         function (mesh, x, y) { setBabylonMeshPosition(mesh, x, y); },
-        function (mesh, gamePeg) { mesh.metadata = gamePeg; });
+        function (mesh, gamePeg) { mesh.metadata = gamePeg; },
+        function (gamePeg) { return addLabelForPeg(scene, meshManager, gamePeg); },
+        function (texture, text, bgColor) { drawTextOnTexture(texture, text, bgColor); });
 
     return gamePeg;
 }
+function addLabelForPeg(scene, meshManager, gamePeg) {
+    // Reserve
+    var meshId = meshManager.ClaimAndGetMeshId();
 
-function addBoard(scene, meshManager, gameParameters) {
-    var gameBoard = new GlareSim.GameBoard(
-        gameParameters.xMax,
-        gameParameters.yMax,
-        gameParameters.boardHeight,
-        function (geometry) { return addBabylonMeshFromGeometry(scene, meshManager, geometry); },
-        function (mesh, gamePeg) { mesh.metadata = gamePeg; });
+    var pegSpec = gamePeg.Spec;
 
-    return gameBoard;
+	var outputplane = BABYLON.Mesh.CreatePlane(meshId.toString(), 1, scene, false);
+	outputplane.billboardMode = BABYLON.AbstractMesh.BILLBOARDMODE_ALL;
+	outputplane.material = new BABYLON.StandardMaterial(meshId.toString(), scene);
+    outputplane.position = new BABYLON.Vector3(pegSpec.x, pegSpec.y, -3);
+    outputplane.metadata = gamePeg;
+
+	var outputplaneTexture = new BABYLON.DynamicTexture(meshId.toString(), 512, scene, true);
+	outputplane.material.diffuseTexture = outputplaneTexture;
+	outputplane.material.specularColor = new BABYLON.Color3(0, 0, 0);
+	outputplane.material.emissiveColor = new BABYLON.Color3(1, 1, 1);
+	outputplane.material.backFaceCulling = false;
+
+    return outputplaneTexture;    
+}
+
+function drawTextOnTexture(texture, text, bgColor) {
+    texture.drawText(text, null, 500, "bold 540px verdana", "black", bgColor.ToRgbHexString());
 }
 
 function onMeshClicked(mesh, game) {

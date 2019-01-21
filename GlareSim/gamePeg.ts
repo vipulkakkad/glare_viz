@@ -1,13 +1,17 @@
 module GlareSim {
     export type UiPegMeshMetadataSetter = (mesh:any, gamePeg: GamePeg) => void;
+    export type UiLabelTextureMaker = (gamePeg: GamePeg) => any;
+    export type UiTextureTextDrawer = (texture:any, text: string, bgColor: Color) => void;
 
     export class GamePeg {
         public Spec: PegSpec;
         id: number;
 
         private Mesh: any; // BABYLON.Mesh
+        private LabelTexture: any;
 
         private SetVertexColor: UiMeshVertexColorSetter;
+        private SetLabelTextAndColor: UiTextureTextDrawer;
         private firstVertexId: number;
         private lastVertexId: number;
 
@@ -22,7 +26,9 @@ module GlareSim {
             uiMeshMaker: UiMeshMaker,
             uiVertexColorSetter: UiMeshVertexColorSetter,
             uiPositionSetter: UiMeshXYPositionSetter,
-            uiMeshMetadataSetter: UiPegMeshMetadataSetter) {
+            uiMeshMetadataSetter: UiPegMeshMetadataSetter,
+            uiLabelMaker: UiLabelTextureMaker,
+            uiTextureTextDrawer: UiTextureTextDrawer) {
 
             // Re-using the GearMeshGen
             var pegGearSpec = new GearSpec();
@@ -46,10 +52,17 @@ module GlareSim {
             uiMeshMetadataSetter(this.Mesh, this);
 
             this.CurrentGear = null;
+
+            this.LabelTexture = uiLabelMaker(this);
+            this.SetLabelTextAndColor = uiTextureTextDrawer;
         }
 
         public SetColor(color: Color): void {
             this.SetVertexRangeColor(this.firstVertexId, this.lastVertexId, color);
+        }
+
+        public SetLabelColor(color: Color): void {
+            this.SetLabelTextAndColor(this.LabelTexture, "", color);
         }
 
         private SetVertexRangeColor(start: number, end: number, color: Color): void {

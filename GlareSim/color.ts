@@ -20,8 +20,24 @@ module GlareSim {
                 this.A);
         }
 
+        public ToRgbHexString() : string {
+            return "#"
+                + this.GetHex256StringFrom0to1Float(this.R)
+                + this.GetHex256StringFrom0to1Float(this.G)
+                + this.GetHex256StringFrom0to1Float(this.B);
+        }
+
         private Clamp(num: number) : number {
             return Math.min(Math.max(num, 0), 1);
-        };
+        }
+        
+        private GetHex256StringFrom0to1Float(f: number) : string {
+            var hexString = Math.max(0, Math.floor((f * 256) - 0.000001)).toString(16);
+            if (hexString.length % 2) {
+              hexString = '0' + hexString;
+            }
+
+            return hexString;
+        }
     }
 }

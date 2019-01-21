@@ -6,28 +6,35 @@
     "pegRadius" : 0.75,
     "gears": [
         {
+            "Radius": 1.5,
+            "ToothAmplitude": 0.3,
+            "ToothCount": 9
+        }, {
             "Radius": 2.0,
             "ToothAmplitude": 0.2,
             "ToothCount": 12
         }, {
-            "Radius": 1.5,
+            "Radius": 2.5,
             "ToothAmplitude": 0.3,
-            "ToothCount": 9
+            "ToothCount": 15
         }
     ],
     "pegs": [
         {
             "x": 37,
             "y": 72,
-            "axisAngle": 0
-        },{
+            "axisAngle": 0,
+            "expectedGearRadius": 1.5
+        },{  
             "x": 51,
             "y": 20,
-            "axisAngle": 1.57079632679
+            "axisAngle": 1.57079632679,
+            "expectedGearRadius": 2.0
         },{
             "x": 82,
             "y": 48,
-            "axisAngle": 3.14159265359
+            "axisAngle": 3.14159265359,
+            "expectedGearRadius": 2.5
         }
     ]
 }

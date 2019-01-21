@@ -26,5 +26,7 @@ module GlareSim {
         x: number;
         y: number;
         axisAngle: number;
+        expectedGearRadius: number;
+        clockwise: boolean;
     }
 }

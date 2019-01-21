@@ -13,6 +13,8 @@ module GlareSim {
 
         public Type: string = "GamePeg";
 
+        public CurrentGear: GameGear;
+
         constructor(
             pegRadius: number,
             pegHeight: number,
@@ -42,6 +44,8 @@ module GlareSim {
             uiPositionSetter(this.Mesh, this.Spec.x, this.Spec.y);
 
             uiMeshMetadataSetter(this.Mesh, this);
+
+            this.CurrentGear = null;
         }
 
         public SetColor(color: Color): void {

@@ -23,7 +23,8 @@ module GlareSim {
         private SetMeshRotation: UiMeshZRotationSetter;
 
         public Type: string = "GameGear";
-
+        public CurrentPeg: GamePeg;
+        public Radius: number;
 
         constructor(
             gearIntrinsics: GearIntrinsics,
@@ -55,10 +56,14 @@ module GlareSim {
             this.defaultPegSpec.x = defaultPegSpec.x;
             this.defaultPegSpec.y = defaultPegSpec.y;
             this.defaultPegSpec.axisAngle = 0;
-            this.SetToDefaultPosition();
+            this.SetToPegPosition(this.defaultPegSpec);
 
             this.currentAxisAngle = 0;
             this.SetMeshRotation(this.Mesh, this.currentAxisAngle);
+            
+            this.Radius = gearIntrinsics.Radius;
+
+            this.CurrentPeg = null;
         }
 
         public SetWindowColor(color: Color): void {
@@ -66,18 +71,24 @@ module GlareSim {
         }
 
         public SetGearColor(color: Color): void {
-            this.SetVertexRangeColor(this.firstGearVertexId, this.lastGearVertexId, color);
+            this.SetVertexRangeColor(this.firstGearVertexId, this.lastGearVertexId, color, 0.3);
         }
 
-        public SetToDefaultPosition(): void {
-            this.SetToPegPosition(this.defaultPegSpec);
+        public RemoveFromBoard(): void {
+            if (this.CurrentPeg != null) {
+                this.CurrentPeg.CurrentGear = null;
+                this.CurrentPeg = null;
+                this.SetToPegPosition(this.defaultPegSpec);
+            }
         }
 
-        public SetToPegPosition(pegSpec: PegSpec): void {
-            this.SetMeshPosition(this.Mesh, pegSpec.x, pegSpec.y);
-            this.currentPegSpec = pegSpec;
-
-            this.OnExtrinsicsUpdate();
+        public PlaceAtPeg(peg: GamePeg): void {
+            if (this.CurrentPeg != null) {
+                this.CurrentPeg.CurrentGear = null;
+            }
+            this.CurrentPeg = peg;
+            this.CurrentPeg.CurrentGear = this;
+            this.SetToPegPosition(peg.Spec);
         }
 
         public SpinOneClick(clockwise: boolean): void {
@@ -87,15 +98,22 @@ module GlareSim {
             this.OnExtrinsicsUpdate();
         }
 
+        private SetToPegPosition(pegSpec: PegSpec): void {
+            this.SetMeshPosition(this.Mesh, pegSpec.x, pegSpec.y);
+            this.currentPegSpec = pegSpec;
+
+            this.OnExtrinsicsUpdate();
+        }
+
         private OnExtrinsicsUpdate() {
             var c = Math.abs(Math.cos(this.currentAxisAngle - this.currentPegSpec.axisAngle));
             this.SetWindowColor(new Color(c, c, c, 1));
         }
 
-        private SetVertexRangeColor(start: number, end: number, color: Color): void {
+        private SetVertexRangeColor(start: number, end: number, color: Color, colorPerturbation: number = 0): void {
             for (var i = start; i <= end; i++) {
                 if (i >= 0) {
-                    this.SetVertexColor(this.Mesh, i, color.Perturb(0.3));
+                    this.SetVertexColor(this.Mesh, i, color.Perturb(colorPerturbation));
                 }
             }
         }        

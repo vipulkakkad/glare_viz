@@ -1,0 +1,53 @@
+{
+    "xMax": 100,
+    "yMax": 75,
+    "boardHeight": 1,
+    "gearHeight": 1,
+    "pegRadius" : 0.75,
+    "gears": [
+        {
+            "Radius": 1.5,
+            "ToothAmplitude": 0.2,
+            "ToothCount": 15
+        }, {
+            "Radius": 1.5,
+            "ToothAmplitude": 0.2,
+            "ToothCount": 15
+        }, {
+            "Radius": 3.5,
+            "ToothAmplitude": 0.2,
+            "ToothCount": 35
+        }, {
+            "Radius": 3.5,
+            "ToothAmplitude": 0.2,
+            "ToothCount": 35
+        }
+    ],
+    "pegs": [
+        {
+            "x": 47,
+            "y": 37.5,
+            "axisAngle": 0,
+            "expectedGearRadius": 1.5,
+            "clockwise": true
+        },{
+            "x": 53,
+            "y": 37.5,
+            "axisAngle": 1.57079632679,
+            "expectedGearRadius": 1.5,
+            "clockwise": true
+        },{  
+            "x": 50,
+            "y": 41.5,
+            "axisAngle": 1.57079632679,
+            "expectedGearRadius": 3.5,
+            "clockwise": false
+        },{
+            "x": 50,
+            "y": 33.5,
+            "axisAngle": 3.14159265359,
+            "expectedGearRadius": 3.5,
+            "clockwise": false
+        }
+    ]
+}

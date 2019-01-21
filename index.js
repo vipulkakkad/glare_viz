@@ -20,6 +20,9 @@ var createScene = function (gameParameters) {
     var xGearRow = -5;
     var defaultPegSpec = new GlareSim.PegSpec();
 
+    // Setup game
+    var game = new GlareSim.Game();  
+
     // Add gears
     for (var i = 0; i < gameParameters.gears.length; i++) {
         defaultPegSpec.x = xGearRow;
@@ -37,13 +40,11 @@ var createScene = function (gameParameters) {
     {
         var pegSpec = gameParameters.pegs[i];
         var gamePeg = addPegAtPosition(scene, meshManager, gameParameters, pegSpec);
+        game.Pegs[i] = gamePeg;
     }        
 
     // Add board
     var gameBoard = addBoard(scene, meshManager, gameParameters);
-
-    // Setup game
-    var game = new GlareSim.Game();  
 
     scene.onPointerObservable.add((pointerInfo) => {
 		switch (pointerInfo.type) {
@@ -68,7 +69,7 @@ var createScene = function (gameParameters) {
 
 /******* End of the create scene function ******/
 var fileIo = new GlareSim.FileIo();
-fileIo.LoadParametersFromFileAsync("InputFiles/twoGears.json", () => {
+fileIo.LoadParametersFromFileAsync("InputFiles/rhombus.json", () => {
     var scene = createScene(fileIo.GameParameters); //Call the createScene function
 
     // Register a render loop to repeatedly render the scene

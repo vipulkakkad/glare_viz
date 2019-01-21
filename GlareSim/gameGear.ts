@@ -15,6 +15,7 @@ module GlareSim {
         private lastGearVertexId: number;
 
         private currentAxisAngle: number;
+        private axisAngleIncrement: number;
         private currentPegSpec: PegSpec;
 
         private defaultPegSpec: PegSpec;
@@ -60,6 +61,7 @@ module GlareSim {
 
             this.currentAxisAngle = 0;
             this.SetMeshRotation(this.Mesh, this.currentAxisAngle);
+            this.axisAngleIncrement = (2 * Math.PI) / gearIntrinsics.ToothCount;
             
             this.Radius = gearIntrinsics.Radius;
 
@@ -92,7 +94,7 @@ module GlareSim {
         }
 
         public SpinOneClick(clockwise: boolean): void {
-            this.currentAxisAngle += (clockwise ? 0.1 : -0.1);
+            this.currentAxisAngle += (this.axisAngleIncrement * (clockwise ? 1 : -1));
             this.SetMeshRotation(this.Mesh, this.currentAxisAngle);
 
             this.OnExtrinsicsUpdate();

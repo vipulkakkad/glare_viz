@@ -109,6 +109,25 @@ function addLabelForPeg(scene, meshManager, gamePeg) {
     return outputplaneTexture;    
 }
 
+function addLabelForHelp(scene, meshManager, x, y) {
+    var meshId = meshManager.ClaimAndGetMeshId();
+
+	var outputplane = BABYLON.Mesh.CreatePlane(meshId.toString(), 2, scene, false);
+	outputplane.billboardMode = BABYLON.AbstractMesh.BILLBOARDMODE_ALL;
+	outputplane.material = new BABYLON.StandardMaterial(meshId.toString(), scene);
+    outputplane.position = new BABYLON.Vector3(x, y, -3);
+
+    var outputplaneTexture = new BABYLON.DynamicTexture(meshId.toString(), 512, scene, true);
+	outputplane.material.diffuseTexture = outputplaneTexture;
+	outputplane.material.specularColor = new BABYLON.Color3(0, 0, 0);
+	outputplane.material.emissiveColor = new BABYLON.Color3(1, 1, 1);
+    outputplane.material.backFaceCulling = false;
+    
+    drawTextOnTexture(outputplaneTexture, "?", new GlareSim.Color(0.7, 0, 0, 1));
+
+    return outputplane;
+}
+
 function drawTextOnTexture(texture, text, bgColor) {
     texture.drawText(text, null, 500, "bold 540px verdana", "black", bgColor.ToRgbHexString());
 }
@@ -155,6 +174,21 @@ function onMeshDoubleClicked(mesh, game) {
     else {
         console.log("Mesh clicked: " + mesh.id);
     }
+}
+
+function showHelp() {
+    alert(
+        "Place and orient all the gears from the bottom row onto the pegs on the board. \n " +
+        "> CLICK ON GEAR: selects gear\n" +
+        "> CLICK ON PEG: place selected gear here\n" +
+        "> DOUBLE-CLIK ON GEAR: reset gear (take it off the board)\n" +
+        "> SCROLL: spin selected gear\n\n" +
+        "You'll notice that as the gears spin on the pegs, the center changes color between white and black.\n\n" +
+        "The rules are:\n" +
+        "> Each peg must have a gear of the correct radius, so that no gears overlap (this will be obvious in the physical version :)\n" + 
+        "> Gears must be oriented so that the center is either black or white\n" + 
+        "> Gears must be oriented so that the centers of adjacent gears are opposite colors\n\n" + 
+        "One gear has been placed for you, in a fixed orientation!\n")
 }
 
 function onScroll(game, isUpwards) {

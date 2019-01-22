@@ -56,11 +56,19 @@ var createScene = function (gameParameters) {
     // Add board
     var gameBoard = addBoard(scene, meshManager, gameParameters);
 
+    var helpBoxMesh = addLabelForHelp(scene, meshManager, -1, gameParameters.yMax + 3);
+    alert("WELCOME TO GLARE!\n Click on the question-mark for flavor text");
+
     scene.onPointerObservable.add((pointerInfo) => {
 		switch (pointerInfo.type) {
 			case BABYLON.PointerEventTypes.POINTERDOWN:
                 if (pointerInfo.pickInfo.pickedMesh != null) {
-                    onMeshClicked(pointerInfo.pickInfo.pickedMesh, game);
+                    if (pointerInfo.pickInfo.pickedMesh == helpBoxMesh) {
+                        showHelp();
+                    }
+                    else {
+                        onMeshClicked(pointerInfo.pickInfo.pickedMesh, game);
+                    }
                 }
                 break;
             case BABYLON.PointerEventTypes.POINTERDOUBLETAP:

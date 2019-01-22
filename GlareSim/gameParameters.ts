@@ -14,6 +14,8 @@ module GlareSim {
         public pegRadius: number;
         public boardHeight: number;
         public gearHeight: number;
+        public startingGearIndex: number;
+        public startingPegIndex: number;
     }
 
     export class GearSpec {

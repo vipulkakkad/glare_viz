@@ -4,23 +4,25 @@
     "boardHeight": 1,
     "gearHeight": 1,
     "pegRadius" : 0.75,
+    "startingGearIndex": 0,
+    "startingPegIndex": 0,
     "gears": [
         {
             "Radius": 1.5,
             "ToothAmplitude": 0.2,
-            "ToothCount": 15
+            "ToothCount": 24
         }, {
             "Radius": 1.5,
             "ToothAmplitude": 0.2,
-            "ToothCount": 15
+            "ToothCount": 24
         }, {
             "Radius": 3.5,
             "ToothAmplitude": 0.2,
-            "ToothCount": 35
+            "ToothCount": 56
         }, {
             "Radius": 3.5,
             "ToothAmplitude": 0.2,
-            "ToothCount": 35
+            "ToothCount": 56
         }
     ],
     "pegs": [

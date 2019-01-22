@@ -6,14 +6,34 @@ module GlareSim {
         private defaultGearColor: Color = new Color(0.2, 0.7, 1, 1);
 
         public Pegs: GamePeg[];
+        public Gears: GameGear[];
+        
         private allGearsInPlace: boolean = false;
 
-        constructor() {
-            this.Pegs = [];
+        private startingPeg: GamePeg;        
+        private startingGear: GameGear;
+
+        constructor(
+            pegs: GamePeg[],
+            gears: GameGear[],
+            startingPegIndex: number,
+            startingGearIndex: number) {
+            this.Pegs = pegs;
+            this.Gears = gears;
+
+            this.startingPeg = this.Pegs[startingPegIndex];
+            this.startingGear = this.Gears[startingGearIndex];
+
+            this.startingGear.PlaceAtPeg(this.startingPeg);
+            this.startingGear.SpinByAngle(this.startingPeg.Spec.axisAngle, false);
         }
 
         public OnGearClicked(clickedGear: GameGear) {
             if (this.allGearsInPlace) {
+                return;
+            }
+
+            if (clickedGear == this.startingGear) {
                 return;
             }
 
@@ -29,6 +49,10 @@ module GlareSim {
 
         public OnGearDoubleClicked(clickedGear: GameGear) {
             if (this.allGearsInPlace) {
+                return;
+            }
+
+            if (clickedGear == this.startingGear) {
                 return;
             }
 
@@ -50,6 +74,10 @@ module GlareSim {
 
         public OnPegClicked(clickedPeg: GamePeg) {            
             if (this.allGearsInPlace) {
+                return;
+            }
+
+            if (clickedPeg == this.startingPeg) {
                 return;
             }
             

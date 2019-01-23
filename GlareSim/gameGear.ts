@@ -105,6 +105,13 @@ module GlareSim {
             this.OnExtrinsicsUpdate();
         }
 
+        public MoveDefaultPositionHorizontally(leftwards: boolean, setGearPosition: boolean): void {
+            this.defaultPegSpec.x += leftwards ? -1 : 1;
+            if (setGearPosition) {
+                this.SetToPegPosition(this.defaultPegSpec);
+            }
+        }
+
         private SetToPegPosition(pegSpec: PegSpec): void {
             this.SetMeshPosition(this.Mesh, pegSpec.x, pegSpec.y);
             this.currentPegSpec = pegSpec;

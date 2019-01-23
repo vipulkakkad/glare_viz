@@ -178,11 +178,11 @@ function onMeshDoubleClicked(mesh, game) {
 
 function showHelp() {
     alert(
-        "Place and orient all the gears from the bottom row onto the pegs on the board. \n " +
+        "Place and orient all the gears from the bottom row onto the pegs on the board. \n" +
         "> CLICK ON GEAR: selects gear\n" +
         "> CLICK ON PEG: place selected gear here\n" +
-        "> DOUBLE-CLIK ON GEAR: reset gear (take it off the board)\n" +
-        "> SCROLL: spin selected gear\n\n" +
+        "> DOUBLE-CLICK ON GEAR: reset gear (take it off the board)\n" +
+        "> SCROLL: if gear selected, spin gear; else slide gear row\n\n" +
         "You'll notice that as the gears spin on the pegs, the center changes color between white and black.\n\n" +
         "The rules are:\n" +
         "> Each peg must have a gear of the correct radius, so that no gears overlap (this will be obvious in the physical version :)\n" + 

@@ -131,6 +131,7 @@ module GlareSim {
         public Solve() {
             for (var i = 0; i < this.Gears.length; i++) {
                 this.Gears[i].PlaceAtPeg(this.Pegs[i]);
+                this.Gears[i].SpinByAngle(this.Pegs[i].Spec.axisAngle + (this.Pegs[i].Spec.startsClear ? 0 : Math.PI/2), true);
             }
         }
 

@@ -97,7 +97,7 @@ function addLabelForPeg(scene, meshManager, gamePeg) {
 	var outputplane = BABYLON.Mesh.CreatePlane(meshId.toString(), 1, scene, false);
 	outputplane.billboardMode = BABYLON.AbstractMesh.BILLBOARDMODE_ALL;
 	outputplane.material = new BABYLON.StandardMaterial(meshId.toString(), scene);
-    outputplane.position = new BABYLON.Vector3(pegSpec.x, pegSpec.y, -3);
+    outputplane.position = new BABYLON.Vector3(pegSpec.x, pegSpec.y, -1.1);
     outputplane.metadata = gamePeg;
 
 	var outputplaneTexture = new BABYLON.DynamicTexture(meshId.toString(), 512, scene, true);

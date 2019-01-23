@@ -20,6 +20,17 @@ var createScene = function (gameParameters) {
     var xGearRow = -5;
     var defaultPegSpec = new GlareSim.PegSpec();
 
+    var utils = new GlareSim.Utilities(
+        gameParameters,
+        (x1, y1, x2, y2, meshName) => {
+            var myPoints = [
+                new BABYLON.Vector3(x1, y1, -1.1),
+                new BABYLON.Vector3(x2, y2, -1.1)
+            ];
+
+            //var lines = BABYLON.MeshBuilder.CreateLines(meshName, {points: myPoints}, scene); 
+        });
+
     // Add gears
     var gameGears = [];
     for (var i = 0; i < gameParameters.gears.length; i++) {
@@ -48,7 +59,7 @@ var createScene = function (gameParameters) {
         gamePegs[i] = gamePeg;
 
         gamePeg.SetLabelColor(white);
-    }        
+    }
 
     // Setup game
     var game = new GlareSim.Game(gamePegs, gameGears, gameParameters.startingPegIndex, gameParameters.startingGearIndex);
@@ -57,7 +68,7 @@ var createScene = function (gameParameters) {
     var gameBoard = addBoard(scene, meshManager, gameParameters);
 
     var helpBoxMesh = addLabelForHelp(scene, meshManager, -1, gameParameters.yMax + 3);
-    alert("WELCOME TO GLARE!\n Click on the question-mark for flavor text");
+//    alert("WELCOME TO GLARE!\n Click on the question-mark for flavor text");
 
     scene.onPointerObservable.add((pointerInfo) => {
 		switch (pointerInfo.type) {
@@ -82,7 +93,7 @@ var createScene = function (gameParameters) {
         }
     });
 
-    game.Solve();
+//    game.Solve();
 
     scene.registerBeforeRender(() => {})
 

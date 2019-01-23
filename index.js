@@ -89,7 +89,7 @@ var createScene = function (gameParameters) {
 
 /******* End of the create scene function ******/
 var fileIo = new GlareSim.FileIo();
-fileIo.LoadParametersFromFileAsync("InputFiles/rhombus.json", () => {
+fileIo.LoadParametersFromFileAsync("InputFiles/bleh0.json", () => {
     var scene = createScene(fileIo.GameParameters); //Call the createScene function
 
     // Register a render loop to repeatedly render the scene

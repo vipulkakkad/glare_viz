@@ -1,0 +1,221 @@
+{
+    "boardHeight": 1,
+    "gearHeight": 1,
+    "gears": [
+        {
+            "Radius": 4.5,
+            "ToothAmplitude": 0.2,
+            "ToothCount": 15.0
+        },
+        {
+            "Radius": 6.0,
+            "ToothAmplitude": 0.2,
+            "ToothCount": 20.0
+        },
+        {
+            "Radius": 6.0,
+            "ToothAmplitude": 0.2,
+            "ToothCount": 20.0
+        },
+        {
+            "Radius": 3.0,
+            "ToothAmplitude": 0.2,
+            "ToothCount": 10.0
+        },
+        {
+            "Radius": 3.0,
+            "ToothAmplitude": 0.2,
+            "ToothCount": 10.0
+        },
+        {
+            "Radius": 4.5,
+            "ToothAmplitude": 0.2,
+            "ToothCount": 15.0
+        },
+        {
+            "Radius": 3.0,
+            "ToothAmplitude": 0.2,
+            "ToothCount": 10.0
+        },
+        {
+            "Radius": 4.5,
+            "ToothAmplitude": 0.2,
+            "ToothCount": 15.0
+        },
+        {
+            "Radius": 3.0,
+            "ToothAmplitude": 0.2,
+            "ToothCount": 10.0
+        },
+        {
+            "Radius": 3.0,
+            "ToothAmplitude": 0.2,
+            "ToothCount": 10.0
+        },
+        {
+            "Radius": 3.0,
+            "ToothAmplitude": 0.2,
+            "ToothCount": 10.0
+        },
+        {
+            "Radius": 4.5,
+            "ToothAmplitude": 0.2,
+            "ToothCount": 15.0
+        },
+        {
+            "Radius": 3.0,
+            "ToothAmplitude": 0.2,
+            "ToothCount": 10.0
+        },
+        {
+            "Radius": 3.0,
+            "ToothAmplitude": 0.2,
+            "ToothCount": 10.0
+        },
+        {
+            "Radius": 4.5,
+            "ToothAmplitude": 0.2,
+            "ToothCount": 15.0
+        },
+        {
+            "Radius": 3.0,
+            "ToothAmplitude": 0.2,
+            "ToothCount": 10.0
+        }
+    ],
+    "pegRadius": 0.75,
+    "pegs": [
+        {
+            "axisAngle": 0,
+            "expectedGearRadius": 4.5,
+            "letter": "A",
+            "startsClear": true,
+            "x": 18.5,
+            "y": 37.5
+        },
+        {
+            "axisAngle": 0,
+            "expectedGearRadius": 6.0,
+            "letter": "A",
+            "startsClear": true,
+            "x": 22.410137,
+            "y": 47.244786
+        },
+        {
+            "axisAngle": 0,
+            "expectedGearRadius": 6.0,
+            "letter": "A",
+            "startsClear": true,
+            "x": 21.815627,
+            "y": 27.53724
+        },
+        {
+            "axisAngle": 0,
+            "expectedGearRadius": 3.0,
+            "letter": "A",
+            "startsClear": true,
+            "x": 31.396589,
+            "y": 47.738427
+        },
+        {
+            "axisAngle": 0,
+            "expectedGearRadius": 3.0,
+            "letter": "A",
+            "startsClear": true,
+            "x": 24.359243,
+            "y": 56.031195
+        },
+        {
+            "axisAngle": 0,
+            "expectedGearRadius": 4.5,
+            "letter": "A",
+            "startsClear": true,
+            "x": 30.661544,
+            "y": 21.880404
+        },
+        {
+            "axisAngle": 0,
+            "expectedGearRadius": 3.0,
+            "letter": "A",
+            "startsClear": true,
+            "x": 36.693584,
+            "y": 50.556555
+        },
+        {
+            "axisAngle": 0,
+            "expectedGearRadius": 4.5,
+            "letter": "A",
+            "startsClear": true,
+            "x": 34.736984,
+            "y": 41.023389
+        },
+        {
+            "axisAngle": 0,
+            "expectedGearRadius": 3.0,
+            "letter": "A",
+            "startsClear": true,
+            "x": 27.981086,
+            "y": 60.814734
+        },
+        {
+            "axisAngle": 0,
+            "expectedGearRadius": 3.0,
+            "letter": "A",
+            "startsClear": true,
+            "x": 33.511853,
+            "y": 28.817676
+        },
+        {
+            "axisAngle": 0,
+            "expectedGearRadius": 3.0,
+            "letter": "A",
+            "startsClear": true,
+            "x": 38.845751,
+            "y": 56.157285
+        },
+        {
+            "axisAngle": 0,
+            "expectedGearRadius": 4.5,
+            "letter": "A",
+            "startsClear": true,
+            "x": 43.821005,
+            "y": 48.222063
+        },
+        {
+            "axisAngle": 0,
+            "expectedGearRadius": 3.0,
+            "letter": "A",
+            "startsClear": true,
+            "x": 31.258892000000003,
+            "y": 34.378626
+        },
+        {
+            "axisAngle": 0,
+            "expectedGearRadius": 3.0,
+            "letter": "A",
+            "startsClear": true,
+            "x": 32.627645,
+            "y": 64.610715
+        },
+        {
+            "axisAngle": 0,
+            "expectedGearRadius": 4.5,
+            "letter": "A",
+            "startsClear": true,
+            "x": 46.311758,
+            "y": 56.870537999999996
+        },
+        {
+            "axisAngle": 0,
+            "expectedGearRadius": 3.0,
+            "letter": "A",
+            "startsClear": true,
+            "x": 25.996166000000002,
+            "y": 37.260246
+        }
+    ],
+    "startingGearIndex": 0,
+    "startingPegIndex": 0,
+    "xMax": 100,
+    "yMax": 75
+}

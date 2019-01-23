@@ -113,11 +113,6 @@
             "ToothCount": 15.0
         },
         {
-            "Radius": 4.5,
-            "ToothAmplitude": 0.2,
-            "ToothCount": 15.0
-        },
-        {
             "Radius": 6.0,
             "ToothAmplitude": 0.2,
             "ToothCount": 20.0
@@ -322,14 +317,6 @@
             "startsClear": true,
             "x": 49.316045,
             "y": 61.338708
-        },
-        {
-            "axisAngle": 0,
-            "expectedGearRadius": 4.5,
-            "letter": "A",
-            "startsClear": true,
-            "x": 20.055716000000004,
-            "y": 46.364523
         },
         {
             "axisAngle": 0,

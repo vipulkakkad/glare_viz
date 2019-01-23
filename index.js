@@ -82,6 +82,8 @@ var createScene = function (gameParameters) {
         }
     });
 
+    game.Solve();
+
     scene.registerBeforeRender(() => {})
 
     return scene;    

@@ -127,8 +127,7 @@ module GlareSim {
             var windowColor = new Color(this.WindowShade, this.WindowShade, this.WindowShade, 1);    
             this.SetWindowColor(windowColor);
 
-            if (this.CurrentPeg != null)
-            {
+            if (this.CurrentPeg != null) {
                 this.CurrentPeg.SetLabelColor(windowColor);
             }
         }

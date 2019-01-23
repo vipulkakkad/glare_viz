@@ -114,8 +114,7 @@ module GlareSim {
         }
 
         private SpinAllGears(tangentialDistance: number, clockwise: boolean) {
-            for (var i = 0; i < this.Pegs.length; i++)
-            {
+            for (var i = 0; i < this.Pegs.length; i++) {
                 var gear = this.Pegs[i].CurrentGear;
                 var spinAngle = tangentialDistance / gear.Radius;
                 gear.SpinByAngle(spinAngle, this.Pegs[i].Spec.startsClear ? clockwise : !clockwise)
@@ -123,11 +122,16 @@ module GlareSim {
         }
 
         private SlideGearRow(leftwards: boolean) {
-            for (var i = 0; i < this.Gears.length; i++)
-            {
+            for (var i = 0; i < this.Gears.length; i++) {
                 var gear = this.Gears[i];
                 gear.MoveDefaultPositionHorizontally(leftwards, gear.CurrentPeg == null);
-            }            
+            }
+        }
+
+        public Solve() {
+            for (var i = 0; i < this.Gears.length; i++) {
+                this.Gears[i].PlaceAtPeg(this.Pegs[i]);
+            }
         }
 
         private EvaluateGearStates() : void {

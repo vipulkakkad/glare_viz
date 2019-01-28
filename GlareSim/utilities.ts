@@ -2,8 +2,43 @@ module GlareSim {
     export type UiMeshXYLineDrawer = (x1: number, y1: number, x2: number, y2: number, meshName: string) => void;
 
     export class Utilities {
-        constructor(gameParams: GameParameters, drawLine: UiMeshXYLineDrawer) {
-            
+        public static setStartsClearInBipartiteManner(
+            gameParams: GameParameters,
+            edges: number[][]) {
+
+            var n = gameParams.pegs.length;
+
+            var partition = [];
+            for (var j = 0; j < n; j++) {
+                partition[j] = null;
+            }
+
+            partition[0] = true;
+            var assigned = 1;
+
+            while (assigned < n) {
+                for (var source = 0; source < n; source++) {
+                    if (partition[source] != null) {
+                        var sourceEdges = edges[source];
+                        for (var edge = 0; edge < sourceEdges.length; edge++) {
+                            var target = sourceEdges[edge];
+                            if (partition[target] == null) {
+                                assigned++;
+                                partition[target] = !partition[source];
+                                console.log(target + " -> " + partition[target]);
+                            }
+                        }    
+                    }
+                }
+            }
+
+            for (var j = 0; j < n; j++) {
+                gameParams.pegs[j].startsClear = partition[j];
+                gameParams.gears[j].ToothCount *= 2;
+            }
+        }
+
+        public static computeAdjacencies(gameParams: GameParameters, drawLine: UiMeshXYLineDrawer) : number[][] {
             var threshold = 0.1;
 
             var pegs = gameParams.pegs;
@@ -35,35 +70,7 @@ module GlareSim {
                 }
             }
 
-            var partition = [];
-
-            for (var j = 0; j < n; j++) {
-                partition[j] = null;
-            }
-
-            partition[0] = true;
-            var assigned = 1;
-
-            while (assigned < n) {
-                for (var source = 0; source < n; source++) {
-                    if (partition[source] != null) {
-                        var sourceEdges = edges[source];
-                        for (var edge = 0; edge < sourceEdges.length; edge++) {
-                            var target = sourceEdges[edge];
-                            if (partition[target] == null) {
-                                assigned++;
-                                partition[target] = !partition[source];
-                                console.log(target + " -> " + partition[target]);
-                            }
-                        }    
-                    }
-                }
-            }
-
-            for (var j = 0; j < n; j++) {
-                gameParams.pegs[j].startsClear = partition[j];
-                gameParams.gears[j].ToothCount *= 2;
-            }
-        }
-    }
+            return edges;
+        }    
+    }   
 }

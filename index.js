@@ -20,7 +20,7 @@ var createScene = function (gameParameters) {
     var xGearRow = -5;
     var defaultPegSpec = new GlareSim.PegSpec();
 
-    var utils = new GlareSim.Utilities(
+    var edges = GlareSim.Utilities.computeAdjacencies(
         gameParameters,
         (x1, y1, x2, y2, meshName) => {
             var myPoints = [
@@ -30,6 +30,8 @@ var createScene = function (gameParameters) {
 
             //var lines = BABYLON.MeshBuilder.CreateLines(meshName, {points: myPoints}, scene); 
         });
+
+    GlareSim.Utilities.setStartsClearInBipartiteManner(gameParameters, edges);
 
     // Add gears
     var gameGears = [];
@@ -93,7 +95,7 @@ var createScene = function (gameParameters) {
         }
     });
 
-//    game.Solve();
+    game.Solve();
 
     scene.registerBeforeRender(() => {})
 

@@ -61,8 +61,7 @@ module GlareSim {
             startVertexIndex2: number,
             endVertexIndex1: number,
             startFaceIndex: number,
-            invert: boolean = false)
-            : number {
+            invert: boolean = false) {
             var endVertexIndex2 = startVertexIndex2 + (endVertexIndex1 - startVertexIndex1);
             this.addSquare(faces, endVertexIndex1, endVertexIndex2, startVertexIndex1, startVertexIndex2, startFaceIndex);
 
@@ -78,6 +77,38 @@ module GlareSim {
             }
 
             return f - 1;
+        }
+
+        public static addNotchAfterOtherVerticesAndFaces(
+            vertices: Vertex[],
+            faces: Face[],
+            radius: number,
+            toothAmplitude: number,
+            axialDeviation: number,
+            color: Color,
+            notchAngle: number)
+        {
+            var vertexStartIndex = vertices.length;
+            var z = axialDeviation;
+            
+            var pointRadius = (radius - toothAmplitude - 0.1);
+            var baseRadius = pointRadius - 0.5 * radius / 5;
+            var baseDeviationAngle = (Math.PI / 180) * 5;
+
+            vertices[vertexStartIndex + 0] = new Vertex(pointRadius * Math.cos(notchAngle), pointRadius * Math.sin(notchAngle), z, color);
+            vertices[vertexStartIndex + 1] = new Vertex(
+                baseRadius * Math.cos(notchAngle + baseDeviationAngle),
+                baseRadius * Math.sin(notchAngle + baseDeviationAngle),
+                z,
+                color);
+            vertices[vertexStartIndex + 2] = new Vertex(
+                baseRadius * Math.cos(notchAngle - baseDeviationAngle),
+                baseRadius * Math.sin(notchAngle - baseDeviationAngle),
+                z,
+                color);
+
+            var faceStartIndex = faces.length;
+            faces[faceStartIndex] = new Face(vertexStartIndex + 0, vertexStartIndex + 1, vertexStartIndex + 2);
         }
 
         public static addSquare(

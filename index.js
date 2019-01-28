@@ -78,7 +78,7 @@ var createScene = function (gameParameters) {
                         showHelp();
                     }
                     else {
-                        onMeshClicked(pointerInfo.pickInfo.pickedMesh, game);
+                        onMeshClicked(pointerInfo.pickInfo.pickedMesh, game);-9
                     }
                 }
                 break;

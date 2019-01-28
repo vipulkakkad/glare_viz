@@ -61,7 +61,8 @@ function addBoard(scene, meshManager, gameParameters) {
 }
 
 function addGearFromSpec(scene, meshManager, gameParameters, gearSpec, defaultPosition) {
-    var gearIntrinsics = new GlareSim.GearIntrinsics(gearSpec, gameParameters.gearHeight, gameParameters.pegRadius);
+    var notchAngles = [ 0, Math.PI/2 ];
+    var gearIntrinsics = new GlareSim.GearIntrinsics(gearSpec, gameParameters.gearHeight, gameParameters.pegRadius, notchAngles);
     var gameGear = new GlareSim.GameGear(
         gearIntrinsics,
         defaultPosition,

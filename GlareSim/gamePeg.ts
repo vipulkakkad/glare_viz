@@ -36,7 +36,7 @@ module GlareSim {
             pegGearSpec.ToothAmplitude = 0;
             pegGearSpec.ToothCount = 4;
 
-            var gearIntrinsics = new GearIntrinsics(pegGearSpec, pegHeight, 0); // windowRadius = 0
+            var gearIntrinsics = new GearIntrinsics(pegGearSpec, pegHeight, 0, []); // windowRadius = 0
             var gearMeshGen = new GearMeshGenerator(gearIntrinsics, false, new Color(1, 1, 1, 1)); // false => no window
             this.firstVertexId = gearMeshGen.FirstGearVertex;
             this.lastVertexId = gearMeshGen.LastGearVertex

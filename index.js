@@ -32,7 +32,7 @@ var createScene = function (gameParameters) {
         });
 
     GlareSim.Utilities.setStartsClearInBipartiteManner(gameParameters, edges);
-
+    GlareSim.Utilities.createGearIntrinsicsFromGearSpecs(gameParameters, edges);
     // Add gears
     var gameGears = [];
     for (var i = 0; i < gameParameters.gears.length; i++) {
@@ -40,14 +40,14 @@ var createScene = function (gameParameters) {
         defaultPegSpec.y = yGearRow;
         defaultPegSpec.axisAngle = 0;
 
-        var gearSpec = gameParameters.gears[i];
-        var gameGear = addGearFromSpec(scene, meshManager, gameParameters, gearSpec, defaultPegSpec, i);
+        var gearIntrinsics = gameParameters.gearIntrinsics[i];
+        var gameGear = addGearFromIntrinsics(scene, meshManager, gearIntrinsics, defaultPegSpec, i);
 
         gameGears[i] = gameGear;
 
         var nextGearRadius = ((i + 1) < gameParameters.gears.length) ?
             gameParameters.gears[i + 1].Radius : 0;
-        xGearRow += gearSpec.Radius + nextGearRadius + 0.5;
+        xGearRow += gearIntrinsics.Radius + nextGearRadius + 0.5;
     }
     
     // Add pegs

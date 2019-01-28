@@ -109,7 +109,7 @@ module GlareSim {
                     intrinsics.Radius,
                     intrinsics.ToothAmplitude,
                     - (intrinsics.Height + 0.01),
-                    new Color(0,0,0,1),
+                    new Color(1,0,0,1),
                     intrinsics.NotchAngles[i]);
             }
         }

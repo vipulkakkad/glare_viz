@@ -16,6 +16,8 @@ module GlareSim {
         public gearHeight: number;
         public startingGearIndex: number;
         public startingPegIndex: number;
+
+        public gearIntrinsics: GearIntrinsics[];
     }
 
     export class GearSpec {

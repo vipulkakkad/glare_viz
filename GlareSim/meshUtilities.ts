@@ -87,7 +87,7 @@ module GlareSim {
             startFaceIndex: number,
             invert: boolean = false) {
             var endVertexIndex2 = startVertexIndex2 + (endVertexIndex1 - startVertexIndex1);
-            this.addSquare(faces, endVertexIndex1, endVertexIndex2, startVertexIndex1, startVertexIndex2, startFaceIndex);
+            this.addSquare(faces, endVertexIndex1, endVertexIndex2, startVertexIndex1, startVertexIndex2, startFaceIndex, invert);
 
             var v1 = startVertexIndex1;
             var v2 = startVertexIndex2;

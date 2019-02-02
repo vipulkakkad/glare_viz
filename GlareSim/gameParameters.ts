@@ -16,7 +16,7 @@ module GlareSim {
         public startingPegIndex: number;
         public toothAmplitude: number;
 
-        public gearIntrinsics: GearIntrinsics[];
+        public gearIntrinsics: HollowGearIntrinsics[];
     }
 
     export class PegSpec {

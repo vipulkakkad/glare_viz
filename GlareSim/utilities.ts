@@ -82,7 +82,9 @@ module GlareSim {
             for (var j = 0; j < n; j++) {
                 var notchAngles = Utilities.getNotchAngles(gameParams.pegs, j, edges[j]); 
 
-                gameParams.gearIntrinsics[j] = new GlareSim.GearIntrinsics(
+                gameParams.gearIntrinsics[j] = new GlareSim.HollowGearIntrinsics(
+                    gameParams.pegRadius + 0.1,
+                    0,
                     gameParams.pegs[j].expectedGearRadius,
                     gameParams.toothAmplitude,
                     6 * gameParams.pegs[j].expectedGearRadius,

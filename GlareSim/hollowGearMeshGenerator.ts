@@ -96,6 +96,20 @@ module GlareSim {
                 topOuterLastVID,
                 outerFirstFID,
                 false);
+
+            this.FirstGearVertex = topInnerFirstVID;
+            this.LastGearVertex = bottomOuterLastVID;
+
+            for (var i = 0; i < intrinsics.NotchAngles.length; i++) {
+                MeshUtilities.addNotchAfterOtherVerticesAndFaces(
+                    this.Vertices,
+                    this.Faces,
+                    intrinsics.OuterRadius,
+                    intrinsics.OuterToothAmplitude,
+                    - (intrinsics.Height + 0.01),
+                    new Color(1,0,0,1),
+                    intrinsics.NotchAngles[i]);
+            }
         }
 
         public GenerateGeometry(): Geometry {

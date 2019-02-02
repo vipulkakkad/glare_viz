@@ -55,7 +55,7 @@ var createScene = function (gameParameters) {
 
         var nextGearRadius = ((i + 1) < gameParameters.pegs.length) ?
             gameParameters.pegs[i + 1].expectedGearRadius : 0;
-        xGearRow += gearIntrinsics.Radius + nextGearRadius + 0.5;
+        xGearRow += gearIntrinsics.OuterRadius + nextGearRadius + 0.5;
 
         if ((xGearRow + nextGearRadius) > gameParameters.xMax) {
             xGearRow = 5;

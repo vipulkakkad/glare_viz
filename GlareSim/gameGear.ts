@@ -26,7 +26,7 @@ module GlareSim {
         public Radius: number;
 
         constructor(
-            gearIntrinsics: GearIntrinsics,
+            gearIntrinsics: HollowGearIntrinsics,
             defaultPegSpec: PegSpec,
             uiMeshMaker: UiMeshMaker,
             uiVertexColorSetter: UiMeshVertexColorSetter,
@@ -34,7 +34,7 @@ module GlareSim {
             uiRotationSetter: UiMeshZRotationSetter,
             uiMeshMetadataSetter: UiGearMeshMetadataSetter) {
                 
-            var gearMeshGen = new GearMeshGenerator(gearIntrinsics, new Color(0.2, 0.7, 1, 1));
+            var gearMeshGen = new HollowGearMeshGenerator(gearIntrinsics, new Color(0.2, 0.7, 1, 1));
 
             this.firstGearVertexId = gearMeshGen.FirstGearVertex;
             this.lastGearVertexId = gearMeshGen.LastGearVertex
@@ -59,7 +59,7 @@ module GlareSim {
             this.SetMeshRotation(this.Mesh, this.currentAxisAngle);
             this.axisAngleIncrement = (2 * Math.PI) / gearIntrinsics.ToothCount;
             
-            this.Radius = gearIntrinsics.Radius;
+            this.Radius = gearIntrinsics.OuterRadius;
 
             this.CurrentPeg = null;
         }

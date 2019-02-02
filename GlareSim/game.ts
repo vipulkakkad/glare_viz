@@ -66,12 +66,8 @@ module GlareSim {
                 return;
             }
 
-            if (this.SelectedGear != null) {
-                this.SelectedGear.SpinOneClick(isUpwards);
-                this.EvaluateGearStates();
-            } else {
-                this.SlideGearRow(isUpwards);
-            }
+            this.SelectedGear.SpinOneClick(isUpwards);
+            this.EvaluateGearStates();
         }
 
         public OnPegClicked(clickedPeg: GamePeg) {            
@@ -99,6 +95,10 @@ module GlareSim {
             }
         }
 
+        public OnOutsideClicked() {
+            this.OnBoardClicked();
+        }
+
         private UnSelectGear() {
             this.SelectedGear.SetGearColor(this.defaultGearColor);
             this.SelectedGear = null;
@@ -118,13 +118,6 @@ module GlareSim {
                 var gear = this.Pegs[i].CurrentGear;
                 var spinAngle = tangentialDistance / gear.Radius;
                 gear.SpinByAngle(spinAngle, this.Pegs[i].Spec.startsClear ? clockwise : !clockwise)
-            }
-        }
-
-        private SlideGearRow(leftwards: boolean) {
-            for (var i = 0; i < this.Gears.length; i++) {
-                var gear = this.Gears[i];
-                gear.MoveDefaultPositionHorizontally(leftwards, gear.CurrentPeg == null);
             }
         }
 

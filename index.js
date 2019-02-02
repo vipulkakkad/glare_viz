@@ -33,7 +33,15 @@ var createScene = function (gameParameters) {
 
     GlareSim.Utilities.setStartsClearInBipartiteManner(gameParameters, edges);
     GlareSim.Utilities.createGearIntrinsicsFromGearSpecs(gameParameters, edges);
+
+    // Add meshes
+    var meshManager = new GlareSim.MeshManager();
+
     // Add gears
+    var yGearRow = -7;
+    var xGearRow = 5;
+    var defaultPegSpec = new GlareSim.PegSpec();
+
     var gameGears = [];
     for (var i = 0; i < gameParameters.gears.length; i++) {
         defaultPegSpec.x = xGearRow;
@@ -48,6 +56,11 @@ var createScene = function (gameParameters) {
         var nextGearRadius = ((i + 1) < gameParameters.gears.length) ?
             gameParameters.gears[i + 1].Radius : 0;
         xGearRow += gearIntrinsics.Radius + nextGearRadius + 0.5;
+
+        if ((xGearRow + nextGearRadius) > gameParameters.xMax) {
+            xGearRow = 5;
+            yGearRow -= 12;
+        }
     }
     
     // Add pegs
@@ -82,6 +95,8 @@ var createScene = function (gameParameters) {
                     else {
                         onMeshClicked(pointerInfo.pickInfo.pickedMesh, game);-9
                     }
+                } else {
+                    game.OnOutsideClicked();
                 }
                 break;
             case BABYLON.PointerEventTypes.POINTERDOUBLETAP:
@@ -90,7 +105,12 @@ var createScene = function (gameParameters) {
                 }
                 break;
             case BABYLON.PointerEventTypes.POINTERWHEEL:
-                onScroll(game, pointerInfo.event.wheelDelta < 0); // < 0 = upwards
+                if (game.SelectedGear != null) {
+                    onScroll(game, pointerInfo.event.wheelDelta < 0); // < 0 = upwards
+                }
+                else {
+                    camera.position.y += (pointerInfo.event.wheelDelta/20);
+                }
                 break;
         }
     });

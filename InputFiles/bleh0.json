@@ -1,11 +1,11 @@
 {
     "boardHeight": 1,
-    "gearHeight": 1,
+    "gearHeight": 0.25,
     "toothAmplitude": 0.2,
     "startingPegIndex": 0,
     "xMax": 100,
     "yMax": 75,
-    "pegRadius": 0.75,
+    "pegRadius": 0.5,
     "pegs": [
         {
             "axisAngle": 0,

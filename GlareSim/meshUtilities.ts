@@ -1,5 +1,31 @@
 module GlareSim {
     export class MeshUtilities {
+        public static addCenterAndSunflowerVerticesAndReturnLastVertexIndex(
+            vertices: Vertex[],
+            startIndex: number,
+            radius: number,
+            toothAmplitude: number,
+            toothCount: number,
+            axialDeviation: number,
+            color: Color,
+            xDeviation: number = 0,
+            yDeviation: number = 0): number {
+
+            var z = axialDeviation;
+            vertices[startIndex] = new Vertex(xDeviation, yDeviation, z, color.Perturb(0.1));
+
+            return this.addSunflowerVerticesAndReturnLastVertexIndex(
+                vertices,
+                startIndex + 1,
+                radius,
+                toothAmplitude,
+                toothCount,
+                axialDeviation,
+                color,
+                xDeviation,
+                yDeviation);
+        }
+
         public static addSunflowerVerticesAndReturnLastVertexIndex(
             vertices: Vertex[],
             startIndex: number,
@@ -13,10 +39,8 @@ module GlareSim {
 
             var sideCount = toothCount * 2;
             var z = axialDeviation;
-
-            vertices[startIndex] = new Vertex(xDeviation, yDeviation, z, color.Perturb(0.1));
-
-            var v = startIndex + 1;
+            var v = startIndex;
+            
             for (var i = 0; i < sideCount; i++) {
                 var theta = (i / sideCount) * 2 * Math.PI;
 

@@ -22,7 +22,7 @@ module GlareSim {
                 var windowFirstFID = 0;
 
                 // center window vertices
-                var windowLastVID = MeshUtilities.addSunflowerVerticesAndReturnLastVertexIndex(
+                var windowLastVID = MeshUtilities.addCenterAndSunflowerVerticesAndReturnLastVertexIndex(
                     this.Vertices,
                     windowCenterVID,
                     intrinsics.WindowRadius,
@@ -49,7 +49,7 @@ module GlareSim {
             var topFirstFID = windowLastFID + 1;
             
             // top edge vertices
-            var topLastVID = MeshUtilities.addSunflowerVerticesAndReturnLastVertexIndex(
+            var topLastVID = MeshUtilities.addCenterAndSunflowerVerticesAndReturnLastVertexIndex(
                 this.Vertices,
                 topCenterVID, 
                 intrinsics.Radius, 
@@ -72,7 +72,7 @@ module GlareSim {
             var bottomFirstFID = topLastFID + 1;
 
             // bottom edge vertices
-            var bottomLastVID = MeshUtilities.addSunflowerVerticesAndReturnLastVertexIndex(
+            var bottomLastVID = MeshUtilities.addCenterAndSunflowerVerticesAndReturnLastVertexIndex(
                 this.Vertices,
                 bottomCenterVID, 
                 intrinsics.Radius, 

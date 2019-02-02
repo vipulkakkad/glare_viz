@@ -72,8 +72,6 @@ var createScene = function (gameParameters) {
         var gamePeg = addPegAtPosition(scene, meshManager, gameParameters, pegSpec);
 
         gamePegs[i] = gamePeg;
-
-        gamePeg.SetLabelColor(white);
     }
 
     // Setup game

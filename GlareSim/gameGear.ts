@@ -111,12 +111,7 @@ module GlareSim {
         }
 
         private OnExtrinsicsUpdate() {
-            var labelShade = Math.abs(Math.cos(this.currentAxisAngle - this.currentPegSpec.axisAngle));
-            var labelColor = new Color(labelShade, labelShade, labelShade, 1);
-            
-            if (this.CurrentPeg != null) {
-                this.CurrentPeg.SetLabelColor(labelColor);
-            }
+            // TODO check for game solved?
         }
 
         private SetVertexRangeColor(start: number, end: number, color: Color, colorPerturbation: number = 0): void {

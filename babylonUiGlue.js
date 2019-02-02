@@ -81,31 +81,9 @@ function addPegAtPosition(scene, meshManager, gameParameters, pegPosition) {
         function (geometry) { return addBabylonMeshFromGeometry(scene, meshManager, geometry); },
         function (mesh, vertexId, color) { setBabylonMeshVertexColor(mesh, vertexId, color); },
         function (mesh, x, y) { setBabylonMeshPosition(mesh, x, y); },
-        function (mesh, gamePeg) { mesh.metadata = gamePeg; },
-        function (gamePeg) { return addLabelForPeg(scene, meshManager, gamePeg); },
-        function (texture, text, bgColor) { drawTextOnTexture(texture, text, bgColor); });
+        function (mesh, gamePeg) { mesh.metadata = gamePeg; });
 
     return gamePeg;
-}
-function addLabelForPeg(scene, meshManager, gamePeg) {
-    // Reserve
-    var meshId = meshManager.ClaimAndGetMeshId();
-
-    var pegSpec = gamePeg.Spec;
-
-	var outputplane = BABYLON.Mesh.CreatePlane(meshId.toString(), 1, scene, false);
-	outputplane.billboardMode = BABYLON.AbstractMesh.BILLBOARDMODE_ALL;
-	outputplane.material = new BABYLON.StandardMaterial(meshId.toString(), scene);
-    outputplane.position = new BABYLON.Vector3(pegSpec.x, pegSpec.y, -1.1);
-    outputplane.metadata = gamePeg;
-
-	var outputplaneTexture = new BABYLON.DynamicTexture(meshId.toString(), 512, scene, true);
-	outputplane.material.diffuseTexture = outputplaneTexture;
-	outputplane.material.specularColor = new BABYLON.Color3(0, 0, 0);
-	outputplane.material.emissiveColor = new BABYLON.Color3(1, 1, 1);
-	outputplane.material.backFaceCulling = false;
-
-    return outputplaneTexture;    
 }
 
 function addLabelForHelp(scene, meshManager, x, y) {

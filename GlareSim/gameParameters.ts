@@ -19,12 +19,6 @@ module GlareSim {
         public gearIntrinsics: GearIntrinsics[];
     }
 
-    export class GearSpec {
-        Radius: number;
-        ToothCount: number;
-        ToothAmplitude: number;
-    }
-
     export class PegSpec {
         x: number;
         y: number;

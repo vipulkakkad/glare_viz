@@ -32,7 +32,7 @@ var createScene = function (gameParameters) {
         });
 
     GlareSim.Utilities.setStartsClearInBipartiteManner(gameParameters, edges);
-    GlareSim.Utilities.createGearIntrinsicsFromGearSpecs(gameParameters, edges);
+    GlareSim.Utilities.createGearIntrinsicsFromPegSpecs(gameParameters, edges);
 
     // Add meshes
     var meshManager = new GlareSim.MeshManager();
@@ -59,7 +59,7 @@ var createScene = function (gameParameters) {
 
         if ((xGearRow + nextGearRadius) > gameParameters.xMax) {
             xGearRow = 5;
-            yGearRow -= 12;
+            yGearRow -= 14;
         }
     }
     

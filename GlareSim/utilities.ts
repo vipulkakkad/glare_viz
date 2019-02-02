@@ -72,7 +72,7 @@ module GlareSim {
             }
         }
 
-        public static createGearIntrinsicsFromGearSpecs(
+        public static createGearIntrinsicsFromPegSpecs(
             gameParams: GameParameters,
             edges: number[][]) {
 
@@ -82,12 +82,12 @@ module GlareSim {
             for (var j = 0; j < n; j++) {
                 var notchAngles = Utilities.getNotchAngles(gameParams.pegs, j, edges[j]); 
 
-                var gearSpec = new GearSpec();
-                gearSpec.Radius = gameParams.pegs[j].expectedGearRadius;
-                gearSpec.ToothAmplitude = gameParams.toothAmplitude;
-                gearSpec.ToothCount = 6 * gearSpec.Radius;
-
-                gameParams.gearIntrinsics[j] = new GlareSim.GearIntrinsics(gearSpec, gameParams.gearHeight, notchAngles);
+                gameParams.gearIntrinsics[j] = new GlareSim.GearIntrinsics(
+                    gameParams.pegs[j].expectedGearRadius,
+                    gameParams.toothAmplitude,
+                    6 * gameParams.pegs[j].expectedGearRadius,
+                    gameParams.gearHeight,
+                    notchAngles);
             }
         }
 

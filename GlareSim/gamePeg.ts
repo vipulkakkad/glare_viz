@@ -25,12 +25,7 @@ module GlareSim {
             uiMeshMetadataSetter: UiPegMeshMetadataSetter) {
 
             // Re-using the GearMeshGen
-            var pegGearSpec = new GearSpec();
-            pegGearSpec.Radius = pegRadius;
-            pegGearSpec.ToothAmplitude = 0;
-            pegGearSpec.ToothCount = 4;
-
-            var gearIntrinsics = new GearIntrinsics(pegGearSpec, pegHeight, []);
+            var gearIntrinsics = new GearIntrinsics(pegRadius, 0, 4, pegHeight, []);
             var gearMeshGen = new GearMeshGenerator(gearIntrinsics, new Color(1, 1, 1, 1));
             this.firstVertexId = gearMeshGen.FirstGearVertex;
             this.lastVertexId = gearMeshGen.LastGearVertex

@@ -1,9 +1,14 @@
 module GlareSim {
     export class GearIntrinsics {
-        constructor(gearSpec: GearSpec, height: number, notchAngles: number[]) {
-            this.Radius = gearSpec.Radius;
-            this.ToothAmplitude = gearSpec.ToothAmplitude;
-            this.ToothCount = gearSpec.ToothCount;
+        constructor(
+            radius: number,
+            toothAmplitude: number,
+            toothCount: number,
+            height: number, 
+            notchAngles: number[]) {
+            this.Radius = radius;
+            this.ToothAmplitude = toothAmplitude;
+            this.ToothCount = toothCount;
 
             this.Height = height;
             this.NotchAngles = notchAngles;

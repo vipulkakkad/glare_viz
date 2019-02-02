@@ -116,23 +116,26 @@ module GlareSim {
             var z = axialDeviation;
             
             var pointRadius = (radius - toothAmplitude - 0.1);
-            var baseRadius = pointRadius - 0.5 * radius / 5;
-            var baseDeviationAngle = (Math.PI / 180) * 5;
+            var arrowSideLength = 0.8;
+            var arrowInnerAngle = (Math.PI / 180) * 30;
 
-            vertices[vertexStartIndex + 0] = new Vertex(pointRadius * Math.cos(notchAngle), pointRadius * Math.sin(notchAngle), z, color);
+            var xTip = pointRadius * Math.cos(notchAngle);
+            var yTip = pointRadius * Math.sin(notchAngle);
+
+            vertices[vertexStartIndex + 0] = new Vertex(xTip, yTip, z, color);
             vertices[vertexStartIndex + 1] = new Vertex(
-                baseRadius * Math.cos(notchAngle + baseDeviationAngle),
-                baseRadius * Math.sin(notchAngle + baseDeviationAngle),
+                xTip - arrowSideLength * Math.cos(notchAngle + arrowInnerAngle),
+                yTip - arrowSideLength * Math.sin(notchAngle + arrowInnerAngle),
                 z,
                 color);
             vertices[vertexStartIndex + 2] = new Vertex(
-                baseRadius * Math.cos(notchAngle - baseDeviationAngle),
-                baseRadius * Math.sin(notchAngle - baseDeviationAngle),
+                xTip - arrowSideLength * Math.cos(notchAngle - arrowInnerAngle),
+                yTip - arrowSideLength * Math.sin(notchAngle - arrowInnerAngle),
                 z,
                 color);
 
             var faceStartIndex = faces.length;
-            faces[faceStartIndex] = new Face(vertexStartIndex + 0, vertexStartIndex + 1, vertexStartIndex + 2);
+            faces[faceStartIndex] = new Face(vertexStartIndex + 0, vertexStartIndex + 2, vertexStartIndex + 1);
         }
 
         public static addSquare(

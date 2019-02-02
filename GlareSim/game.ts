@@ -16,13 +16,12 @@ module GlareSim {
         constructor(
             pegs: GamePeg[],
             gears: GameGear[],
-            startingPegIndex: number,
-            startingGearIndex: number) {
+            startingPegIndex: number) {
             this.Pegs = pegs;
             this.Gears = gears;
 
             this.startingPeg = this.Pegs[startingPegIndex];
-            this.startingGear = this.Gears[startingGearIndex];
+            this.startingGear = this.Gears[startingPegIndex];
 
             this.startingGear.PlaceAtPeg(this.startingPeg);
             this.startingGear.SpinByAngle(this.startingPeg.Spec.axisAngle, false);
@@ -117,14 +116,14 @@ module GlareSim {
             for (var i = 0; i < this.Pegs.length; i++) {
                 var gear = this.Pegs[i].CurrentGear;
                 var spinAngle = tangentialDistance / gear.Radius;
-                gear.SpinByAngle(spinAngle, this.Pegs[i].Spec.startsClear ? clockwise : !clockwise)
+                gear.SpinByAngle(spinAngle, this.Pegs[i].Spec.isPositiveChirality ? clockwise : !clockwise)
             }
         }
 
         public Solve() {
             for (var i = 0; i < this.Gears.length; i++) {
                 this.Gears[i].PlaceAtPeg(this.Pegs[i]);
-//                this.Gears[i].SpinByAngle(this.Pegs[i].Spec.axisAngle + (this.Pegs[i].Spec.startsClear ? 0 : Math.PI/2), true);
+//                this.Gears[i].SpinByAngle(this.Pegs[i].Spec.axisAngle + (this.Pegs[i].Spec.isPositiveChirality ? 0 : Math.PI/2), true);
             }
         }
 

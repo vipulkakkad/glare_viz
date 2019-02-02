@@ -43,7 +43,7 @@ var createScene = function (gameParameters) {
     var defaultPegSpec = new GlareSim.PegSpec();
 
     var gameGears = [];
-    for (var i = 0; i < gameParameters.gears.length; i++) {
+    for (var i = 0; i < gameParameters.pegs.length; i++) {
         defaultPegSpec.x = xGearRow;
         defaultPegSpec.y = yGearRow;
         defaultPegSpec.axisAngle = 0;
@@ -53,8 +53,8 @@ var createScene = function (gameParameters) {
 
         gameGears[i] = gameGear;
 
-        var nextGearRadius = ((i + 1) < gameParameters.gears.length) ?
-            gameParameters.gears[i + 1].Radius : 0;
+        var nextGearRadius = ((i + 1) < gameParameters.pegs.length) ?
+            gameParameters.pegs[i + 1].expectedGearRadius : 0;
         xGearRow += gearIntrinsics.Radius + nextGearRadius + 0.5;
 
         if ((xGearRow + nextGearRadius) > gameParameters.xMax) {
@@ -75,7 +75,7 @@ var createScene = function (gameParameters) {
     }
 
     // Setup game
-    var game = new GlareSim.Game(gamePegs, gameGears, gameParameters.startingPegIndex, gameParameters.startingGearIndex);
+    var game = new GlareSim.Game(gamePegs, gameGears, gameParameters.startingPegIndex);
 
     // Add board
     var gameBoard = addBoard(scene, meshManager, gameParameters);

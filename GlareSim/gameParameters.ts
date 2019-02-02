@@ -7,15 +7,14 @@ module GlareSim {
             }
         }
 
-        public gears: GearSpec[];
         public pegs: PegSpec[];
         public xMax: number;
         public yMax: number;
         public pegRadius: number;
         public boardHeight: number;
         public gearHeight: number;
-        public startingGearIndex: number;
         public startingPegIndex: number;
+        public toothAmplitude: number;
 
         public gearIntrinsics: GearIntrinsics[];
     }
@@ -31,7 +30,6 @@ module GlareSim {
         y: number;
         axisAngle: number;
         expectedGearRadius: number;
-        startsClear: boolean;
-        letter: string;
+        isPositiveChirality: boolean;
     }
 }

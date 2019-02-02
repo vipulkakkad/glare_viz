@@ -68,8 +68,7 @@ module GlareSim {
             }
 
             for (var j = 0; j < n; j++) {
-                gameParams.pegs[j].startsClear = partition[j];
-                gameParams.gears[j].ToothCount *= 2;
+                gameParams.pegs[j].isPositiveChirality = partition[j];
             }
         }
 
@@ -82,7 +81,12 @@ module GlareSim {
             
             for (var j = 0; j < n; j++) {
                 var notchAngles = Utilities.getNotchAngles(gameParams.pegs, j, edges[j]); 
-                var gearSpec = gameParams.gears[j];
+
+                var gearSpec = new GearSpec();
+                gearSpec.Radius = gameParams.pegs[j].expectedGearRadius;
+                gearSpec.ToothAmplitude = gameParams.toothAmplitude;
+                gearSpec.ToothCount = 6 * gearSpec.Radius;
+
                 gameParams.gearIntrinsics[j] = new GlareSim.GearIntrinsics(gearSpec, gameParams.gearHeight, notchAngles);
             }
         }

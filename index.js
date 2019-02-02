@@ -103,7 +103,7 @@ var createScene = function (gameParameters) {
                 }
                 break;
             case BABYLON.PointerEventTypes.POINTERWHEEL:
-                if (game.SelectedGear != null) {
+                if (game.WillHandleScroll()) {
                     onScroll(game, pointerInfo.event.wheelDelta < 0); // < 0 = upwards
                 }
                 else {
@@ -113,7 +113,7 @@ var createScene = function (gameParameters) {
         }
     });
 
-    //game.Solve();
+    game.Solve();
 
     scene.registerBeforeRender(() => {})
 

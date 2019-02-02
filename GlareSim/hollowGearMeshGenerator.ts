@@ -9,6 +9,9 @@ module GlareSim {
             this.Vertices = [];
             this.Faces = [];
 
+            var xInnerDeviation = intrinsics.HoleDeviation * Math.cos(intrinsics.HoleAngle);
+            var yInnerDeviation = intrinsics.HoleDeviation * Math.sin(intrinsics.HoleAngle);
+
             // Top setup
             var topInnerFirstVID = 0;
             var topFirstFID = 0;
@@ -21,7 +24,9 @@ module GlareSim {
                 intrinsics.InnerToothAmplitude, 
                 intrinsics.ToothCount, 
                 -intrinsics.Height,
-                gearColor);
+                gearColor,
+                xInnerDeviation,
+                yInnerDeviation);
             
             // top outer edge vertices
             var topOuterFirstVID = topInnerLastVID + 1;
@@ -55,7 +60,9 @@ module GlareSim {
                 intrinsics.InnerToothAmplitude, 
                 intrinsics.ToothCount, 
                 intrinsics.Height,
-                gearColor);
+                gearColor,
+                xInnerDeviation,
+                yInnerDeviation);
             
             // bottom outer edge vertices
             var bottomOuterFirstVID = bottomInnerLastVID + 1;

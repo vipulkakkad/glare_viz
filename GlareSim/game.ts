@@ -1,6 +1,6 @@
 module GlareSim {
     export class Game {
-        public SelectedGear: GameGear = null;
+        private SelectedGear: GameGear = null;
 
         private selectedGearColor: Color = new Color(0, 0.66, 0, 1);
         private defaultGearColor: Color = new Color(0.2, 0.7, 1, 1);
@@ -25,6 +25,10 @@ module GlareSim {
 
             this.startingGear.PlaceAtPeg(this.startingPeg);
             this.startingGear.SpinByAngle(this.startingPeg.Spec.axisAngle, false);
+        }
+
+        public WillHandleScroll() : boolean {
+            return (this.allGearsInPlace || this.SelectedGear != null);
         }
 
         public OnGearClicked(clickedGear: GameGear) {

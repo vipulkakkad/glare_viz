@@ -65,7 +65,7 @@ module GlareSim {
         }
 
         public SetGearColor(color: Color): void {
-            this.SetVertexRangeColor(this.firstGearVertexId, this.lastGearVertexId, color, 0.3);
+            this.SetVertexRangeColor(this.firstGearVertexId, this.lastGearVertexId, color);
         }
 
         public RemoveFromBoard(): void {

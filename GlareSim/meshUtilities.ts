@@ -12,7 +12,7 @@ module GlareSim {
             yDeviation: number = 0): number {
 
             var z = axialDeviation;
-            vertices[startIndex] = new Vertex(xDeviation, yDeviation, z, color.Perturb(0.1));
+            vertices[startIndex] = new Vertex(xDeviation, yDeviation, z, color);
 
             return this.addSunflowerVerticesAndReturnLastVertexIndex(
                 vertices,
@@ -46,10 +46,10 @@ module GlareSim {
 
                 var radius_cur = radius + ((i % 2 === 0) ? toothAmplitude : -toothAmplitude);
 
-                var x = xDeviation + radius_cur * Math.cos(theta);
-                var y = yDeviation + radius_cur * Math.sin(theta);
+                var x = xDeviation + (radius_cur * Math.cos(theta));
+                var y = yDeviation + (radius_cur * Math.sin(theta));
 
-                vertices[v] = new Vertex(x, y, z, color.Perturb(0.3));
+                vertices[v] = new Vertex(x, y, z, color);
                 v++;
             }
 

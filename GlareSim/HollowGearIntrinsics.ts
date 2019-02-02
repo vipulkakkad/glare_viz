@@ -6,7 +6,9 @@ module GlareSim {
             outerRadius: number,
             outerToothAmplitude: number,           
             toothCount: number,
-            height: number, 
+            height: number,
+            holeAngle: number,
+            holeDeviation: number,
             notchAngles: number[]) {
             this.InnerRadius = innerRadius;
             this.InnerToothAmplitude = innerToothAmplitude;
@@ -14,9 +16,11 @@ module GlareSim {
             this.OuterToothAmplitude = outerToothAmplitude;
 
             this.ToothCount = toothCount;
-
             this.Height = height;
             this.NotchAngles = notchAngles;
+
+            this.HoleAngle = holeAngle;
+            this.HoleDeviation = holeDeviation;
         }
 
         InnerRadius: number;
@@ -26,5 +30,7 @@ module GlareSim {
         ToothCount: number;
         Height: number;
         NotchAngles: number[];
+        HoleAngle: number;
+        HoleDeviation : number;
     }
 }

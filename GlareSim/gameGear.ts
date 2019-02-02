@@ -9,8 +9,6 @@ module GlareSim {
         private Mesh: any; // BABYLON.Mesh
 
         private SetVertexColor: UiMeshVertexColorSetter;
-        private firstWindowVertexId: number;
-        private lastWindowVertexId: number;
         private firstGearVertexId: number;
         private lastGearVertexId: number;
 
@@ -26,7 +24,6 @@ module GlareSim {
         public Type: string = "GameGear";
         public CurrentPeg: GamePeg;
         public Radius: number;
-        public WindowShade: number;
 
         constructor(
             gearIntrinsics: GearIntrinsics,
@@ -37,10 +34,8 @@ module GlareSim {
             uiRotationSetter: UiMeshZRotationSetter,
             uiMeshMetadataSetter: UiGearMeshMetadataSetter) {
                 
-            var gearMeshGen = new GearMeshGenerator(gearIntrinsics, true, new Color(0.2, 0.7, 1, 1));
+            var gearMeshGen = new GearMeshGenerator(gearIntrinsics, new Color(0.2, 0.7, 1, 1));
 
-            this.firstWindowVertexId = gearMeshGen.FirstWindowVertex;
-            this.lastWindowVertexId = gearMeshGen.LastWindowVertex
             this.firstGearVertexId = gearMeshGen.FirstGearVertex;
             this.lastGearVertexId = gearMeshGen.LastGearVertex
 
@@ -67,10 +62,6 @@ module GlareSim {
             this.Radius = gearIntrinsics.Radius;
 
             this.CurrentPeg = null;
-        }
-
-        public SetWindowColor(color: Color): void {
-            this.SetVertexRangeColor(this.firstWindowVertexId, this.lastWindowVertexId, color);
         }
 
         public SetGearColor(color: Color): void {
@@ -120,15 +111,11 @@ module GlareSim {
         }
 
         private OnExtrinsicsUpdate() {
-            this.WindowShade = (this.CurrentPeg == null) ?
-                0.5 :
-                Math.abs(Math.cos(this.currentAxisAngle - this.currentPegSpec.axisAngle));
-
-            var windowColor = new Color(this.WindowShade, this.WindowShade, this.WindowShade, 1);    
-            this.SetWindowColor(windowColor);
-
+            var labelShade = Math.abs(Math.cos(this.currentAxisAngle - this.currentPegSpec.axisAngle));
+            var labelColor = new Color(labelShade, labelShade, labelShade, 1);
+            
             if (this.CurrentPeg != null) {
-                this.CurrentPeg.SetLabelColor(windowColor);
+                this.CurrentPeg.SetLabelColor(labelColor);
             }
         }
 

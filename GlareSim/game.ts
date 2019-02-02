@@ -136,10 +136,6 @@ module GlareSim {
                     return;
                 } else if (peg.CurrentGear.Radius != peg.Spec.expectedGearRadius) {
                     return;
-                } else if (peg.Spec.startsClear && peg.CurrentGear.WindowShade < 0.9) {
-                    return;
-                } else if (!peg.Spec.startsClear && peg.CurrentGear.WindowShade > 0.1) {
-                    return;
                 }
             }
 

@@ -83,7 +83,7 @@ module GlareSim {
             for (var j = 0; j < n; j++) {
                 var notchAngles = Utilities.getNotchAngles(gameParams.pegs, j, edges[j]); 
                 var gearSpec = gameParams.gears[j];
-                gameParams.gearIntrinsics[j] = new GlareSim.GearIntrinsics(gearSpec, gameParams.gearHeight, gameParams.pegRadius, notchAngles);
+                gameParams.gearIntrinsics[j] = new GlareSim.GearIntrinsics(gearSpec, gameParams.gearHeight, notchAngles);
             }
         }
 

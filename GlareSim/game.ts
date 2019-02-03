@@ -104,6 +104,9 @@ module GlareSim {
         }
 
         private UnSelectGear() {
+            if (this.SelectedGear == null) {
+                return;
+            }
             this.SelectedGear.SetGearColor(this.defaultGearColor);
             this.SelectedGear = null;
         }
@@ -130,6 +133,7 @@ module GlareSim {
                 this.Gears[i].PlaceAtPeg(this.Pegs[i]);
 //                this.Gears[i].SpinByAngle(this.Pegs[i].Spec.axisAngle + (this.Pegs[i].Spec.isPositiveChirality ? 0 : Math.PI/2), true);
             }
+            this.EvaluateGearStates();
         }
 
         private EvaluateGearStates() : void {

@@ -109,6 +109,19 @@ function drawTextOnTexture(texture, text, bgColor) {
     texture.drawText(text, null, 500, "bold 540px verdana", "black", bgColor.ToRgbHexString());
 }
 
+function drawLine(x1, y1, x2, y2, meshName, scene, showLines) {
+    if (!showLines) {
+        return;
+    }
+    
+    var myPoints = [
+        new BABYLON.Vector3(x1, y1, -1.1),
+        new BABYLON.Vector3(x2, y2, -1.1)
+    ];
+
+    var lines = BABYLON.MeshBuilder.CreateLines(meshName, {points: myPoints}, scene); 
+}
+
 function onMeshClicked(mesh, game) {
     var gameObject = mesh.metadata;
 

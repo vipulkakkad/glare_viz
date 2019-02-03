@@ -37,6 +37,44 @@ module GlareSim {
             return edges;
         }    
 
+        public static colorGearsBy(colorScheme: string, gameParams: GameParameters, gears: GameGear[]) {
+            var colors = [
+                new GlareSim.Color(0, 0, 1, 1),
+                new GlareSim.Color(0, 1, 0, 1),
+                new GlareSim.Color(0, 1, 1, 1),
+                new GlareSim.Color(1, 0, 0, 1),
+                new GlareSim.Color(1, 0, 1, 1),
+                new GlareSim.Color(1, 1, 0, 1),
+                new GlareSim.Color(1, 1, 1, 1),
+                new GlareSim.Color(0, 0, 0.5, 1),
+                new GlareSim.Color(0, 0.5, 0, 1),
+                new GlareSim.Color(0, 0.5, 0.5, 1),
+                new GlareSim.Color(0.5, 0, 0, 1),
+                new GlareSim.Color(0.5, 0, 0.5, 1),
+                new GlareSim.Color(0.5, 0.5, 0, 1),
+                new GlareSim.Color(0.5, 0.5, 0.5, 1),
+            ];
+
+            switch(colorScheme)
+            {
+                case "Chirality":
+                    for (var i = 0; i < gears.length; i++) {
+                        var gearColor = gameParams.pegs[i].isPositiveChirality ? 4 : 9;
+                        gears[i].SetGearColor(colors[gearColor]);
+                    }
+                    break;
+                case "NotchEquivalence":
+                    for (var i = 0; i < gears.length; i++) {
+                        var gearColor = gears[i].Intrinsics.NotchEquivalenceClass;
+                        gears[i].SetGearColor(colors[gearColor]);
+                    }
+                    break;
+                default:
+                    console.log("Not overriding gear color");
+                    break;
+            }                
+        }
+
         public static setChiralityInBipartiteManner(
             gameParams: GameParameters,
             edges: number[][]) {

@@ -1,10 +1,13 @@
 eq classes:
 
 unique, in:
-12, 11, 7, 8, 0, 2
+12, 11, 7, 8, 0, 2, 4
 
 one-notch, in:
 6, 3, 5
 
 ambiguous orientation, out:
 10, 1
+
+possible, but better to avoid:
+9

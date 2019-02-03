@@ -1,3 +1,9 @@
+/******* Config entries ******/
+var showAdjacencyLines = true;
+var colorScheme = "Default"; // options include "Chirality", "NotchEquivalence"
+var solve = true;
+
+/******* Create canvas and engine ******/
 var canvas = document.getElementById("renderCanvas"); // Get the canvas element 
 var engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
 
@@ -22,35 +28,12 @@ var createScene = function (gameParameters) {
 
     var edges = GlareSim.Utilities.computeAdjacencies(
         gameParameters,
-        (x1, y1, x2, y2, meshName) => {
-            var myPoints = [
-                new BABYLON.Vector3(x1, y1, -1.1),
-                new BABYLON.Vector3(x2, y2, -1.1)
-            ];
-
-            //var lines = BABYLON.MeshBuilder.CreateLines(meshName, {points: myPoints}, scene); 
+        function(x1, y1, x2, y2, meshName) {
+            drawLine(x1, y1, x2, y2, meshName, scene, showAdjacencyLines)
         });
 
     GlareSim.Utilities.setChiralityInBipartiteManner(gameParameters, edges);
     GlareSim.Utilities.createGearIntrinsicsFromPegSpecs(gameParameters, edges);
-
-    var colors = [
-        new GlareSim.Color(0, 0, 0, 1),
-        new GlareSim.Color(0, 0, 1, 1),
-        new GlareSim.Color(0, 1, 0, 1),
-        new GlareSim.Color(0, 1, 1, 1),
-        new GlareSim.Color(1, 0, 0, 1),
-        new GlareSim.Color(1, 0, 1, 1),
-        new GlareSim.Color(1, 1, 0, 1),
-        new GlareSim.Color(1, 1, 1, 1),
-        new GlareSim.Color(0, 0, 0.5, 1),
-        new GlareSim.Color(0, 0.5, 0, 1),
-        new GlareSim.Color(0, 0.5, 0.5, 1),
-        new GlareSim.Color(0.5, 0, 0, 1),
-        new GlareSim.Color(0.5, 0, 0.5, 1),
-        new GlareSim.Color(0.5, 0.5, 0, 1),
-        new GlareSim.Color(0.5, 0.5, 0.5, 1),
-    ];    
 
     // Add meshes
     var meshManager = new GlareSim.MeshManager();
@@ -79,9 +62,9 @@ var createScene = function (gameParameters) {
             xGearRow = 5;
             yGearRow -= 14;
         }
-
-        gameGear.SetGearColor(colors[gearIntrinsics.NotchEquivalenceClass]);
     }
+
+    GlareSim.Utilities.colorGearsBy(colorScheme, gameParameters, gameGears);
     
     // Add pegs
     var gamePegs = [];
@@ -133,7 +116,9 @@ var createScene = function (gameParameters) {
         }
     });
 
-    game.Solve();
+    if (solve) {
+        game.Solve();
+    }
 
     scene.registerBeforeRender(() => {})
 

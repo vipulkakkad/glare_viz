@@ -81,6 +81,9 @@ module GlareSim {
             
             for (var j = 0; j < n; j++) {
                 var notchAngles = Utilities.getNotchAngles(gameParams.pegs, j, edges[j]); 
+                var sortedNotchAngles = notchAngles.sort((n1,n2) => n1 - n2);
+
+                var gaps = this.getGapsInOrder(sortedNotchAngles);
 
                 var holeRadius = 0.75;
 
@@ -93,7 +96,7 @@ module GlareSim {
                     gameParams.gearHeight,
                     0,
                     2 * holeRadius + 0.2,
-                    notchAngles);
+                    sortedNotchAngles);
             }
 
             this.setNotchEquivalenceClasses(gameParams.gearIntrinsics);
@@ -105,18 +108,18 @@ module GlareSim {
 
             for (var i = 0; i < adjacentIndices.length; i++) {
                 var adjacentPoint = pegs[adjacentIndices[i]];
-                angles[i] = Math.atan2(adjacentPoint.y - currentPoint.y, adjacentPoint.x - currentPoint.x);
+                angles[i] = this.normalizeAngleFromZeroToTwoPi(Math.atan2(adjacentPoint.y - currentPoint.y, adjacentPoint.x - currentPoint.x));
             }
 
             return angles;
         }
 
         private static setNotchEquivalenceClasses(gearIntrinsics: HollowGearIntrinsics[]) {
-            var tolerance = 0.2;
+            var tolerance = 0.25;
 
-            var normalizedNotchAngles = [];
+            var gapsInOrder = [];
             for (var i = 0; i < gearIntrinsics.length; i++) {
-                normalizedNotchAngles[i] = this.normalizeNotchAnglesAsBeginningFromLargestGap(gearIntrinsics[i].NotchAngles);
+                gapsInOrder[i] = this.getGapsInOrder(gearIntrinsics[i].NotchAngles);
             }
 
             var currentEquivalenceClass = 0;
@@ -124,7 +127,12 @@ module GlareSim {
             for (var i = 1; i < gearIntrinsics.length; i++) {
                 var j = 0;
                 while(gearIntrinsics[i].NotchEquivalenceClass < 0 && j < i) {
-                    if (this.AreInSameNotchEquivalenceClass(normalizedNotchAngles[i], normalizedNotchAngles[j], tolerance)) {
+                    if (this.AreInSameNotchEquivalenceClass(
+                        gearIntrinsics[i].OuterRadius,
+                        gearIntrinsics[j].OuterRadius,
+                        gapsInOrder[i],
+                        gapsInOrder[j],
+                        tolerance)) {
                         gearIntrinsics[i].NotchEquivalenceClass = gearIntrinsics[j].NotchEquivalenceClass;
                     }
 
@@ -138,84 +146,76 @@ module GlareSim {
 
                 var logObj = {
                     eqclass: gearIntrinsics[i].NotchEquivalenceClass,
-                    angles: JSON.stringify(normalizedNotchAngles[i]),
-                    rawangles: gearIntrinsics[i].NotchAngles
+                    gaps: JSON.stringify(gapsInOrder[i]),
+                    angles: gearIntrinsics[i].NotchAngles
                 };
                 console.log(logObj);
             }
         }
 
-        private static AreInSameNotchEquivalenceClass(normalizedAngles1: number[], normalizedAngles2: number[], tolerance: number) : boolean {
-            if (normalizedAngles1.length != normalizedAngles2.length) {
+        private static AreInSameNotchEquivalenceClass(
+            radius1: number,
+            radius2: number,
+            orderedGaps1: number[],
+            orderedGaps2: number[],
+            tolerance: number) : boolean {
+
+            // if (radius1 != radius2) {
+            //     return false;
+            // }
+
+            if (orderedGaps1.length != orderedGaps2.length) {
                 return false;
             }
 
-            for (var i = 0; i < normalizedAngles1.length; i++) {
-                var difference = Math.abs(normalizedAngles1[i] - normalizedAngles2[i]);
-                if (difference > tolerance) {
-                    return false;
+            var n = orderedGaps1.length;
+            var matchedGaps = -1;
+            for (var offset = 0; offset < n; offset++) {
+                matchedGaps = 0;
+                for (var j = 0; j < n; j++) {
+                    var x = j;
+                    var y = (offset+j)%n;
+
+                    //console.log("Comparing a["+x+"] <-> b["+y+"]");
+
+                    if (Math.abs(orderedGaps1[x] - orderedGaps2[y]) < tolerance) {
+                        matchedGaps++;
+                    }
                 }
+
+                if (matchedGaps == n) {
+                    //console.log("match with offset" + offset);
+                    return true;
+                }
+                //console.log("no match with offset" + offset);
             }
 
-            return true;
+            //console.log("no match with any offset!");
+            return false;
         }
 
-        private static normalizeNotchAnglesAsBeginningFromLargestGap(notchAngles: number[]) : number[] {
-            if (notchAngles.length == 1)
-            {
-                return [0];
+        private static getGapsInOrder(notchAnglesInAscendingOrder: number[]) : number[] {
+            var gapsInOrder = [];
+            var n = notchAnglesInAscendingOrder.length;
+
+            if (n == 1) {
+                return [ 2*Math.PI ];
             }
 
-            if (notchAngles.length == 2)
-            {
-                var a = notchAngles[0];
-                var b = notchAngles[1];
-                var gap = Math.min((2 * Math.PI) - Math.abs(a - b), Math.abs(a - b));
-                return [0, gap];
+            if (n == 2) {
+                var smallerAngle = this.getSmallestAngleBetweenTwoAngles(notchAnglesInAscendingOrder[0], notchAnglesInAscendingOrder[1]);
+                return [  smallerAngle, (2*Math.PI - smallerAngle) ];
             }
 
-            var sortedNotchAngles = notchAngles.sort((n1,n2) => n2 - n1);
-
-            var notchCount = notchAngles.length;
-            var largestGap = 0;
-            var indexOfNotchAngleBeforeLargestGap = -1;
-
-            var gaps = [];
-            
-            for (var i = 0; i < notchCount; i++) {
-                var a = sortedNotchAngles[(i+1) % notchCount];
-                var b = sortedNotchAngles[i];
-                var gapToNext = Math.min((2 * Math.PI) - Math.abs(a - b), Math.abs(a - b));
-                gaps[i] = gapToNext;
-                if (largestGap <= gapToNext) {
-                    indexOfNotchAngleBeforeLargestGap = i;
-                    largestGap = gapToNext;
-                }
+            for (var i = 0; i < n; i++) {
+                gapsInOrder[i] = this.getSmallestAngleBetweenTwoAngles(notchAnglesInAscendingOrder[i], notchAnglesInAscendingOrder[(i+1)%n]);
             }
 
-            var notchAngleBeforeLargestGap = sortedNotchAngles[indexOfNotchAngleBeforeLargestGap];
-            var notchAnglesBeginningBeforeLargestGap = [];
-            for (var i = 0; i < notchCount; i++) {
-                notchAnglesBeginningBeforeLargestGap[i] = this.normalizeAngleFromZeroToTwoPi(sortedNotchAngles[i] - notchAngleBeforeLargestGap);
-            }
+            return gapsInOrder;
+        }
 
-            var deltas = []
-            var gaps = []
-            for (var i = 0; i < notchCount; i++) {
-                deltas[i] = notchAnglesBeginningBeforeLargestGap[i] - sortedNotchAngles[i];
-                gaps[i] = this.normalizeAngleFromZeroToTwoPi(notchAnglesBeginningBeforeLargestGap[(i+1)%notchCount] - notchAnglesBeginningBeforeLargestGap[i]);
-            }
-            
-            var logObj = {
-                // sortedNotchAngles: sortedNotchAngles,
-                // notchAnglesBeginningBeforeLargestGap: notchAnglesBeginningBeforeLargestGap,
-                deltas: deltas,
-                gaps: gaps
-            }
-
-//            console.log(logObj);
-
-            return notchAnglesBeginningBeforeLargestGap;
+        private static getSmallestAngleBetweenTwoAngles(a: number, b: number) : number {
+            return Math.min((2 * Math.PI) - Math.abs(a - b), Math.abs(a - b));
         }
 
         private static normalizeAngleFromZeroToTwoPi(angle: number) : number {

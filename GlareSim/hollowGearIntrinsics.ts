@@ -32,5 +32,7 @@ module GlareSim {
         NotchAngles: number[];
         HoleAngle: number;
         HoleDeviation : number;
+
+        public NotchEquivalenceClass: number = -1;
     }
 }

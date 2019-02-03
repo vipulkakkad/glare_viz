@@ -25,6 +25,8 @@ module GlareSim {
         public CurrentPeg: GamePeg;
         public Radius: number;
 
+        public Intrinsics: HollowGearIntrinsics;
+
         constructor(
             gearIntrinsics: HollowGearIntrinsics,
             defaultPegSpec: PegSpec,
@@ -62,6 +64,8 @@ module GlareSim {
             this.Radius = gearIntrinsics.OuterRadius;
 
             this.CurrentPeg = null;
+
+            this.Intrinsics = gearIntrinsics;
         }
 
         public SetGearColor(color: Color): void {

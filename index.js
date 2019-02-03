@@ -34,6 +34,24 @@ var createScene = function (gameParameters) {
     GlareSim.Utilities.setStartsClearInBipartiteManner(gameParameters, edges);
     GlareSim.Utilities.createGearIntrinsicsFromPegSpecs(gameParameters, edges);
 
+    var colors = [
+        new GlareSim.Color(0, 0, 0, 1),
+        new GlareSim.Color(0, 0, 1, 1),
+        new GlareSim.Color(0, 1, 0, 1),
+        new GlareSim.Color(0, 1, 1, 1),
+        new GlareSim.Color(1, 0, 0, 1),
+        new GlareSim.Color(1, 0, 1, 1),
+        new GlareSim.Color(1, 1, 0, 1),
+        new GlareSim.Color(1, 1, 1, 1),
+        new GlareSim.Color(0, 0, 0.5, 1),
+        new GlareSim.Color(0, 0.5, 0, 1),
+        new GlareSim.Color(0, 0.5, 0.5, 1),
+        new GlareSim.Color(0.5, 0, 0, 1),
+        new GlareSim.Color(0.5, 0, 0.5, 1),
+        new GlareSim.Color(0.5, 0.5, 0, 1),
+        new GlareSim.Color(0.5, 0.5, 0.5, 1),
+    ];    
+
     // Add meshes
     var meshManager = new GlareSim.MeshManager();
 
@@ -61,6 +79,8 @@ var createScene = function (gameParameters) {
             xGearRow = 5;
             yGearRow -= 14;
         }
+
+        gameGear.SetGearColor(colors[gearIntrinsics.NotchEquivalenceClass]);
     }
     
     // Add pegs
@@ -113,7 +133,7 @@ var createScene = function (gameParameters) {
         }
     });
 
-//    game.Solve();
+    game.Solve();
 
     scene.registerBeforeRender(() => {})
 

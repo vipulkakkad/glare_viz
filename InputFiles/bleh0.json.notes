@@ -1,0 +1,10 @@
+eq classes:
+
+unique, in:
+12, 11, 7, 8, 0, 2
+
+one-notch, in:
+6, 3, 5
+
+ambiguous orientation, out:
+10, 1

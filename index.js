@@ -31,7 +31,7 @@ var createScene = function (gameParameters) {
             //var lines = BABYLON.MeshBuilder.CreateLines(meshName, {points: myPoints}, scene); 
         });
 
-    GlareSim.Utilities.setStartsClearInBipartiteManner(gameParameters, edges);
+    GlareSim.Utilities.setChiralityInBipartiteManner(gameParameters, edges);
     GlareSim.Utilities.createGearIntrinsicsFromPegSpecs(gameParameters, edges);
 
     var colors = [

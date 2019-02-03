@@ -37,7 +37,7 @@ module GlareSim {
             return edges;
         }    
 
-        public static setStartsClearInBipartiteManner(
+        public static setChiralityInBipartiteManner(
             gameParams: GameParameters,
             edges: number[][]) {
 
@@ -160,9 +160,9 @@ module GlareSim {
             orderedGaps2: number[],
             tolerance: number) : boolean {
 
-            // if (radius1 != radius2) {
-            //     return false;
-            // }
+            if (radius1 != radius2) {
+                return false;
+            }
 
             if (orderedGaps1.length != orderedGaps2.length) {
                 return false;

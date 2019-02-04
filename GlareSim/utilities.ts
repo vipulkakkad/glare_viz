@@ -75,6 +75,53 @@ module GlareSim {
             }                
         }
 
+        public static setHoleParameters(gameParams: GameParameters) {
+            var deviationsFromSingleNotch = [];
+            deviationsFromSingleNotch[3] = 0;
+            deviationsFromSingleNotch[5] = 0;
+            deviationsFromSingleNotch[6] = 0;
+
+            var deviationsFromZeroForUnique = [];
+            deviationsFromZeroForUnique[0] = 0;
+            deviationsFromZeroForUnique[2] = 0;
+            deviationsFromZeroForUnique[4] = 0;
+            deviationsFromZeroForUnique[7] = 0;
+            deviationsFromZeroForUnique[8] = 0;
+            deviationsFromZeroForUnique[11] = 0;
+            deviationsFromZeroForUnique[12] = 0;          
+
+            for (var i = 0; i < gameParams.gearIntrinsics.length; i++) {
+                var notchEquivalenceClass = gameParams.gearIntrinsics[i].NotchEquivalenceClass;
+                switch(notchEquivalenceClass)
+                {
+                    case 3:
+                    case 5:
+                    case 6:
+                        gameParams.gearIntrinsics[i].HoleAngle = 
+                            gameParams.gearIntrinsics[i].NotchAngles[0] + 
+                            deviationsFromSingleNotch[notchEquivalenceClass];
+                        break;
+                    case 0:
+                    case 2:
+                    case 4:
+                    case 7:
+                    case 8:
+                    case 11:
+                    case 12:
+                        gameParams.gearIntrinsics[i].HoleAngle =
+                            deviationsFromZeroForUnique[notchEquivalenceClass];
+                        break;
+                    case 1:
+                    case 9:
+                    case 10:
+                        gameParams.gearIntrinsics[i].InnerRadius = 0;
+                        gameParams.gearIntrinsics[i].InnerToothAmplitude = 0;
+                    default:
+                        break;
+                }                    
+            }
+        }
+
         public static setChiralityInBipartiteManner(
             gameParams: GameParameters,
             edges: number[][]) {

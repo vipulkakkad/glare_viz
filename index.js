@@ -1,6 +1,6 @@
 /******* Config entries ******/
 var showAdjacencyLines = true;
-var colorScheme = "Default"; // options include "Chirality", "NotchEquivalence"
+var colorScheme = "NotchEquivalence"; // options include "Chirality", "NotchEquivalence"
 var solve = true;
 
 /******* Create canvas and engine ******/
@@ -34,6 +34,7 @@ var createScene = function (gameParameters) {
 
     GlareSim.Utilities.setChiralityInBipartiteManner(gameParameters, edges);
     GlareSim.Utilities.createGearIntrinsicsFromPegSpecs(gameParameters, edges);
+    GlareSim.Utilities.setHoleParameters(gameParameters);
 
     // Add meshes
     var meshManager = new GlareSim.MeshManager();

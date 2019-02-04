@@ -68,6 +68,10 @@ module GlareSim {
             this.Intrinsics = gearIntrinsics;
         }
 
+        public GetMeshId() : string {
+            return this.Mesh.id.toString();
+        }
+
         public SetGearColor(color: Color): void {
             this.SetVertexRangeColor(this.firstGearVertexId, this.lastGearVertexId, color);
         }

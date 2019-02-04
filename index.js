@@ -82,9 +82,22 @@ var createScene = function (gameParameters) {
     var game = new GlareSim.Game(gamePegs, gameGears, gameParameters.startingPegIndex);
 
     // Add board
-    var gameBoard = addBoard(scene, meshManager, gameParameters);
+    //var gameBoard = addBoard(scene, meshManager, gameParameters);
 
-    var helpBoxMesh = addLabelForHelp(scene, meshManager, -1, gameParameters.yMax + 3);
+    var helpBoxMesh = addLabelForHelp(scene, meshManager, -1, gameParameters.yMax + 3);  
+
+    var meshId = -1;
+    //var boardPlane = BABYLON.Mesh.CreatePlane(meshId.toString(), 10, scene, false);
+    var boardPlane = BABYLON.MeshBuilder.CreatePlane(meshId.toString(), { width: gameParameters.xMax, height: gameParameters.yMax }, scene);
+	boardPlane.material = new BABYLON.StandardMaterial(meshId.toString() + "_material", scene);
+    boardPlane.position = new BABYLON.Vector3(gameParameters.xMax / 2, gameParameters.yMax / 2, 0);
+
+    var boardPlaneTexture = new BABYLON.DynamicTexture(meshId.toString() + "_texture", {width:10 * gameParameters.xMax, height:10 * gameParameters.yMax}, scene, true);
+	boardPlane.material.diffuseTexture = boardPlaneTexture;
+
+    var font = "bold 10px monospace";
+    boardPlaneTexture.drawText("Grass", 0, 10, font, "white", "black", true, true);    
+
 //    alert("WELCOME TO GLARE!\n Click on the question-mark for flavor text");
 
     scene.onPointerObservable.add((pointerInfo) => {

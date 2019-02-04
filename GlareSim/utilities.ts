@@ -1,5 +1,6 @@
 module GlareSim {
     export type UiMeshXYLineDrawer = (x1: number, y1: number, x2: number, y2: number, meshName: string) => void;
+    export type UiTextureXYCharacterDrawer = (x: number, y: number, text: string) => void;
 
     export class Utilities {
         public static computeAdjacencies(gameParams: GameParameters, drawLine: UiMeshXYLineDrawer) : number[][] {
@@ -120,6 +121,46 @@ module GlareSim {
                         break;
                 }                    
             }
+        }
+
+        public static drawCharactersInHoles(gameParams: GameParameters, drawCharacter: UiTextureXYCharacterDrawer) {
+            var characters = [];
+            characters[17] = "T";
+            characters[19] = "H";
+            characters[20] = "E";
+
+            characters[18] = "E";
+            characters[14] = "D";
+            characters[15] = "G";
+            characters[16] = "E";
+
+            characters[0] = "O";
+            characters[28] = "F";
+
+            characters[27] = "T";
+            characters[24] = "H";
+            characters[13] = "E";
+
+            characters[5] = "U";
+            characters[12] = "N";
+            characters[6] = "I";
+            characters[7] = "V";
+            characters[4] = "E";
+            characters[10] = "R";
+            characters[8] = "S";
+            characters[9] = "E";
+
+            for (var i = 0; i < gameParams.gearIntrinsics.length; i++) {
+                if (characters[i] != null) {
+                    var peg = gameParams.pegs[i];
+                    var gearIntrinsics = gameParams.gearIntrinsics[i];
+
+                    var xHole = peg.x + (gearIntrinsics.HoleDeviation * Math.cos(gearIntrinsics.HoleAngle));
+                    var yHole = peg.y + (gearIntrinsics.HoleDeviation * Math.sin(gearIntrinsics.HoleAngle));
+
+                    drawCharacter(xHole, yHole, characters[i]);
+                }
+            }            
         }
 
         public static setChiralityInBipartiteManner(

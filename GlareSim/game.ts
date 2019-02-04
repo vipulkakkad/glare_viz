@@ -32,7 +32,7 @@ module GlareSim {
         }
 
         public OnGearClicked(clickedGear: GameGear) {
-            console.log(clickedGear.Intrinsics);
+            console.log(clickedGear.GetMeshId());
             if (this.allGearsInPlace) {
                 return;
             }

@@ -49,15 +49,32 @@ function addBabylonMeshFromGeometry(scene, meshManager, geometry) {
     return mesh;
 }
 
-function addBoard(scene, meshManager, gameParameters) {
-    var gameBoard = new GlareSim.GameBoard(
-        gameParameters.xMax,
-        gameParameters.yMax,
-        gameParameters.boardHeight,
-        function (geometry) { return addBabylonMeshFromGeometry(scene, meshManager, geometry); },
-        function (mesh, gamePeg) { mesh.metadata = gamePeg; });
+function addBoard(scene, meshManager, gameParameters, textureScale) {
+    var meshId = meshManager.ClaimAndGetMeshId();
 
-    return gameBoard;
+    var boardPlane = BABYLON.MeshBuilder.CreatePlane(meshId.toString(), { width: gameParameters.xMax, height: gameParameters.yMax }, scene);
+	boardPlane.material = new BABYLON.StandardMaterial(meshId.toString() + "_material", scene);
+    boardPlane.position = new BABYLON.Vector3(gameParameters.xMax / 2, gameParameters.yMax / 2, 0.01);
+
+    var boardPlaneTexture = new BABYLON.DynamicTexture(meshId.toString() + "_texture", {width:textureScale * gameParameters.xMax, height:textureScale * gameParameters.yMax}, scene, true);
+	boardPlane.material.diffuseTexture = boardPlaneTexture;
+
+    var font = "bold 10px monospace";
+    boardPlaneTexture.drawText("Glare", 0, textureScale, font, "white", "black", true, true);
+}
+
+function drawCharacterOnBoard(x, y, tileWidth, character, textureScale, scene, meshManager) {
+    var font = "bold 14px monospace";
+    var meshId = meshManager.ClaimAndGetMeshId();
+
+    var boardPlane = BABYLON.MeshBuilder.CreatePlane(meshId.toString(), { width: tileWidth, height: tileWidth }, scene);
+	boardPlane.material = new BABYLON.StandardMaterial(meshId.toString() + "_material", scene);
+    boardPlane.position = new BABYLON.Vector3(x, y, 0);
+
+    var boardPlaneTexture = new BABYLON.DynamicTexture(meshId.toString() + "_texture", {width:textureScale, height:textureScale}, scene, true);
+	boardPlane.material.diffuseTexture = boardPlaneTexture;
+
+    boardPlaneTexture.drawText(character, 0, textureScale, font, "orange", "black", true, true);
 }
 
 function addGearFromIntrinsics(scene, meshManager, gearIntrinsics, defaultPosition) {

@@ -1,6 +1,6 @@
 module GlareSim {
     export type UiMeshXYLineDrawer = (x1: number, y1: number, x2: number, y2: number, meshName: string) => void;
-    export type UiTextureXYCharacterDrawer = (x: number, y: number, text: string) => void;
+    export type UiTextureXYCharacterDrawer = (x: number, y: number, tileWidth: number, text: string) => void;
 
     export class Utilities {
         public static computeAdjacencies(gameParams: GameParameters, drawLine: UiMeshXYLineDrawer) : number[][] {
@@ -158,7 +158,7 @@ module GlareSim {
                     var xHole = peg.x + (gearIntrinsics.HoleDeviation * Math.cos(gearIntrinsics.HoleAngle));
                     var yHole = peg.y + (gearIntrinsics.HoleDeviation * Math.sin(gearIntrinsics.HoleAngle));
 
-                    drawCharacter(xHole, yHole, characters[i]);
+                    drawCharacter(xHole, yHole, gearIntrinsics.InnerRadius, characters[i]);
                 }
             }            
         }

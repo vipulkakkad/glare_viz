@@ -116,8 +116,8 @@ module GlareSim {
             var z = axialDeviation;
             
             var pointRadius = (radius - toothAmplitude - 0.1);
-            var arrowSideLength = 0.8;
-            var arrowInnerAngle = (Math.PI / 180) * 30;
+            var arrowSideLength = radius * 0.8;
+            var arrowInnerAngle = (Math.PI / 180) * 3;
 
             var xTip = pointRadius * Math.cos(notchAngle);
             var yTip = pointRadius * Math.sin(notchAngle);

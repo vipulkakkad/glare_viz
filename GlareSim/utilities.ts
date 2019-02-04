@@ -77,18 +77,18 @@ module GlareSim {
 
         public static setHoleParameters(gameParams: GameParameters) {
             var deviationsFromSingleNotch = [];
-            deviationsFromSingleNotch[3] = 0;
-            deviationsFromSingleNotch[5] = 0;
-            deviationsFromSingleNotch[6] = 0;
+            deviationsFromSingleNotch[3] = 1.5;
+            deviationsFromSingleNotch[5] = -1;
+            deviationsFromSingleNotch[6] = -0.3;
 
             var deviationsFromZeroForUnique = [];
-            deviationsFromZeroForUnique[0] = 0;
-            deviationsFromZeroForUnique[2] = 0;
-            deviationsFromZeroForUnique[4] = 0;
-            deviationsFromZeroForUnique[7] = 0;
-            deviationsFromZeroForUnique[8] = 0;
-            deviationsFromZeroForUnique[11] = 0;
-            deviationsFromZeroForUnique[12] = 0;          
+            deviationsFromZeroForUnique[0] = Math.PI;
+            deviationsFromZeroForUnique[2] = 1.6 * Math.PI;
+            deviationsFromZeroForUnique[4] = 0.5 * Math.PI;
+            deviationsFromZeroForUnique[7] = 0.5 * Math.PI;
+            deviationsFromZeroForUnique[8] = Math.PI;
+            deviationsFromZeroForUnique[11] = 0.5 * Math.PI;
+            deviationsFromZeroForUnique[12] = 1.5 * Math.PI;
 
             for (var i = 0; i < gameParams.gearIntrinsics.length; i++) {
                 var notchEquivalenceClass = gameParams.gearIntrinsics[i].NotchEquivalenceClass;
@@ -102,16 +102,16 @@ module GlareSim {
                             deviationsFromSingleNotch[notchEquivalenceClass];
                         break;
                     case 0:
-                    case 2:
                     case 4:
                     case 7:
-                    case 8:
                     case 11:
                     case 12:
                         gameParams.gearIntrinsics[i].HoleAngle =
                             deviationsFromZeroForUnique[notchEquivalenceClass];
                         break;
                     case 1:
+                    case 2:
+                    case 8:
                     case 9:
                     case 10:
                         gameParams.gearIntrinsics[i].InnerRadius = 0;
@@ -163,14 +163,12 @@ module GlareSim {
 
             var n = gameParams.pegs.length;
             gameParams.gearIntrinsics = [];
+
+            var holeRadius = 0.85;
             
             for (var j = 0; j < n; j++) {
                 var notchAngles = Utilities.getNotchAngles(gameParams.pegs, j, edges[j]); 
                 var sortedNotchAngles = notchAngles.sort((n1,n2) => n1 - n2);
-
-                var gaps = this.getGapsInOrder(sortedNotchAngles);
-
-                var holeRadius = 0.75;
 
                 gameParams.gearIntrinsics[j] = new GlareSim.HollowGearIntrinsics(
                     holeRadius,
@@ -180,7 +178,7 @@ module GlareSim {
                     6 * gameParams.pegs[j].expectedGearRadius,
                     gameParams.gearHeight,
                     0,
-                    2 * holeRadius + 0.2,
+                    gameParams.pegs[j].expectedGearRadius - (2 * holeRadius + 0.1),
                     sortedNotchAngles);
             }
 

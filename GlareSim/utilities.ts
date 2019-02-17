@@ -125,30 +125,30 @@ module GlareSim {
 
         public static drawCharactersInHoles(gameParams: GameParameters, drawCharacter: UiTextureXYCharacterDrawer) {
             var characters = [];
-            characters[17] = "T";
-            characters[19] = "H";
-            characters[20] = "E";
+            characters[17] = ["T"]; // L
+            characters[19] = ["H"]; // L
+            characters[20] = ["E"]; // S
 
-            characters[18] = "E";
-            characters[14] = "D";
-            characters[15] = "G";
-            characters[16] = "E";
+            characters[18] = ["E"]; // M
+            characters[14] = ["D"]; // M
+            characters[15] = ["G"]; // L
+            characters[16] = ["E"]; // S
 
-            characters[0] = "O";
-            characters[28] = "F";
+            characters[0]  = ["O"]; // M
+            characters[28] = ["F"]; // L
 
-            characters[27] = "T";
-            characters[24] = "H";
-            characters[13] = "E";
+            characters[27] = ["T"]; // L
+            characters[24] = ["H"]; // L
+            characters[13] = ["E"]; // L
 
-            characters[5] = "U";
-            characters[12] = "N";
-            characters[6] = "I";
-            characters[7] = "V";
-            characters[4] = "E";
-            characters[10] = "R";
-            characters[8] = "S";
-            characters[9] = "E";
+            characters[5]  = ["U"]; // M
+            characters[12] = ["N"]; // S
+            characters[6]  = ["I"]; // M
+            characters[7]  = ["V"]; // S
+            characters[4]  = ["E"]; // S
+            characters[10] = ["R"]; // M
+            characters[8]  = ["S"]; // L
+            characters[9]  = ["E"]; // S
 
             for (var i = 0; i < gameParams.gearIntrinsics.length; i++) {
                 if (characters[i] != null) {

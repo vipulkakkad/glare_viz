@@ -1,7 +1,7 @@
 /******* Config entries ******/
 var showAdjacencyLines = false;
-var colorScheme = "Default"; // options include "Chirality", "NotchEquivalence"
-var solve = false;
+var colorScheme = "NotchEquivalence"; // options include "Chirality", "NotchEquivalence"
+var solve = true;
 
 /******* Create canvas and engine ******/
 var canvas = document.getElementById("renderCanvas"); // Get the canvas element 

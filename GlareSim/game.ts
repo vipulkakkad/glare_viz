@@ -163,7 +163,10 @@ module GlareSim {
 
             this.UnSelectGear();
             this.allGearsInPlace = true;
-            alert("Nicely done - you can scroll to spin all the gears together now! (all other interactions disabled)");
+            alert(
+                "Every twenty four minutes, in the same vein you'll find\n" +
+                "The magician who all of this divined\n\n"+
+                "You can scroll to spin the outer gear now! (all other interactions disabled)");
         }
     }
 }

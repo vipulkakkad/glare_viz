@@ -154,7 +154,7 @@ module GlareSim {
             for (var i = 0; i < gameParams.gearIntrinsics.length; i++) {
                 if (characters[i] != null) {
                     var peg = gameParams.pegs[i];
-                    var angleDeviationDirection = peg.isPositiveChirality ? 1 : -1;
+                    var angleDeviationDirection = peg.isPositiveChirality ? -1 : 1;
 
                     var gearIntrinsics = gameParams.gearIntrinsics[i];
                    

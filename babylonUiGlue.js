@@ -185,17 +185,16 @@ function onMeshDoubleClicked(mesh, game) {
 
 function showHelp() {
     alert(
-        "Place and orient all the gears from the bottom row onto the pegs on the board. \n" +
+        "Look to the heavens when the stars are aligned;\n" + 
+        "Lift the veil, and leave the present behind!\n\n" +
+
+        "Place and orient all the gears from the bottom row onto the pegs on the board.\n" +
         "> CLICK ON GEAR: selects gear\n" +
-        "> CLICK ON BOARD: unselects gear\n" +
-        "> SCROLL: scroll screen, or if gear selected, spin gear\n" +
+        "> CLICK OUTSIDE BOARD: unselects gear\n" +
+        "> SCROLL: Spin selected gear, or scroll screen if no gear selected\n" +
         "> CLICK ON PEG: if gear selected, place selected gear here\n" +
         "> DOUBLE-CLICK ON GEAR: reset gear position off the board\n\n" +
-        "You'll notice that as the gears spin on the pegs, the center changes color between white and black.\n\n" +
-        "The rules are:\n" +
-        "> Each peg must have a gear of the correct radius, so that no gears overlap (this will be obvious in the physical version :)\n" + 
-        "> Gears must be oriented so that the center is either black or white\n" + 
-        "> Gears must be oriented so that the centers of adjacent gears are opposite colors\n\n" + 
+
         "One gear has been placed for you, in a fixed orientation!\n")
 }
 

@@ -7,6 +7,7 @@ module GlareSim {
 
         public Pegs: GamePeg[];
         public Gears: GameGear[];
+        public RimGear: GameGear;
         
         private allGearsInPlace: boolean = false;
 
@@ -16,9 +17,11 @@ module GlareSim {
         constructor(
             pegs: GamePeg[],
             gears: GameGear[],
+            rimGear: GameGear,
             startingPegIndex: number) {
             this.Pegs = pegs;
             this.Gears = gears;
+            this.RimGear = rimGear;
 
             this.startingPeg = this.Pegs[startingPegIndex];
             this.startingGear = this.Gears[startingPegIndex];
@@ -34,6 +37,10 @@ module GlareSim {
         public OnGearClicked(clickedGear: GameGear) {
             console.log(clickedGear.GetMeshId());
             if (this.allGearsInPlace) {
+                return;
+            }
+
+            if (clickedGear == this.RimGear) {
                 return;
             }
 
@@ -53,6 +60,10 @@ module GlareSim {
 
         public OnGearDoubleClicked(clickedGear: GameGear) {
             if (this.allGearsInPlace) {
+                return;
+            }
+
+            if (clickedGear == this.RimGear) {
                 return;
             }
 
@@ -126,6 +137,9 @@ module GlareSim {
                 var spinAngle = tangentialDistance / gear.Radius;
                 gear.SpinByAngle(spinAngle, this.Pegs[i].Spec.isPositiveChirality ? clockwise : !clockwise)
             }
+
+            var rimSpinAngle = tangentialDistance / this.RimGear.Radius;
+            this.RimGear.SpinByAngle(rimSpinAngle, clockwise)
         }
 
         public Solve() {

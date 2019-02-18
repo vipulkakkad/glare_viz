@@ -1,6 +1,6 @@
 /******* Config entries ******/
 var showAdjacencyLines = false;
-var colorScheme = "Chirality"; // options include "Chirality", "NotchEquivalence"
+var colorScheme = "Default"; // options include "Chirality", "NotchEquivalence"
 var solve = true;
 
 /******* Create canvas and engine ******/
@@ -65,6 +65,7 @@ var createScene = function (gameParameters) {
         }
     }
 
+    // Add rim
     var rimInnerRadius = 36;
     var rimIntrinsics = new GlareSim.HollowGearIntrinsics(
         rimInnerRadius,
@@ -82,7 +83,7 @@ var createScene = function (gameParameters) {
     rimPegSpec.y = gameParameters.yMax / 2;
     rimPegSpec.axisAngle = 0;
 
-    addGearFromIntrinsics(scene, meshManager, rimIntrinsics, rimPegSpec);
+    var rimGear = addGearFromIntrinsics(scene, meshManager, rimIntrinsics, rimPegSpec);
 
     GlareSim.Utilities.colorGearsBy(colorScheme, gameParameters, gameGears);
     
@@ -97,7 +98,7 @@ var createScene = function (gameParameters) {
     }
 
     // Setup game
-    var game = new GlareSim.Game(gamePegs, gameGears, gameParameters.startingPegIndex);
+    var game = new GlareSim.Game(gamePegs, gameGears, rimGear, gameParameters.startingPegIndex);
 
     // Add board
     var textureScale = 10;

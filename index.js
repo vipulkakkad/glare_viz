@@ -65,6 +65,25 @@ var createScene = function (gameParameters) {
         }
     }
 
+    var rimInnerRadius = 36;
+    var rimIntrinsics = new GlareSim.HollowGearIntrinsics(
+        rimInnerRadius,
+        gameParameters.toothAmplitude,
+        rimInnerRadius + 2,
+        0,
+        6 * rimInnerRadius,
+        gameParameters.gearHeight,
+        0,
+        0,
+        []);
+
+    var rimPegSpec = new GlareSim.PegSpec();
+    rimPegSpec.x = gameParameters.xMax / 2;
+    rimPegSpec.y = gameParameters.yMax / 2;
+    rimPegSpec.axisAngle = 0;
+
+    addGearFromIntrinsics(scene, meshManager, rimIntrinsics, rimPegSpec);
+
     GlareSim.Utilities.colorGearsBy(colorScheme, gameParameters, gameGears);
     
     // Add pegs

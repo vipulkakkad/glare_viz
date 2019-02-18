@@ -84,7 +84,7 @@ module GlareSim {
 
             var deviationsFromZeroForUnique = [];
             deviationsFromZeroForUnique[0] = Math.PI;
-            deviationsFromZeroForUnique[2] = 1.6 * Math.PI;
+            deviationsFromZeroForUnique[2] = 1.7 * Math.PI;
             deviationsFromZeroForUnique[4] = 0.5 * Math.PI;
             deviationsFromZeroForUnique[7] = 0.5 * Math.PI;
             deviationsFromZeroForUnique[8] = Math.PI;
@@ -103,6 +103,7 @@ module GlareSim {
                             deviationsFromSingleNotch[notchEquivalenceClass];
                         break;
                     case 0:
+                    case 2:
                     case 4:
                     case 7:
                     case 11:
@@ -111,7 +112,6 @@ module GlareSim {
                             deviationsFromZeroForUnique[notchEquivalenceClass];
                         break;
                     case 1:
-                    case 2:
                     case 8:
                     case 9:
                     case 10:
@@ -125,40 +125,43 @@ module GlareSim {
 
         public static drawCharactersInHoles(gameParams: GameParameters, drawCharacter: UiTextureXYCharacterDrawer) {
             var characters = [];
-            characters[17] = ["T", "X", "Y", "Z" ]; // L
-            characters[19] = ["H", "X", "Y", "Z" ]; // L
-            characters[20] = ["E", "Z" ]; // L
+            characters[17] = ["T", "R", "T", "R", "M" ]; // L
+            characters[19] = ["H", "E", "R", "E", "O" ]; // L
+            characters[20] = ["E", "A", "V", "R", "A" ]; // S
 
-            characters[18] = ["E", "Y", "Z" ]; // L
-            characters[14] = ["D", "Y", "Z" ]; // L
-            characters[15] = ["G", "X", "Y", "Z" ]; // L
-            characters[16] = ["E", "Z" ]; // L
+            characters[18] = ["E"]; // M
+            characters[14] = ["D"]; // M
+            characters[15] = ["G", "O", "N", "L", "E" ]; // L
+            characters[16] = ["E", "L", "L", "Q", "S" ]; // S
 
-            characters[0]  = ["O", "Y", "Z" ]; // L
-            characters[28] = ["F", "X", "Y", "Z" ]; // L
+            characters[0]  = ["O"]; // M
+            characters[28] = ["F", "U", "F", "Y", "U" ]; // L
 
-            characters[27] = ["T", "X", "Y", "Z" ]; // L
-            characters[24] = ["H", "X", "Y", "Z" ]; // L
-            characters[13] = ["E", "X", "Y", "Z" ]; // L
+            characters[27] = ["T", "T", "O", "M", "A" ]; // L
+            characters[24] = ["H", "I", "R", "A", "R" ]; // L
+            characters[13] = ["E", "O", "M", "D", "T" ]; // L
 
-            characters[5]  = ["U", "Y", "Z" ]; // L
-            characters[12] = ["N", "Z" ]; // L
-            characters[6]  = ["I", "Y", "Z" ]; // L
-            characters[7]  = ["V", "Z" ]; // L
-            characters[4]  = ["E", "Z" ]; // L
-            characters[10] = ["R", "Y", "Z" ]; // L
-            characters[8]  = ["S", "X", "Y", "Z" ]; // L
-            characters[9]  = ["E", "Z" ]; // L
+            characters[5]  = ["U"]; // M
+            characters[12] = ["N", "E", "N", "E", "A" ]; // S
+            characters[6]  = ["I"]; // M
+            characters[7]  = ["V", "W", "A", "R", "T" ]; // S
+            characters[4]  = ["E", "A", "R", "N", "I" ]; // S
+            characters[3]  = ["R", "Y", "V", "V", "A" ]; // L
+            characters[8]  = ["S", "!", "E", "E", "R" ]; // L
+            characters[10] = ["E"]; // M
+            characters[9]  = ["!", "S", "!", "Y", "!" ]; // S
 
             for (var i = 0; i < gameParams.gearIntrinsics.length; i++) {
                 if (characters[i] != null) {
                     var peg = gameParams.pegs[i];
-                    var gearIntrinsics = gameParams.gearIntrinsics[i];
+                    var angleDeviationDirection = peg.isPositiveChirality ? 1 : -1;
 
+                    var gearIntrinsics = gameParams.gearIntrinsics[i];
+                   
                     var n = characters[i].length;
                     for (var j = 0; j < n; j++)
                     {
-                        var theta = gearIntrinsics.HoleAngle + ((j / n) * (2*Math.PI));
+                        var theta = gearIntrinsics.HoleAngle + (angleDeviationDirection * (j / n) * (2*Math.PI));
 
                         var xHole = peg.x + (gearIntrinsics.HoleDeviation * Math.cos(theta));
                         var yHole = peg.y + (gearIntrinsics.HoleDeviation * Math.sin(theta));

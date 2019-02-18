@@ -135,7 +135,7 @@ module GlareSim {
             characters[16] = ["E", "L", "L", "Q", "S" ]; // S
 
             characters[0]  = ["O"]; // M
-            characters[28] = ["F", "U", "F", "Y", "U" ]; // L
+            characters[28] = ["F", "Y", "U", "U", "F" ]; // S
 
             characters[27] = ["T", "T", "O", "M", "A" ]; // L
             characters[24] = ["H", "I", "R", "A", "R" ]; // L

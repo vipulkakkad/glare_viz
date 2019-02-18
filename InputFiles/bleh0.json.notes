@@ -42,3 +42,24 @@ REVOLUTIONARY!!
 TRANSFORMATIVE!
 REALLYMADEWAVES      
 MOREQUARTERNARY
+
+28:
+x = 21.91907
+y = 27.572262
+
+0
+x = 18.5
+y = 37.5
+
+sqrt(((21.91907 - 18.5)^2) + ((27.572262 - 37.5)^2))
+
+dx = 3.41907
+dy = -9.927738
+
+scale by 7.5 / 10.5
+dx = 2.44219285714
+dy = -7.09124142857
+
+recompute x, y
+x = 20.9421928571
+y = 30.4087585714

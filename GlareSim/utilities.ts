@@ -125,40 +125,46 @@ module GlareSim {
 
         public static drawCharactersInHoles(gameParams: GameParameters, drawCharacter: UiTextureXYCharacterDrawer) {
             var characters = [];
-            characters[17] = ["T"]; // L
-            characters[19] = ["H"]; // L
-            characters[20] = ["E"]; // S
+            characters[17] = ["T", "X", "Y", "Z" ]; // L
+            characters[19] = ["H", "X", "Y", "Z" ]; // L
+            characters[20] = ["E", "Z" ]; // L
 
-            characters[18] = ["E"]; // M
-            characters[14] = ["D"]; // M
-            characters[15] = ["G"]; // L
-            characters[16] = ["E"]; // S
+            characters[18] = ["E", "Y", "Z" ]; // L
+            characters[14] = ["D", "Y", "Z" ]; // L
+            characters[15] = ["G", "X", "Y", "Z" ]; // L
+            characters[16] = ["E", "Z" ]; // L
 
-            characters[0]  = ["O"]; // M
-            characters[28] = ["F"]; // L
+            characters[0]  = ["O", "Y", "Z" ]; // L
+            characters[28] = ["F", "X", "Y", "Z" ]; // L
 
-            characters[27] = ["T"]; // L
-            characters[24] = ["H"]; // L
-            characters[13] = ["E"]; // L
+            characters[27] = ["T", "X", "Y", "Z" ]; // L
+            characters[24] = ["H", "X", "Y", "Z" ]; // L
+            characters[13] = ["E", "X", "Y", "Z" ]; // L
 
-            characters[5]  = ["U"]; // M
-            characters[12] = ["N"]; // S
-            characters[6]  = ["I"]; // M
-            characters[7]  = ["V"]; // S
-            characters[4]  = ["E"]; // S
-            characters[10] = ["R"]; // M
-            characters[8]  = ["S"]; // L
-            characters[9]  = ["E"]; // S
+            characters[5]  = ["U", "Y", "Z" ]; // L
+            characters[12] = ["N", "Z" ]; // L
+            characters[6]  = ["I", "Y", "Z" ]; // L
+            characters[7]  = ["V", "Z" ]; // L
+            characters[4]  = ["E", "Z" ]; // L
+            characters[10] = ["R", "Y", "Z" ]; // L
+            characters[8]  = ["S", "X", "Y", "Z" ]; // L
+            characters[9]  = ["E", "Z" ]; // L
 
             for (var i = 0; i < gameParams.gearIntrinsics.length; i++) {
                 if (characters[i] != null) {
                     var peg = gameParams.pegs[i];
                     var gearIntrinsics = gameParams.gearIntrinsics[i];
 
-                    var xHole = peg.x + (gearIntrinsics.HoleDeviation * Math.cos(gearIntrinsics.HoleAngle));
-                    var yHole = peg.y + (gearIntrinsics.HoleDeviation * Math.sin(gearIntrinsics.HoleAngle));
+                    var n = characters[i].length;
+                    for (var j = 0; j < n; j++)
+                    {
+                        var theta = gearIntrinsics.HoleAngle + ((j / n) * (2*Math.PI));
 
-                    drawCharacter(xHole, yHole, gearIntrinsics.InnerRadius, characters[i]);
+                        var xHole = peg.x + (gearIntrinsics.HoleDeviation * Math.cos(theta));
+                        var yHole = peg.y + (gearIntrinsics.HoleDeviation * Math.sin(theta));
+    
+                        drawCharacter(xHole, yHole, gearIntrinsics.InnerRadius, characters[i][j]);    
+                    }
                 }
             }            
         }

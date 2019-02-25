@@ -26,7 +26,7 @@ module GlareSim {
 
         public OnGearClicked(clickedGear: GameGear) {
             console.log(clickedGear.GetMeshId());
-            //console.log(clickedGear.Intrinsics.NotchEquivalenceClass);
+            console.log(clickedGear.Intrinsics.NotchEquivalenceClass);
             if (this.allGearsInPlace) {
                 return;
             }
@@ -55,7 +55,7 @@ module GlareSim {
             }
 
             this.ResetGearPosition(clickedGear);
-            this.EvaluateGearStates();
+            // this.EvaluateGearStates();
         }
 
         public OnScroll(isUpwards: boolean) {            
@@ -65,7 +65,7 @@ module GlareSim {
             }
 
             this.SelectedGear.SpinOneClick(isUpwards);
-            this.EvaluateGearStates();
+            // this.EvaluateGearStates();
         }
 
         public OnPegClicked(clickedPeg: GamePeg) {            
@@ -75,7 +75,7 @@ module GlareSim {
 
             if (this.SelectedGear != null) {
                 this.SelectedGear.PlaceAtPeg(clickedPeg);
-                this.EvaluateGearStates();
+                // this.EvaluateGearStates();
             }
         }
 
@@ -142,10 +142,7 @@ module GlareSim {
 
             this.UnSelectGear();
             this.allGearsInPlace = true;
-            alert(
-                "Every twenty four minutes, in the same vein you'll find\n" +
-                "The magician who all of this divined\n\n"+
-                "You can scroll to spin the outer gear now! (all other interactions disabled)");
+            alert("You can scroll to spin the outer gear now! (all other interactions disabled)");
         }
     }
 }

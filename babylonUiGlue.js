@@ -60,7 +60,7 @@ function addBoard(scene, meshManager, gameParameters, textureScale) {
 	boardPlane.material.diffuseTexture = boardPlaneTexture;
 
     var font = "bold 10px monospace";
-    boardPlaneTexture.drawText("Glare", 0, textureScale, font, "white", "black", true, true);
+    boardPlaneTexture.drawText("Glare", 0, textureScale, font, "black", "black", true, true);
 }
 
 function drawCharacterOnBoard(x, y, tileWidth, character, textureScale, scene, meshManager) {

@@ -106,10 +106,10 @@ module GlareSim {
             deviationsFromZeroForUnique[0] = Math.PI;
             deviationsFromZeroForUnique[2] = 1.7 * Math.PI;
             deviationsFromZeroForUnique[4] = 0.5 * Math.PI;
-            deviationsFromZeroForUnique[7] = 0.5 * Math.PI;
+            deviationsFromZeroForUnique[7] = 1.25 * Math.PI;
             deviationsFromZeroForUnique[8] = Math.PI;
-            deviationsFromZeroForUnique[11] = 1.25 * Math.PI;
-            deviationsFromZeroForUnique[12] = 0.75 * Math.PI;
+            deviationsFromZeroForUnique[11] = 1.75 * Math.PI;
+            deviationsFromZeroForUnique[12] = 0.5 * Math.PI;
 
             for (var i = 0; i < gameParams.gearIntrinsics.length; i++) {
                 var notchEquivalenceClass = gameParams.gearIntrinsics[i].NotchEquivalenceClass;
@@ -155,8 +155,8 @@ module GlareSim {
             characters[12] = ["O", "X", "S", "N", "B" ]; // L
             characters[24] = ["M", "P", "E", "I", "O" ]; // L
             characters[13] = ["I", "L", "L", "N", "N" ]; // S
-            characters[28] = ["N", "O", "L", "G", "E" ]; // S
-            characters[27] = ["U", "S", "I", "F", "R" ]; // S
+            characters[27] = ["N", "O", "L", "G", "E" ]; // S
+            characters[28] = ["U", "S", "I", "F", "R" ]; // S
             characters[17] = ["T", "I", "P", "O", "A" ]; // L
             characters[19] = ["E", "V", "S", "R", "Y" ]; // L
             characters[20] = ["S", "E", "E", "K", "S" ]; // S

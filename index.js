@@ -28,7 +28,7 @@ var createScene = function (gameParameters) {
     var xGearRow = -5;
     var defaultPegSpec = new GlareSim.PegSpec();
 
-    GlareSim.Utilities.rotateWholeSetup(gameParameters, Math.PI/6);    
+    GlareSim.Utilities.rotateWholeSetup(gameParameters, 90 * Math.PI/180);    
 
     var edges = GlareSim.Utilities.computeAdjacencies(
         gameParameters,
@@ -158,7 +158,11 @@ var createScene = function (gameParameters) {
 
     if (solve) {
         game.Solve();
+    } else {
+        showHelp();
     }
+
+    
 
     scene.registerBeforeRender(() => {})
 

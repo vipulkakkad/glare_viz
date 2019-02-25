@@ -80,7 +80,7 @@ module GlareSim {
             var deviationsFromSingleNotch = [];
             deviationsFromSingleNotch[3] = 1.5;
             deviationsFromSingleNotch[5] = -1;
-            deviationsFromSingleNotch[6] = -0.3;
+            deviationsFromSingleNotch[6] = -1;
 
             var deviationsFromZeroForUnique = [];
             deviationsFromZeroForUnique[0] = Math.PI;
@@ -88,23 +88,20 @@ module GlareSim {
             deviationsFromZeroForUnique[4] = 0.5 * Math.PI;
             deviationsFromZeroForUnique[7] = 0.5 * Math.PI;
             deviationsFromZeroForUnique[8] = Math.PI;
-            deviationsFromZeroForUnique[11] = 0.5 * Math.PI;
-            deviationsFromZeroForUnique[12] = 1.5 * Math.PI;
+            deviationsFromZeroForUnique[11] = 1.25 * Math.PI;
+            deviationsFromZeroForUnique[12] = 0.75 * Math.PI;
 
             for (var i = 0; i < gameParams.gearIntrinsics.length; i++) {
                 var notchEquivalenceClass = gameParams.gearIntrinsics[i].NotchEquivalenceClass;
                 switch(notchEquivalenceClass)
                 {
                     case 3:
-                    case 5:
                     case 6:
                         gameParams.gearIntrinsics[i].HoleAngle = 
                             gameParams.gearIntrinsics[i].NotchAngles[0] + 
                             deviationsFromSingleNotch[notchEquivalenceClass];
                         break;
-                    case 0:
                     case 2:
-                    case 4:
                     case 7:
                     case 11:
                     case 12:
@@ -115,6 +112,9 @@ module GlareSim {
                     case 8:
                     case 9:
                     case 10:
+                    case 5:
+                    case 4:
+                    case 0:
                         gameParams.gearIntrinsics[i].InnerRadius = 0;
                         gameParams.gearIntrinsics[i].InnerToothAmplitude = 0;
                     default:
@@ -125,31 +125,24 @@ module GlareSim {
 
         public static drawCharactersInHoles(gameParams: GameParameters, drawCharacter: UiTextureXYCharacterDrawer) {
             var characters = [];
-            characters[17] = ["T", "R", "T", "R", "M" ]; // L
-            characters[19] = ["H", "E", "R", "E", "O" ]; // L
-            characters[20] = ["E", "A", "V", "R", "A" ]; // S
+            characters[15] = ["E", "E", "J", "E", "W" ]; // L
+            characters[16] = ["V", "N", "O", "D", "I" ]; // L
+            characters[3]  = ["E", "R", "H", "W", "L" ]; // S
+            characters[8]  = ["R", "I", "A", "I", "H" ]; // L
+            characters[9]  = ["Y", "C", "N", "N", "E" ]; // S
+            characters[4]  = ["T", "O", "N", "T", "L" ]; // S
+            characters[7]  = ["W", "E", "E", "U", "M" ]; // L
+            characters[12] = ["O", "X", "S", "N", "B" ]; // L
+            characters[24] = ["M", "P", "E", "I", "O" ]; // L
+            characters[13] = ["I", "L", "L", "N", "N" ]; // S
+            characters[28] = ["N", "O", "L", "G", "E" ]; // S
+            characters[27] = ["U", "S", "I", "F", "R" ]; // S
+            characters[17] = ["T", "I", "P", "O", "A" ]; // L
+            characters[19] = ["E", "V", "S", "R", "Y" ]; // L
+            characters[20] = ["S", "E", "E", "K", "S" ]; // S
 
-            characters[18] = ["E"]; // M
-            characters[14] = ["D"]; // M
-            characters[15] = ["G", "O", "N", "L", "E" ]; // L
-            characters[16] = ["E", "L", "L", "Q", "S" ]; // S
-
-            characters[0]  = ["O"]; // M
-            characters[28] = ["F", "Y", "U", "U", "F" ]; // S
-
-            characters[27] = ["T", "T", "O", "M", "A" ]; // L
-            characters[24] = ["H", "I", "R", "A", "R" ]; // L
-            characters[13] = ["E", "O", "M", "D", "T" ]; // L
-
-            characters[5]  = ["U"]; // M
-            characters[12] = ["N", "E", "N", "E", "A" ]; // S
-            characters[6]  = ["I"]; // M
-            characters[7]  = ["V", "W", "A", "R", "T" ]; // S
-            characters[4]  = ["E", "A", "R", "N", "I" ]; // S
-            characters[3]  = ["R", "Y", "V", "V", "A" ]; // L
-            characters[8]  = ["S", "!", "E", "E", "R" ]; // L
-            characters[10] = ["E"]; // M
-            characters[9]  = ["!", "S", "!", "Y", "!" ]; // S
+            var small = [0, 1, 2, 3, 4];
+            var large = [0, 2, 4, 1, 3]
 
             for (var i = 0; i < gameParams.gearIntrinsics.length; i++) {
                 if (characters[i] != null) {
@@ -166,7 +159,9 @@ module GlareSim {
                         var xHole = peg.x + (gearIntrinsics.HoleDeviation * Math.cos(theta));
                         var yHole = peg.y + (gearIntrinsics.HoleDeviation * Math.sin(theta));
     
-                        drawCharacter(xHole, yHole, gearIntrinsics.InnerRadius, characters[i][j]);    
+                        var charIndex = gearIntrinsics.OuterRadius > 4.5 ? large : small;
+                        var character = characters[i][charIndex[j]];
+                        drawCharacter(xHole, yHole, gearIntrinsics.InnerRadius, character);    
                     }
                 }
             }            
@@ -215,6 +210,7 @@ module GlareSim {
             gameParams.gearIntrinsics = [];
 
             var holeRadius = 0.85;
+            var holeDeviation = 1.5;
             
             for (var j = 0; j < n; j++) {
                 var notchAngles = Utilities.getNotchAngles(gameParams.pegs, j, edges[j]); 
@@ -225,10 +221,10 @@ module GlareSim {
                     0,
                     gameParams.pegs[j].expectedGearRadius,
                     gameParams.toothAmplitude,
-                    6 * gameParams.pegs[j].expectedGearRadius,
+                    12 * gameParams.pegs[j].expectedGearRadius,
                     gameParams.gearHeight,
                     0,
-                    gameParams.pegs[j].expectedGearRadius - (2 * holeRadius + 0.1),
+                    holeDeviation,
                     sortedNotchAngles);
             }
 

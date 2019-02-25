@@ -72,7 +72,7 @@ var createScene = function (gameParameters) {
         gameParameters.toothAmplitude,
         rimInnerRadius + 2,
         0,
-        6 * rimInnerRadius,
+        12 * rimInnerRadius,
         gameParameters.gearHeight,
         0,
         0,
@@ -91,7 +91,7 @@ var createScene = function (gameParameters) {
     var gamePegs = [];
     for (var i = 0; i < gameParameters.pegs.length; i++)
     {
-        var pegSpec = gameParameters.pegs[i];
+        var pegSpec = gameParameters.pegs[i];        
         var gamePeg = addPegAtPosition(scene, meshManager, gameParameters, pegSpec);
 
         gamePegs[i] = gamePeg;

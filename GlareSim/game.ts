@@ -36,6 +36,7 @@ module GlareSim {
 
         public OnGearClicked(clickedGear: GameGear) {
             console.log(clickedGear.GetMeshId());
+            //console.log(clickedGear.Intrinsics.NotchEquivalenceClass);
             if (this.allGearsInPlace) {
                 return;
             }

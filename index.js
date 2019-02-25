@@ -1,5 +1,5 @@
 /******* Config entries ******/
-var solve = true;
+var solve = false;
 
 /******* Debugging visualizations ******/
 var showAdjacencyLines = false;
@@ -110,7 +110,7 @@ var createScene = function (gameParameters) {
     }
 
     // Setup game
-    var game = new GlareSim.Game(gamePegs, gameGears, rimGear, gameParameters.startingPegIndex);
+    var game = new GlareSim.Game(gamePegs, gameGears, rimGear, gameParameters.startingPegIndex, !solve);
 
     // Add board
     var textureScale = 10;
@@ -160,9 +160,7 @@ var createScene = function (gameParameters) {
         game.Solve();
     } else {
         showHelp();
-    }
-
-    
+    }   
 
     scene.registerBeforeRender(() => {})
 

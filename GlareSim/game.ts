@@ -14,10 +14,18 @@ module GlareSim {
         constructor(
             pegs: GamePeg[],
             gears: GameGear[],
-            rimGear: GameGear) {
+            rimGear: GameGear,
+            randomize: boolean) {
             this.Pegs = pegs;
             this.Gears = gears;
             this.RimGear = rimGear;
+
+            if (randomize)
+            {
+                for (var i = 0; i < this.Gears.length; i++) {
+                    this.Gears[i].SpinByAngle(Math.random() * 2 * Math.PI, true);
+                }    
+            }
         }
 
         public WillHandleScroll() : boolean {

@@ -189,16 +189,14 @@ function showHelp() {
         "Follow the trail that's been woven through time,\n" +
         "And in the very same vein, you will find,\n" +
         "Just who these men were and what they divined;\n" +
-        "How their achievements are immortalized.,\n\n" +
+        "How their achievements are immortalized.\n\n" +
 
-        "Place and orient all the gears from the bottom row onto the pegs on the board.\n" +
+        "Simulation-specific instructions:\n" +
         "> CLICK ON GEAR: selects gear\n" +
         "> CLICK OUTSIDE BOARD: unselects gear\n" +
         "> SCROLL: Spin selected gear, or scroll screen if no gear selected\n" +
         "> CLICK ON PEG: if gear selected, place selected gear here\n" +
-        "> DOUBLE-CLICK ON GEAR: reset gear position off the board\n\n" +
-
-        "One gear has been placed for you, in a fixed orientation!\n")
+        "> DOUBLE-CLICK ON GEAR: reset gear position off the board")
 }
 
 function onScroll(game, isUpwards) {

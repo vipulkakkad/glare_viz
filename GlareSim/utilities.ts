@@ -3,6 +3,26 @@ module GlareSim {
     export type UiTextureXYCharacterDrawer = (x: number, y: number, tileWidth: number, text: string) => void;
 
     export class Utilities {
+        public static rotateWholeSetup(gameParams: GameParameters, rotateBy: number) {
+            var xCenter = gameParams.xMax / 2;
+            var yCenter = gameParams.yMax / 2;
+
+            var n = gameParams.pegs.length;
+
+            for (var i = 0; i < n; i++) {
+                var xDelta = gameParams.pegs[i].x - xCenter;
+                var yDelta = gameParams.pegs[i].y - yCenter;
+
+                var thetaOriginal = Math.atan2(yDelta, xDelta);
+                var radius = Math.sqrt(xDelta * xDelta + yDelta * yDelta);
+
+                var thetaNew = thetaOriginal + rotateBy;
+
+                gameParams.pegs[i].x = xCenter + radius * Math.cos(thetaNew);
+                gameParams.pegs[i].y = yCenter + radius * Math.sin(thetaNew);
+            }
+        }
+
         public static computeAdjacencies(gameParams: GameParameters, drawLine: UiMeshXYLineDrawer) : number[][] {
             var threshold = 0.1;
 

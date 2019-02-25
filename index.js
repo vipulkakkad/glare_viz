@@ -28,11 +28,13 @@ var createScene = function (gameParameters) {
     var xGearRow = -5;
     var defaultPegSpec = new GlareSim.PegSpec();
 
+    GlareSim.Utilities.rotateWholeSetup(gameParameters, Math.PI/6);    
+
     var edges = GlareSim.Utilities.computeAdjacencies(
         gameParameters,
         function(x1, y1, x2, y2, meshName) {
             drawLine(x1, y1, x2, y2, meshName, scene, showAdjacencyLines)
-        });
+        });    
 
     GlareSim.Utilities.setChiralityInBipartiteManner(gameParameters, edges);
     GlareSim.Utilities.createGearIntrinsicsFromPegSpecs(gameParameters, edges);
@@ -86,7 +88,7 @@ var createScene = function (gameParameters) {
         rimNotches,
         rimInnerRadius + gameParameters.toothAmplitude + 0.1,
         rimInnerRadius + 1.8,
-        Math.PI / 90);
+        Math.PI / 120);
 
     var rimPegSpec = new GlareSim.PegSpec();
     rimPegSpec.x = gameParameters.xMax / 2;

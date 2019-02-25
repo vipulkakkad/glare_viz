@@ -111,8 +111,9 @@ module GlareSim {
                 MeshUtilities.addNotchAfterOtherVerticesAndFaces(
                     this.Vertices,
                     this.Faces,
-                    intrinsics.OuterRadius,
-                    intrinsics.OuterToothAmplitude,
+                    intrinsics.NotchPointRadius,
+                    intrinsics.NotchBaseRadius,
+                    intrinsics.NotchAngleSubtended,
                     - (intrinsics.Height + 0.01),
                     new Color(1, 0.7, 0, 1),
                     intrinsics.NotchAngles[i]);

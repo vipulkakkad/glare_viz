@@ -225,7 +225,10 @@ module GlareSim {
                     gameParams.gearHeight,
                     0,
                     holeDeviation,
-                    sortedNotchAngles);
+                    sortedNotchAngles,
+                    gameParams.pegs[j].expectedGearRadius - gameParams.toothAmplitude - 0.1,
+                    gameParams.pegRadius + 0.1,
+                    Math.PI / 9);
             }
 
             this.setNotchEquivalenceClasses(gameParams.gearIntrinsics);

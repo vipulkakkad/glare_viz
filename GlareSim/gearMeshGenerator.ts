@@ -66,17 +66,6 @@ module GlareSim {
 
             this.FirstGearVertex = topCenterVID;
             this.LastGearVertex = bottomLastVID;
-
-            for (var i = 0; i < intrinsics.NotchAngles.length; i++) {
-                MeshUtilities.addNotchAfterOtherVerticesAndFaces(
-                    this.Vertices,
-                    this.Faces,
-                    intrinsics.Radius,
-                    intrinsics.ToothAmplitude,
-                    - (intrinsics.Height + 0.01),
-                    new Color(1,0,0,1),
-                    intrinsics.NotchAngles[i]);
-            }
         }
 
         public GenerateGeometry(): Geometry {

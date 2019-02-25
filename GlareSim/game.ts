@@ -11,23 +11,13 @@ module GlareSim {
         
         private allGearsInPlace: boolean = false;
 
-        private startingPeg: GamePeg;        
-        private startingGear: GameGear;
-
         constructor(
             pegs: GamePeg[],
             gears: GameGear[],
-            rimGear: GameGear,
-            startingPegIndex: number) {
+            rimGear: GameGear) {
             this.Pegs = pegs;
             this.Gears = gears;
             this.RimGear = rimGear;
-
-            this.startingPeg = this.Pegs[startingPegIndex];
-            this.startingGear = this.Gears[startingPegIndex];
-
-            this.startingGear.PlaceAtPeg(this.startingPeg);
-            this.startingGear.SpinByAngle(this.startingPeg.Spec.axisAngle, false);
         }
 
         public WillHandleScroll() : boolean {
@@ -42,10 +32,6 @@ module GlareSim {
             }
 
             if (clickedGear == this.RimGear) {
-                return;
-            }
-
-            if (clickedGear == this.startingGear) {
                 return;
             }
 
@@ -68,10 +54,6 @@ module GlareSim {
                 return;
             }
 
-            if (clickedGear == this.startingGear) {
-                return;
-            }
-
             this.ResetGearPosition(clickedGear);
             this.EvaluateGearStates();
         }
@@ -91,10 +73,6 @@ module GlareSim {
                 return;
             }
 
-            if (clickedPeg == this.startingPeg) {
-                return;
-            }
-            
             if (this.SelectedGear != null) {
                 this.SelectedGear.PlaceAtPeg(clickedPeg);
                 this.EvaluateGearStates();

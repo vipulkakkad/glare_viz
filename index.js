@@ -1,7 +1,9 @@
 /******* Config entries ******/
+var solve = true;
+
+/******* Debugging visualizations ******/
 var showAdjacencyLines = false;
 var colorScheme = "Default"; // options include "Chirality", "NotchEquivalence"
-var solve = true;
 
 /******* Create canvas and engine ******/
 var canvas = document.getElementById("renderCanvas"); // Get the canvas element 
@@ -67,6 +69,11 @@ var createScene = function (gameParameters) {
 
     // Add rim
     var rimInnerRadius = 36;
+    var rimNotches = [];
+    for (var i = 0; i < 12; i++) {
+        rimNotches[i] = i * Math.PI / 6
+    }    
+
     var rimIntrinsics = new GlareSim.HollowGearIntrinsics(
         rimInnerRadius,
         gameParameters.toothAmplitude,
@@ -76,7 +83,10 @@ var createScene = function (gameParameters) {
         gameParameters.gearHeight,
         0,
         0,
-        []);
+        rimNotches,
+        rimInnerRadius + gameParameters.toothAmplitude + 0.1,
+        rimInnerRadius + 1.8,
+        Math.PI / 90);
 
     var rimPegSpec = new GlareSim.PegSpec();
     rimPegSpec.x = gameParameters.xMax / 2;

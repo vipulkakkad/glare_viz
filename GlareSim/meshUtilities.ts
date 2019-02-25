@@ -106,8 +106,9 @@ module GlareSim {
         public static addNotchAfterOtherVerticesAndFaces(
             vertices: Vertex[],
             faces: Face[],
-            radius: number,
-            toothAmplitude: number,
+            pointRadius: number,
+            baseRadius: number,
+            baseAngleSubtended: number,
             axialDeviation: number,
             color: Color,
             notchAngle: number)
@@ -115,27 +116,28 @@ module GlareSim {
             var vertexStartIndex = vertices.length;
             var z = axialDeviation;
             
-            var pointRadius = (radius - toothAmplitude - 0.1);
-            var arrowSideLength = radius * 0.8;
-            var arrowInnerAngle = (Math.PI / 180) * 3;
-
             var xTip = pointRadius * Math.cos(notchAngle);
             var yTip = pointRadius * Math.sin(notchAngle);
 
             vertices[vertexStartIndex + 0] = new Vertex(xTip, yTip, z, color);
             vertices[vertexStartIndex + 1] = new Vertex(
-                xTip - arrowSideLength * Math.cos(notchAngle + arrowInnerAngle),
-                yTip - arrowSideLength * Math.sin(notchAngle + arrowInnerAngle),
+                baseRadius * Math.cos(notchAngle + baseAngleSubtended),
+                baseRadius * Math.sin(notchAngle + baseAngleSubtended),
                 z,
                 color);
             vertices[vertexStartIndex + 2] = new Vertex(
-                xTip - arrowSideLength * Math.cos(notchAngle - arrowInnerAngle),
-                yTip - arrowSideLength * Math.sin(notchAngle - arrowInnerAngle),
+                baseRadius * Math.cos(notchAngle - baseAngleSubtended),
+                baseRadius * Math.sin(notchAngle - baseAngleSubtended),
                 z,
                 color);
 
             var faceStartIndex = faces.length;
-            faces[faceStartIndex] = new Face(vertexStartIndex + 0, vertexStartIndex + 2, vertexStartIndex + 1);
+
+            if (baseRadius < pointRadius) {
+                faces[faceStartIndex] = new Face(vertexStartIndex + 0, vertexStartIndex + 1, vertexStartIndex + 2);
+            } else {
+                faces[faceStartIndex] = new Face(vertexStartIndex + 0, vertexStartIndex + 2, vertexStartIndex + 1);
+            }
         }
 
         public static addSquare(

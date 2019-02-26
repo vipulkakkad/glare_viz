@@ -168,17 +168,14 @@ var createScene = function (gameParameters) {
 };
 
 /******* End of the create scene function ******/
-var fileIo = new GlareSim.FileIo();
-fileIo.LoadParametersFromFileAsync("InputFiles/bleh0.json", () => {
-    var scene = createScene(fileIo.GameParameters); //Call the createScene function
+var scene = createScene(gameParameters); //Call the createScene function
 
-    // Register a render loop to repeatedly render the scene
-    engine.runRenderLoop(function () {
-        scene.render();
-    });
+// Register a render loop to repeatedly render the scene
+engine.runRenderLoop(function () {
+    scene.render();
+});
 
-    // Watch for browser/canvas resize events
-    window.addEventListener("resize", function () {
-        engine.resize();
-    });
+// Watch for browser/canvas resize events
+window.addEventListener("resize", function () {
+    engine.resize();
 });

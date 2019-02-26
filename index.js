@@ -1,6 +1,3 @@
-/******* Config entries ******/
-var solve = false;
-
 /******* Debugging visualizations ******/
 var showAdjacencyLines = false;
 var colorScheme = "Default"; // options include "Chirality", "NotchEquivalence"

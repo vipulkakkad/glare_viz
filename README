@@ -1,3 +1,29 @@
+-------------------------------------------------------------------------------------------------------------------
+                                _______  _        _______  _______  _______ 
+                                (  ____ \( \      (  ___  )(  ____ )(  ____ \                                       
+                                | (    \/| (      | (   ) || (    )|| (    \/
+                                | |      | |      | (___) || (____)|| (__    
+                                | | ____ | |      |  ___  ||     __)|  __)   
+                                | | \_  )| |      | (   ) || (\ (   | (      
+                                | (___) || (____/\| )   ( || ) \ \__| (____/\
+                                (_______)(_______/|/     \||/   \__/(_______/
+
+-------------------------------------------------------------------------------------------------------------------
+
+A: Running this puzzle:
+
+1) Double-click stage1.html.
+This will run the first stage, where all gears start off the board, and they can be placed on the board.
+They can move on when they've reached the stage where they read off the first instruction for how much to turn.
+
+2) Double-click stage2.html
+Now, all gears are placed on the board, and the game is in the mode that they will all turn together.
+They can scroll to turn the large wheel and extract the four clues that lead to the final answer.
+
+-------------------------------------------------------------------------------------------------------------------
+
+B: Development setup:
+
 > Make sure that NPM is installed
 > Make sure debugger for Chrome is installed
 > npm install -g gulp

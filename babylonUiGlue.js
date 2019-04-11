@@ -185,11 +185,7 @@ function onMeshDoubleClicked(mesh, game) {
 
 function showHelp() {
     alert(
-        "Look to the heavens when all the stars align;\n" + 
-        "Follow the trail that's been woven through time,\n" +
-        "And in the very same vein, you will find,\n" +
-        "Just who these men were and what they divined;\n" +
-        "How their achievements are immortalized.\n\n" +
+        "Welcome to Glare!\n\n" +
 
         "Simulation-specific instructions:\n" +
         "> CLICK ON GEAR: selects gear\n" +

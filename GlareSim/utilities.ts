@@ -145,22 +145,22 @@ module GlareSim {
 
         public static drawCharactersInHoles(gameParams: GameParameters, drawCharacter: UiTextureXYCharacterDrawer) {
             var characters = [];
-            characters[15] = ["E", "E", "J", "E", "W" ]; // L
-            characters[16] = ["V", "N", "O", "D", "I" ]; // L
-            characters[3]  = ["E", "R", "H", "W", "L" ]; // S
-            characters[8]  = ["R", "I", "A", "I", "H" ]; // L
-            characters[9]  = ["Y", "C", "N", "N", "E" ]; // S
-            characters[4]  = ["T", "O", "N", "T", "L" ]; // S
-            characters[7]  = ["W", "E", "E", "U", "M" ]; // L
-            characters[12] = ["O", "X", "S", "N", "B" ]; // L
-            characters[24] = ["M", "P", "E", "I", "O" ]; // L
-            characters[13] = ["I", "L", "L", "N", "N" ]; // S
-            characters[27] = ["N", "O", "L", "G", "E" ]; // S
-            characters[28] = ["U", "S", "I", "F", "R" ]; // S
-            characters[17] = ["T", "I", "P", "O", "A" ]; // L
-            characters[19] = ["E", "V", "S", "R", "Y" ]; // L
-            characters[20] = ["S", "E", "E", "K", "S" ]; // S
-
+            characters[15]=["T","O","N","S","E",];//L
+            characters[16]=["H","N","T","A","D",];//L
+            characters[3] =["E","O","H","P","B",];//S
+            characters[8] =["C","M","A","E","Y",];//L
+            characters[9] =["O","E","T","N","A",];//S
+            characters[4] =["N","R","W","D","F",];//S
+            characters[7] =["S","A","A","U","R",];//L
+            characters[12]=["T","N","S","L","E",];//L
+            characters[24]=["E","D","D","U","N",];//L
+            characters[13]=["L","D","E","M","C",];//S
+            characters[27]=["L","E","S","C","H",];//S
+            characters[28]=["A","P","C","L","A",];//S
+            characters[17]=["T","I","R","O","S",];//L
+            characters[19]=["I","C","I","C","T",];//L
+            characters[20]=["O","T","B","K","R",];//S
+            
             var small = [0, 1, 2, 3, 4];
             var large = [0, 2, 4, 1, 3]
 

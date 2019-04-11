@@ -82,7 +82,7 @@ var createScene = function (gameParameters) {
         gameParameters.gearHeight,
         0,
         0,
-        rimNotches,
+        [],
         rimInnerRadius + gameParameters.toothAmplitude + 0.1,
         rimInnerRadius + 1.8,
         Math.PI / 120);

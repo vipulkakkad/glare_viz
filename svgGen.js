@@ -1,29 +1,48 @@
 var svg = document.getElementById('renderSvg');
+svg.setAttributeNS(null, 'height', 2 * 229);
+svg.setAttributeNS(null, 'width', 2 * 305);
 
 var element = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-element.setAttributeNS(null, 'x', 150);
-element.setAttributeNS(null, 'y', 15);
-var txt = document.createTextNode("Hello World");
+element.setAttributeNS(null, 'x', 70);
+element.setAttributeNS(null, 'y', 30);
+var txt = document.createTextNode("H");
 element.appendChild(txt);
 svg.appendChild(element);
 
 // addCircleAsChild(svg, "foo", 10, 10, 100);
 // addGearPathAsChild(svg, "bar", "L");
 
-addGearWithHolesAsChild(svg, "baz", 30, 50, "M", -Math.PI / 6, [Math.PI / 4, Math.PI] );
-addGearWithHolesAsChild(svg, "foo", 70, 30, "S", -Math.PI / 6, [Math.PI / 4, Math.PI] );
-addGearWithHolesAsChild(svg, "bar", 60, 120, "L", -Math.PI / 6, [Math.PI / 4, Math.PI] );
+// addGearWithHolesAsChild(svg, "baz", 30, 50, "M", -Math.PI / 6, [Math.PI / 4, Math.PI] );
+// addGearWithHolesAsChild(svg, "foo", 70, 30, "S", 0, [Math.PI / 4, Math.PI] );
+// addGearWithHolesAsChild(svg, "bar", 60, 120, "L", -Math.PI / 6, [Math.PI / 4, Math.PI] );
 
 GlareSim.Utilities.rotateWholeSetup(gameParameters, 90 * Math.PI/180);    
 
 var edges = GlareSim.Utilities.computeAdjacencies(
     gameParameters,
-    function(x1, y1, x2, y2, meshName) {
-    });    
+    function(x1, y1, x2, y2, meshName) { });    
 
 GlareSim.Utilities.setChiralityInBipartiteManner(gameParameters, edges);
 GlareSim.Utilities.createGearIntrinsicsFromPegSpecs(gameParameters, edges);
 GlareSim.Utilities.setHoleParameters(gameParameters);
+
+var scalingFactor = 5.2;
+
+for (var i = 0; i < gameParameters.pegs.length; i++) {
+    var intrinsics = gameParameters.gearIntrinsics[i];
+    var peg = gameParameters.pegs[i];
+
+    var size = getSizeByRadius(intrinsics.OuterRadius); 
+
+    addGearWithHolesAsChild(
+        svg,
+        "gear" + i,
+        scalingFactor * peg.x,
+        scalingFactor * peg.y,
+        size,
+        intrinsics.HoleAngle,
+        intrinsics.NotchAngles);
+}
 
 function addGearWithHolesAsChild(parent, idPrefix, x, y, size, windowAngle, notchAngles) {
     var gear = document.createElementNS('http://www.w3.org/2000/svg', 'g');
@@ -36,10 +55,12 @@ function addGearWithHolesAsChild(parent, idPrefix, x, y, size, windowAngle, notc
     addGearPathAsChild(gear, idPrefix + "_path", size);
     addCircleAsChild(gear, idPrefix + "centerHole", 0, 0, 3.175);
 
-    var wr = 8.875;
-    var wx = wr * Math.cos(windowAngle);
-    var wy = wr * Math.sin(windowAngle);
-    addCircleAsChild(gear, idPrefix + "windowHole", wx, wy, 4.5);
+    if (size !== "M") {
+        var wr = 8.875;
+        var wx = wr * Math.cos(windowAngle);
+        var wy = wr * Math.sin(windowAngle);
+        addCircleAsChild(gear, idPrefix + "windowHole", wx, wy, 4.5);    
+    }
 
     for (var i = 0; i < notchAngles.length; i++) {
         addRadialLineAsChild(gear, notchAngles[i], 4, getNotchOuterRadius(size));
@@ -89,6 +110,18 @@ function addGearPathAsChild(parent, idString, size) {
     gearPath.setAttributeNS(null, 'style', "fill:none;stroke:#000000;stroke-width:0.26458332");
 
     parent.appendChild(gearPath);
+}
+
+function getSizeByRadius(r) {
+    if (r < 4) {
+        return "S";
+    } else if (r < 5) {
+        return "M";
+    } else if (r < 7) {
+        return "L";
+    } else {
+        return "XL";
+    }
 }
 
 function getNotchOuterRadius(size) {

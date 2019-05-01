@@ -8,6 +8,7 @@ svg.setAttributeNS(null, 'width', 2 * 305);
 var element = document.createElementNS('http://www.w3.org/2000/svg', 'text');
 element.setAttributeNS(null, 'x', 70);
 element.setAttributeNS(null, 'y', 30);
+element.setAttributeNS(null, "font-size", 5);
 var txt = document.createTextNode("H");
 element.appendChild(txt);
 svg.appendChild(element);

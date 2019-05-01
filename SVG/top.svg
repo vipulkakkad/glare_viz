@@ -64,7 +64,7 @@
        id="gear0_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <line
        x1="-1.0637679"
@@ -93,7 +93,7 @@
        id="gear1_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <line
        x1="-2.8469675"
@@ -122,7 +122,7 @@
        id="gear2_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <line
        x1="1.1934881"
@@ -151,7 +151,7 @@
        id="gear3_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <circle
        id="gear3_windowHole"
@@ -186,7 +186,7 @@
        id="gear4_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <circle
        id="gear4_windowHole"
@@ -214,7 +214,7 @@
        id="gear5_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <line
        x1="-0.24428578"
@@ -243,7 +243,7 @@
        id="gear6_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <line
        x1="-3.7120247"
@@ -265,7 +265,7 @@
        id="gear7_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <circle
        id="gear7_windowHole"
@@ -293,7 +293,7 @@
        id="gear8_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <circle
        id="gear8_windowHole"
@@ -321,7 +321,7 @@
        id="gear9_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <circle
        id="gear9_windowHole"
@@ -349,7 +349,7 @@
        id="gear10_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <line
        x1="-3.890137"
@@ -371,7 +371,7 @@
        id="gear11_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <line
        x1="3.2240121"
@@ -400,7 +400,7 @@
        id="gear12_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <circle
        id="gear12_windowHole"
@@ -428,7 +428,7 @@
        id="gear13_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <circle
        id="gear13_windowHole"
@@ -456,7 +456,7 @@
        id="gear14_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <line
        x1="1.6824659"
@@ -478,7 +478,7 @@
        id="gear15_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <circle
        id="gear15_windowHole"
@@ -506,7 +506,7 @@
        id="gear16_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <circle
        id="gear16_windowHole"
@@ -534,7 +534,7 @@
        id="gear17_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <circle
        id="gear17_windowHole"
@@ -569,7 +569,7 @@
        id="gear18_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <line
        x1="-3.0129154"
@@ -591,7 +591,7 @@
        id="gear19_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <circle
        id="gear19_windowHole"
@@ -619,7 +619,7 @@
        id="gear20_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <circle
        id="gear20_windowHole"
@@ -647,7 +647,7 @@
        id="gear21_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <line
        x1="3.7953458"
@@ -690,7 +690,7 @@
        id="gear22_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <line
        x1="3.0236144"
@@ -733,7 +733,7 @@
        id="gear23_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <line
        x1="1.2824559"
@@ -776,7 +776,7 @@
        id="gear24_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <circle
        id="gear24_windowHole"
@@ -825,7 +825,7 @@
        id="gear25_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <line
        x1="1.6807196"
@@ -868,7 +868,7 @@
        id="gear26_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <line
        x1="3.0129154"
@@ -911,7 +911,7 @@
        id="gear27_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <circle
        id="gear27_windowHole"
@@ -953,7 +953,7 @@
        id="gear28_centerHole"
        cx="0"
        cy="0"
-       r="3.175"
+       r="2.291"
        style="fill:none;stroke:#000000;stroke-width:0.0127" />
     <circle
        id="gear28_windowHole"

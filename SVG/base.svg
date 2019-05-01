@@ -59,7 +59,7 @@
          id="pegHole0"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
     </g>
     <g
@@ -69,7 +69,7 @@
          id="pegHole1"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
     </g>
     <g
@@ -79,7 +79,7 @@
          id="pegHole2"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
     </g>
     <g
@@ -89,7 +89,7 @@
          id="pegHole3"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
       <text
          x="4.2614431"
@@ -98,7 +98,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text12"
-         style="font-size:4px;text-anchor:middle">E</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">E</text>
       <text
          x="-4.2614431"
          y="5.8653731"
@@ -106,7 +106,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text14"
-         style="font-size:4px;text-anchor:middle">H</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">H</text>
       <text
          x="-6.8951597"
          y="-2.2403731"
@@ -114,7 +114,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text16"
-         style="font-size:4px;text-anchor:middle">B</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">B</text>
       <text
          x="4.4393447e-16"
          y="-7.25"
@@ -122,7 +122,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text18"
-         style="font-size:4px;text-anchor:middle">O</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">O</text>
       <text
          x="6.8951597"
          y="-2.2403731"
@@ -130,7 +130,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text20"
-         style="font-size:4px;text-anchor:middle">P</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">P</text>
     </g>
     <g
        id="peg4"
@@ -139,7 +139,7 @@
          id="pegHole4"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
       <text
          x="1.7969775"
@@ -148,7 +148,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text24"
-         style="font-size:4px;text-anchor:middle">N</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">N</text>
       <text
          x="-6.1247072"
          y="3.879492"
@@ -156,7 +156,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text26"
-         style="font-size:4px;text-anchor:middle">R</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">R</text>
       <text
          x="-5.5822549"
          y="-4.6261139"
@@ -164,7 +164,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text28"
-         style="font-size:4px;text-anchor:middle">W</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">W</text>
       <text
          x="2.674684"
          y="-6.7385879"
@@ -172,7 +172,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text30"
-         style="font-size:4px;text-anchor:middle">D</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">D</text>
       <text
          x="7.2353005"
          y="0.46143767"
@@ -180,7 +180,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text32"
-         style="font-size:4px;text-anchor:middle">F</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">F</text>
     </g>
     <g
        id="peg5"
@@ -189,7 +189,7 @@
          id="pegHole5"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
     </g>
     <g
@@ -199,7 +199,7 @@
          id="pegHole6"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
     </g>
     <g
@@ -209,7 +209,7 @@
          id="pegHole7"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
       <text
          x="4.3469005"
@@ -218,7 +218,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text40"
-         style="font-size:4px;text-anchor:middle">S</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">S</text>
       <text
          x="-4.1750717"
          y="5.9271646"
@@ -226,7 +226,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text42"
-         style="font-size:4px;text-anchor:middle">A</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">A</text>
       <text
          x="-6.9272366"
          y="-2.1391344"
@@ -234,7 +234,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text44"
-         style="font-size:4px;text-anchor:middle">A</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">A</text>
       <text
          x="-0.10619596"
          y="-7.2492223"
@@ -242,7 +242,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text46"
-         style="font-size:4px;text-anchor:middle">U</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">U</text>
       <text
          x="6.8616037"
          y="-2.3411312"
@@ -250,7 +250,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text48"
-         style="font-size:4px;text-anchor:middle">R</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">R</text>
     </g>
     <g
        id="peg8"
@@ -259,7 +259,7 @@
          id="pegHole8"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
       <text
          x="1.5420314"
@@ -268,7 +268,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text52"
-         style="font-size:4px;text-anchor:middle">C</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">C</text>
       <text
          x="-6.2608767"
          y="3.6556699"
@@ -276,7 +276,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text54"
-         style="font-size:4px;text-anchor:middle">A</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">A</text>
       <text
          x="-5.4114661"
          y="-4.8247833"
@@ -284,7 +284,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text56"
-         style="font-size:4px;text-anchor:middle">Y</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">Y</text>
       <text
          x="2.9164069"
          y="-6.6375504"
@@ -292,7 +292,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text58"
-         style="font-size:4px;text-anchor:middle">M</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">M</text>
       <text
          x="7.2139044"
          y="0.72255188"
@@ -300,7 +300,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text60"
-         style="font-size:4px;text-anchor:middle">E</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">E</text>
     </g>
     <g
        id="peg9"
@@ -309,7 +309,7 @@
          id="pegHole9"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
       <text
          x="6.6856441"
@@ -318,7 +318,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text64"
-         style="font-size:4px;text-anchor:middle">O</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">O</text>
       <text
          x="-0.60116535"
          y="7.2250328"
@@ -326,7 +326,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text66"
-         style="font-size:4px;text-anchor:middle">E</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">E</text>
       <text
          x="-7.0571847"
          y="1.6609157"
@@ -334,7 +334,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text68"
-         style="font-size:4px;text-anchor:middle">T</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">T</text>
       <text
          x="-3.7604148"
          y="-6.1985307"
@@ -342,7 +342,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text70"
-         style="font-size:4px;text-anchor:middle">N</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">N</text>
       <text
          x="4.7331209"
          y="-5.4918184"
@@ -350,7 +350,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text72"
-         style="font-size:4px;text-anchor:middle">A</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">A</text>
     </g>
     <g
        id="peg10"
@@ -359,7 +359,7 @@
          id="pegHole10"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
     </g>
     <g
@@ -369,7 +369,7 @@
          id="pegHole11"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
     </g>
     <g
@@ -379,7 +379,7 @@
          id="pegHole12"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
       <text
          x="7.2485671"
@@ -388,7 +388,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text80"
-         style="font-size:4px;text-anchor:middle">T</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">T</text>
       <text
          x="2.1028407"
          y="6.9383402"
@@ -396,7 +396,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text82"
-         style="font-size:4px;text-anchor:middle">N</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">N</text>
       <text
          x="-5.9489398"
          y="4.1439853"
@@ -404,7 +404,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text84"
-         style="font-size:4px;text-anchor:middle">S</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">S</text>
       <text
          x="-5.7794876"
          y="-4.3772163"
@@ -412,7 +412,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text86"
-         style="font-size:4px;text-anchor:middle">L</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">L</text>
       <text
          x="2.3770201"
          y="-6.8492537"
@@ -420,7 +420,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text88"
-         style="font-size:4px;text-anchor:middle">E</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">E</text>
     </g>
     <g
        id="peg13"
@@ -429,7 +429,7 @@
          id="pegHole13"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
       <text
          x="0.90124601"
@@ -438,7 +438,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text92"
-         style="font-size:4px;text-anchor:middle">L</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">L</text>
       <text
          x="-6.5631766"
          y="3.0801315"
@@ -446,7 +446,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text94"
-         style="font-size:4px;text-anchor:middle">E</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">E</text>
       <text
          x="-4.9575124"
          y="-5.2901392"
@@ -454,7 +454,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text96"
-         style="font-size:4px;text-anchor:middle">C</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">C</text>
       <text
          x="3.4992657"
          y="-6.3496175"
@@ -462,7 +462,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text98"
-         style="font-size:4px;text-anchor:middle">D</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">D</text>
       <text
          x="7.1201773"
          y="1.3658597"
@@ -470,7 +470,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text100"
-         style="font-size:4px;text-anchor:middle">M</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">M</text>
     </g>
     <g
        id="peg14"
@@ -479,7 +479,7 @@
          id="pegHole14"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
     </g>
     <g
@@ -489,7 +489,7 @@
          id="pegHole15"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
       <text
          x="0.58434182"
@@ -498,7 +498,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text106"
-         style="font-size:4px;text-anchor:middle">T</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">T</text>
       <text
          x="-6.6921558"
          y="2.7888265"
@@ -506,7 +506,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text108"
-         style="font-size:4px;text-anchor:middle">N</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">N</text>
       <text
          x="-4.7203217"
          y="-5.5028234"
@@ -514,7 +514,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text110"
-         style="font-size:4px;text-anchor:middle">E</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">E</text>
       <text
          x="3.7748365"
          y="-6.1897583"
@@ -522,7 +522,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text112"
-         style="font-size:4px;text-anchor:middle">O</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">O</text>
       <text
          x="7.053299"
          y="1.6773423"
@@ -530,7 +530,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text114"
-         style="font-size:4px;text-anchor:middle">S</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">S</text>
     </g>
     <g
        id="peg16"
@@ -539,7 +539,7 @@
          id="pegHole16"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
       <text
          x="6.3469787"
@@ -548,7 +548,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text118"
-         style="font-size:4px;text-anchor:middle">H</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">H</text>
       <text
          x="-1.371225"
          y="7.1191463"
@@ -556,7 +556,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text120"
-         style="font-size:4px;text-anchor:middle">N</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">N</text>
       <text
          x="-7.1944423"
          y="0.89582473"
@@ -564,7 +564,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text122"
-         style="font-size:4px;text-anchor:middle">T</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">T</text>
       <text
          x="-3.0751848"
          y="-6.565496"
@@ -572,7 +572,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text124"
-         style="font-size:4px;text-anchor:middle">A</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">A</text>
       <text
          x="5.2938733"
          y="-4.9535246"
@@ -580,7 +580,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text126"
-         style="font-size:4px;text-anchor:middle">D</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">D</text>
     </g>
     <g
        id="peg17"
@@ -589,7 +589,7 @@
          id="pegHole17"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
       <text
          x="-5.126524"
@@ -598,7 +598,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text130"
-         style="font-size:4px;text-anchor:middle">T</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">T</text>
       <text
          x="-6.4597974"
          y="-3.2914312"
@@ -606,7 +606,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text132"
-         style="font-size:4px;text-anchor:middle">R</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">R</text>
       <text
          x="1.1341499"
          y="-7.1607404"
@@ -614,7 +614,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text134"
-         style="font-size:4px;text-anchor:middle">S</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">S</text>
       <text
          x="7.1607404"
          y="-1.1341499"
@@ -622,7 +622,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text136"
-         style="font-size:4px;text-anchor:middle">I</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">I</text>
       <text
          x="3.2914312"
          y="6.4597974"
@@ -630,7 +630,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text138"
-         style="font-size:4px;text-anchor:middle">O</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">O</text>
     </g>
     <g
        id="peg18"
@@ -639,7 +639,7 @@
          id="pegHole18"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
     </g>
     <g
@@ -649,7 +649,7 @@
          id="pegHole19"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
       <text
          x="6.1212821"
@@ -658,7 +658,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text144"
-         style="font-size:4px;text-anchor:middle">I</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">I</text>
       <text
          x="-1.8031744"
          y="7.0221834"
@@ -666,7 +666,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text146"
-         style="font-size:4px;text-anchor:middle">I</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">I</text>
       <text
          x="-7.2357049"
          y="0.45505333"
@@ -674,7 +674,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text148"
-         style="font-size:4px;text-anchor:middle">T</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">T</text>
       <text
          x="-2.6687372"
          y="-6.7409453"
@@ -682,7 +682,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text150"
-         style="font-size:4px;text-anchor:middle">C</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">C</text>
       <text
          x="5.5863347"
          y="-4.6211867"
@@ -690,7 +690,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text152"
-         style="font-size:4px;text-anchor:middle">C</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">C</text>
     </g>
     <g
        id="peg20"
@@ -699,7 +699,7 @@
          id="pegHole20"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
       <text
          x="4.862164"
@@ -708,7 +708,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text156"
-         style="font-size:4px;text-anchor:middle">O</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">O</text>
       <text
          x="6.6171827"
          y="2.9623289"
@@ -716,7 +716,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text158"
-         style="font-size:4px;text-anchor:middle">T</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">T</text>
       <text
          x="-0.7725203"
          y="7.208725"
@@ -724,7 +724,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text160"
-         style="font-size:4px;text-anchor:middle">B</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">B</text>
       <text
          x="-7.0946264"
          y="1.492908"
@@ -732,7 +732,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text162"
-         style="font-size:4px;text-anchor:middle">K</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">K</text>
       <text
          x="-3.6122"
          y="-6.286057"
@@ -740,7 +740,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text164"
-         style="font-size:4px;text-anchor:middle">R</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">R</text>
     </g>
     <g
        id="peg21"
@@ -749,7 +749,7 @@
          id="pegHole21"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
     </g>
     <g
@@ -759,7 +759,7 @@
          id="pegHole22"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
     </g>
     <g
@@ -769,7 +769,7 @@
          id="pegHole23"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
     </g>
     <g
@@ -779,7 +779,7 @@
          id="pegHole24"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
       <text
          x="5.126524"
@@ -788,7 +788,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text174"
-         style="font-size:4px;text-anchor:middle">E</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">E</text>
       <text
          x="6.4597974"
          y="-3.2914312"
@@ -796,7 +796,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text176"
-         style="font-size:4px;text-anchor:middle">D</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">D</text>
       <text
          x="-1.1341499"
          y="-7.1607404"
@@ -804,7 +804,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text178"
-         style="font-size:4px;text-anchor:middle">N</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">N</text>
       <text
          x="-7.1607404"
          y="-1.1341499"
@@ -812,7 +812,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text180"
-         style="font-size:4px;text-anchor:middle">D</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">D</text>
       <text
          x="-3.2914312"
          y="6.4597974"
@@ -820,7 +820,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text182"
-         style="font-size:4px;text-anchor:middle">U</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">U</text>
     </g>
     <g
        id="peg25"
@@ -829,7 +829,7 @@
          id="pegHole25"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
     </g>
     <g
@@ -839,7 +839,7 @@
          id="pegHole26"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
     </g>
     <g
@@ -849,7 +849,7 @@
          id="pegHole27"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
       <text
          x="4.4393447e-16"
@@ -858,7 +858,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text190"
-         style="font-size:4px;text-anchor:middle">L</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">L</text>
       <text
          x="-6.8951597"
          y="-2.2403731"
@@ -866,7 +866,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text192"
-         style="font-size:4px;text-anchor:middle">S</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">S</text>
       <text
          x="-4.2614431"
          y="5.8653731"
@@ -874,7 +874,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text194"
-         style="font-size:4px;text-anchor:middle">H</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">H</text>
       <text
          x="4.2614431"
          y="5.8653731"
@@ -882,7 +882,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text196"
-         style="font-size:4px;text-anchor:middle">E</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">E</text>
       <text
          x="6.8951597"
          y="-2.2403731"
@@ -890,7 +890,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text198"
-         style="font-size:4px;text-anchor:middle">C</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">C</text>
     </g>
     <g
        id="peg28"
@@ -899,7 +899,7 @@
          id="pegHole28"
          cx="0"
          cy="0"
-         r="2.97"
+         r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
       <text
          x="0.51284474"
@@ -908,7 +908,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text202"
-         style="font-size:4px;text-anchor:middle">A</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">A</text>
       <text
          x="-6.7194095"
          y="-2.7225053"
@@ -916,7 +916,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text204"
-         style="font-size:4px;text-anchor:middle">P</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">P</text>
       <text
          x="-4.665668"
          y="5.5492377"
@@ -924,7 +924,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text206"
-         style="font-size:4px;text-anchor:middle">C</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">C</text>
       <text
          x="3.8358681"
          y="6.152123"
@@ -932,7 +932,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text208"
-         style="font-size:4px;text-anchor:middle">L</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">L</text>
       <text
          x="7.036365"
          y="-1.7470168"
@@ -940,7 +940,7 @@
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text210"
-         style="font-size:4px;text-anchor:middle">A</text>
+         style="font-weight:bold;font-size:4px;text-anchor:middle">A</text>
     </g>
     <circle
        id="rimCircle"

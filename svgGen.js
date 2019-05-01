@@ -205,7 +205,7 @@ function addCenteredTextAsChild(parent, x, y, text) {
     var element = document.createElementNS('http://www.w3.org/2000/svg', 'text');
     element.setAttributeNS(null, 'x', x);
     element.setAttributeNS(null, 'y', -y);
-    element.setAttributeNS(null, "font-size", 5);
+    element.setAttributeNS(null, "font-size", 4);
     element.setAttributeNS(null, "alignment-baseline", "middle");
     element.setAttributeNS(null, "text-anchor", "middle");
     element.setAttributeNS(null, "transform", "scale(1, -1)");

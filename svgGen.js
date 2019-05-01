@@ -208,7 +208,7 @@ function addCenteredTextAsChild(parent, x, y, text) {
     element.setAttributeNS(null, "font-size", 4);
     element.setAttributeNS(null, "alignment-baseline", "middle");
     element.setAttributeNS(null, "text-anchor", "middle");
-    element.setAttributeNS(null, "transform", "scale(1, -1)");
+    element.setAttributeNS(null, "transform", "translate(0, -1.5) scale(1, -1)");
     
     var txt = document.createTextNode(text);
     element.appendChild(txt);

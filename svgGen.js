@@ -27,17 +27,6 @@ characters[20]=["O","T","B","K","R",];//S
 var small = [0, 1, 2, 3, 4];
 var large = [0, 2, 4, 1, 3]
 
-var svg = document.getElementById('renderSvg');
-svg.setAttributeNS(null, 'height', 600);
-svg.setAttributeNS(null, 'width', 800);
-
-// addCircleAsChild(svg, "foo", 10, 10, 100);
-// addGearPathAsChild(svg, "bar", "L");
-
-// addGearWithHolesAsChild(svg, "baz", 30, 50, "M", -Math.PI / 6, [Math.PI / 4, Math.PI] );
-// addGearWithHolesAsChild(svg, "foo", 70, 30, "S", 0, [Math.PI / 4, Math.PI] );
-// addGearWithHolesAsChild(svg, "bar", 60, 120, "L", -Math.PI / 6, [Math.PI / 4, Math.PI] );
-
 GlareSim.Utilities.rotateWholeSetup(gameParameters, 90 * Math.PI/180);    
 
 var edges = GlareSim.Utilities.computeAdjacencies(
@@ -47,6 +36,18 @@ var edges = GlareSim.Utilities.computeAdjacencies(
 GlareSim.Utilities.setChiralityInBipartiteManner(gameParameters, edges);
 GlareSim.Utilities.createGearIntrinsicsFromPegSpecs(gameParameters, edges);
 GlareSim.Utilities.setHoleParameters(gameParameters);
+
+var renderSvg = document.getElementById('renderSvg');
+renderSvg.setAttributeNS(null, 'height', 600);
+renderSvg.setAttributeNS(null, 'width', 800);
+
+var svg = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+svg.setAttributeNS(null, 'id', "overall");
+
+var transformString = "translate(0, 300) scale(1, -1)";
+svg.setAttributeNS(null, 'transform', transformString);
+
+renderSvg.appendChild(svg);
 
 for (var i = 0; i < gameParameters.pegs.length; i++) {
     var intrinsics = gameParameters.gearIntrinsics[i];
@@ -203,10 +204,11 @@ function addCircleAsChild(parent, idString, cx, cy, r) {
 function addCenteredTextAsChild(parent, x, y, text) {
     var element = document.createElementNS('http://www.w3.org/2000/svg', 'text');
     element.setAttributeNS(null, 'x', x);
-    element.setAttributeNS(null, 'y', y);
+    element.setAttributeNS(null, 'y', -y);
     element.setAttributeNS(null, "font-size", 5);
     element.setAttributeNS(null, "alignment-baseline", "middle");
     element.setAttributeNS(null, "text-anchor", "middle");
+    element.setAttributeNS(null, "transform", "scale(1, -1)");
     
     var txt = document.createTextNode(text);
     element.appendChild(txt);

@@ -1,16 +1,31 @@
 var toInkscapeFromBabylon = 4.045;
+var holeDeviationInInkscape = 7.25;
+var gearCenterRadiusInInkscape = 3.175;
+var pegCenterRadiusInInkscape = 2.97;
+
+var characters = [];
+characters[15]=["T","O","N","S","E",];//L
+characters[16]=["H","N","T","A","D",];//L
+characters[3] =["E","O","H","P","B",];//S
+characters[8] =["C","M","A","E","Y",];//L
+characters[9] =["O","E","T","N","A",];//S
+characters[4] =["N","R","W","D","F",];//S
+characters[7] =["S","A","A","U","R",];//L
+characters[12]=["T","N","S","L","E",];//L
+characters[24]=["E","D","D","U","N",];//L
+characters[13]=["L","D","E","M","C",];//S
+characters[27]=["L","E","S","C","H",];//S
+characters[28]=["A","P","C","L","A",];//S
+characters[17]=["T","I","R","O","S",];//L
+characters[19]=["I","C","I","C","T",];//L
+characters[20]=["O","T","B","K","R",];//S
+
+var small = [0, 1, 2, 3, 4];
+var large = [0, 2, 4, 1, 3]
 
 var svg = document.getElementById('renderSvg');
-svg.setAttributeNS(null, 'height', 2 * 229);
-svg.setAttributeNS(null, 'width', 2 * 305);
-
-var element = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-element.setAttributeNS(null, 'x', 70);
-element.setAttributeNS(null, 'y', 30);
-element.setAttributeNS(null, "font-size", 5);
-var txt = document.createTextNode("H");
-element.appendChild(txt);
-svg.appendChild(element);
+svg.setAttributeNS(null, 'height', 600);
+svg.setAttributeNS(null, 'width', 800);
 
 // addCircleAsChild(svg, "foo", 10, 10, 100);
 // addGearPathAsChild(svg, "bar", "L");
@@ -18,6 +33,8 @@ svg.appendChild(element);
 // addGearWithHolesAsChild(svg, "baz", 30, 50, "M", -Math.PI / 6, [Math.PI / 4, Math.PI] );
 // addGearWithHolesAsChild(svg, "foo", 70, 30, "S", 0, [Math.PI / 4, Math.PI] );
 // addGearWithHolesAsChild(svg, "bar", 60, 120, "L", -Math.PI / 6, [Math.PI / 4, Math.PI] );
+
+addCenteredTextAsChild(svg, 70, 30, "H");
 
 GlareSim.Utilities.rotateWholeSetup(gameParameters, 90 * Math.PI/180);    
 
@@ -41,9 +58,11 @@ for (var i = 0; i < gameParameters.pegs.length; i++) {
         toInkscapeFromBabylon * peg.x,
         toInkscapeFromBabylon * peg.y,
         size,
-        3.175,
+        gearCenterRadiusInInkscape,
         (intrinsics.InnerRadius === 0) ? null : intrinsics.HoleAngle,
         intrinsics.NotchAngles);
+
+    addPeg(svg, i, gameParameters);
 }
 
 addGearWithHolesAsChild(
@@ -55,6 +74,48 @@ addGearWithHolesAsChild(
     155,
     null,
     []);
+
+
+function addPeg(parent, i, gameParams) {
+    var pegElement = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    pegElement.setAttributeNS(null, 'id', "peg" + i);
+
+    var peg = gameParams.pegs[i];
+    var x = toInkscapeFromBabylon * peg.x;
+    var y = toInkscapeFromBabylon * peg.y;
+
+    var transformString = "translate(" + x + "," + y + ")";
+    pegElement.setAttributeNS(null, 'transform', transformString);
+
+    addCircleAsChild(pegElement, "pegHole" + i, 0, 0, pegCenterRadiusInInkscape);
+
+    drawCharactersInHoles(i, gameParams, pegElement);
+
+    parent.appendChild(pegElement);    
+}
+
+function drawCharactersInHoles(i, gameParams, pegElement) {
+    if (characters[i] != null) {
+        var peg = gameParams.pegs[i];
+        var angleDeviationDirection = peg.isPositiveChirality ? -1 : 1;
+
+        var gearIntrinsics = gameParams.gearIntrinsics[i];
+        
+        var n = characters[i].length;
+        for (var j = 0; j < n; j++)
+        {
+            var theta = gearIntrinsics.HoleAngle + (angleDeviationDirection * (j / n) * (2*Math.PI));
+
+            var xHole = holeDeviationInInkscape * Math.cos(theta);
+            var yHole = holeDeviationInInkscape * Math.sin(theta);
+
+            var charIndex = gearIntrinsics.OuterRadius > 4.5 ? large : small;
+            var character = characters[i][charIndex[j]];
+
+            addCenteredTextAsChild(pegElement, xHole, yHole, character);
+        }
+    }
+}
 
 function addGearWithHolesAsChild(
     parent,
@@ -77,7 +138,7 @@ function addGearWithHolesAsChild(
     addCircleAsChild(gear, idPrefix + "_centerHole", 0, 0, centerHoleWidth);
 
     if (windowAngle !== null) {
-        var wr = 7.25;
+        var wr = holeDeviationInInkscape;
         var wx = wr * Math.cos(windowAngle);
         var wy = wr * Math.sin(windowAngle);
         addCircleAsChild(gear, idPrefix + "_windowHole", wx, wy, 3.25);    
@@ -118,6 +179,19 @@ function addCircleAsChild(parent, idString, cx, cy, r) {
     circle.setAttributeNS(null, 'style', "fill:none;stroke:#000000;stroke-width:0.26458332");
 
     parent.appendChild(circle);
+}
+
+function addCenteredTextAsChild(parent, x, y, text) {
+    var element = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    element.setAttributeNS(null, 'x', x);
+    element.setAttributeNS(null, 'y', y);
+    element.setAttributeNS(null, "font-size", 5);
+    element.setAttributeNS(null, "alignment-baseline", "middle");
+    element.setAttributeNS(null, "text-anchor", "middle");
+    
+    var txt = document.createTextNode(text);
+    element.appendChild(txt);
+    parent.appendChild(element);
 }
 
 function addGearPathAsChild(parent, idString, size) {

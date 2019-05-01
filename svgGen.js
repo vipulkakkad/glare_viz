@@ -1,7 +1,11 @@
+var drawBase = true;
+var drawTop = true;
+
 var toInkscapeFromBabylon = 4.045;
 var holeDeviationInInkscape = 7.25;
 var gearCenterRadiusInInkscape = 3.175;
 var pegCenterRadiusInInkscape = 2.97;
+var rimRadiusInInkscape = 155;
 
 var characters = [];
 characters[15]=["T","O","N","S","E",];//L
@@ -34,8 +38,6 @@ svg.setAttributeNS(null, 'width', 800);
 // addGearWithHolesAsChild(svg, "foo", 70, 30, "S", 0, [Math.PI / 4, Math.PI] );
 // addGearWithHolesAsChild(svg, "bar", 60, 120, "L", -Math.PI / 6, [Math.PI / 4, Math.PI] );
 
-addCenteredTextAsChild(svg, 70, 30, "H");
-
 GlareSim.Utilities.rotateWholeSetup(gameParameters, 90 * Math.PI/180);    
 
 var edges = GlareSim.Utilities.computeAdjacencies(
@@ -52,29 +54,43 @@ for (var i = 0; i < gameParameters.pegs.length; i++) {
 
     var size = getSizeByRadius(intrinsics.OuterRadius); 
 
-    addGearWithHolesAsChild(
-        svg,
-        "gear" + i,
-        toInkscapeFromBabylon * peg.x,
-        toInkscapeFromBabylon * peg.y,
-        size,
-        gearCenterRadiusInInkscape,
-        (intrinsics.InnerRadius === 0) ? null : intrinsics.HoleAngle,
-        intrinsics.NotchAngles);
+    if (drawTop) {
+        addGearWithHolesAsChild(
+            svg,
+            "gear" + i,
+            toInkscapeFromBabylon * peg.x,
+            toInkscapeFromBabylon * peg.y,
+            size,
+            gearCenterRadiusInInkscape,
+            (intrinsics.InnerRadius === 0) ? null : intrinsics.HoleAngle,
+            intrinsics.NotchAngles);    
+    }
 
-    addPeg(svg, i, gameParameters);
+    if (drawBase) {
+        addPeg(svg, i, gameParameters);
+    }
 }
 
-addGearWithHolesAsChild(
-    svg,
-    "rimGear",
-    toInkscapeFromBabylon * gameParameters.xMax / 2,
-    toInkscapeFromBabylon * gameParameters.yMax / 2,
-    "XL",
-    155,
-    null,
-    []);
+if (drawTop) {
+    addGearWithHolesAsChild(
+        svg,
+        "rimGear",
+        toInkscapeFromBabylon * gameParameters.xMax / 2,
+        toInkscapeFromBabylon * gameParameters.yMax / 2,
+        "XL",
+        null,
+        null,
+        []);    
+}
 
+if (drawBase || drawTop) {
+    addCircleAsChild(
+        svg,
+        "rimCircle", 
+        toInkscapeFromBabylon * gameParameters.xMax / 2,
+        toInkscapeFromBabylon * gameParameters.yMax / 2,
+        rimRadiusInInkscape);
+}
 
 function addPeg(parent, i, gameParams) {
     var pegElement = document.createElementNS('http://www.w3.org/2000/svg', 'g');
@@ -135,7 +151,10 @@ function addGearWithHolesAsChild(
     gear.setAttributeNS(null, 'transform', transformString);
 
     addGearPathAsChild(gear, idPrefix + "_path", size);
-    addCircleAsChild(gear, idPrefix + "_centerHole", 0, 0, centerHoleWidth);
+
+    if (centerHoleWidth !== null) {
+        addCircleAsChild(gear, idPrefix + "_centerHole", 0, 0, centerHoleWidth);
+    }
 
     if (windowAngle !== null) {
         var wr = holeDeviationInInkscape;

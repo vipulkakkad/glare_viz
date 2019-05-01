@@ -1,5 +1,4 @@
 var toInkscapeFromBabylon = 4.045;
-var toInkscapeFromInches = 12.7;
 
 var svg = document.getElementById('renderSvg');
 svg.setAttributeNS(null, 'height', 2 * 229);

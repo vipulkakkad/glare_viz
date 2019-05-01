@@ -1,4 +1,4 @@
-var drawBase = true;
+var drawBase = false;
 var drawTop = true;
 
 var toInkscapeFromBabylon = 4.045;

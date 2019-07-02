@@ -33,8 +33,18 @@ module GlareSim {
         }
 
         public OnGearClicked(clickedGear: GameGear) {
-            console.log(clickedGear.GetMeshId());
-            console.log(clickedGear.Intrinsics.NotchEquivalenceClass);
+            // console.log(clickedGear.GetMeshId());
+            // console.log(clickedGear.Intrinsics.NotchEquivalenceClass);
+
+            var xDelta = clickedGear.CurrentPeg.Spec.x - 50;
+            var yDelta = clickedGear.CurrentPeg.Spec.y - 37.5;
+            var radialDeviation = clickedGear.Radius + Math.sqrt((xDelta * xDelta) + (yDelta * yDelta));
+            console.log("id = " + clickedGear.GetMeshId());
+            console.log("r + d = " + radialDeviation);
+            console.log("x = " + clickedGear.CurrentPeg.Spec.x);
+            console.log("y = " + clickedGear.CurrentPeg.Spec.y);
+            console.log("");
+
             if (this.allGearsInPlace) {
                 return;
             }

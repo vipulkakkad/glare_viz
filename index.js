@@ -1,6 +1,6 @@
 /******* Debugging visualizations ******/
 var showAdjacencyLines = false;
-var colorScheme = "Default"; // options include "Chirality", "NotchEquivalence"
+var colorScheme = "Chirality"; // options include "Chirality", "NotchEquivalence"
 
 /******* Create canvas and engine ******/
 var canvas = document.getElementById("renderCanvas"); // Get the canvas element 
@@ -25,7 +25,9 @@ var createScene = function (gameParameters) {
     var xGearRow = -5;
     var defaultPegSpec = new GlareSim.PegSpec();
 
-    GlareSim.Utilities.rotateWholeSetup(gameParameters, 90 * Math.PI/180);    
+    GlareSim.Utilities.fixOuterAdjacencies(gameParameters);
+
+    //GlareSim.Utilities.rotateWholeSetup(gameParameters, 90 * Math.PI/180);    
 
     var edges = GlareSim.Utilities.computeAdjacencies(
         gameParameters,

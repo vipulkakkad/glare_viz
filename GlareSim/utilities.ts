@@ -23,6 +23,48 @@ module GlareSim {
             }
         }
 
+        public static fixOuterAdjacencies(gameParameters: GameParameters){
+            this.fixOuterAdjacency(gameParameters, 15, 25, -0.005);
+            this.fixOuterAdjacency(gameParameters, 6, 22, 0.005);
+        }
+
+        private static fixOuterAdjacency(gameParameters: GameParameters, outer: number, adjacent: number, deltaTheta: number) {
+            var xOuter = gameParameters.pegs[outer].x;
+            var yOuter = gameParameters.pegs[outer].y;
+
+            var xAdj = gameParameters.pegs[adjacent].x;
+            var yAdj = gameParameters.pegs[adjacent].y;
+
+            var adj2OuterAngle = Math.atan2(yOuter - yAdj, xOuter - xAdj);
+
+            var distance = this.getDistance(xAdj, yAdj, xOuter, yOuter);
+
+            var newAngle = adj2OuterAngle;
+            var iterCount = 0;
+            var xNewOuter = xAdj + (distance * Math.cos(newAngle));
+            var yNewOuter = yAdj + (distance * Math.sin(newAngle));    
+
+            var centerDist = this.getDistance(xNewOuter, yNewOuter, 50, 37.5);
+            do {
+                newAngle += deltaTheta;
+
+                xNewOuter = xAdj + (distance * Math.cos(newAngle));
+                yNewOuter = yAdj + (distance * Math.sin(newAngle));    
+                centerDist = this.getDistance(xNewOuter, yNewOuter, 50, 37.5) + gameParameters.pegs[outer].expectedGearRadius;
+                iterCount++;
+
+                console.log(newAngle + " | " + centerDist + " | " + xNewOuter + " | " + yNewOuter)
+            }
+            while (iterCount < 100 && centerDist < 36)
+
+            gameParameters.pegs[outer].x = xNewOuter;
+            gameParameters.pegs[outer].y = yNewOuter;
+        }
+
+        private static getDistance(x1: number, y1: number, x2: number, y2: number){
+            return Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1))
+        }
+
         public static computeAdjacencies(gameParams: GameParameters, drawLine: UiMeshXYLineDrawer) : number[][] {
             var threshold = 0.1;
 

@@ -194,7 +194,7 @@
     </g>
     <g
        id="peg6"
-       transform="translate(326.39391,150.13822)">
+       transform="translate(329.27295,162.0697)">
       <circle
          id="pegHole6"
          cx="0"
@@ -204,7 +204,7 @@
     </g>
     <g
        id="peg7"
-       transform="translate(314.49784,189.79572)">
+       transform="translate(311.31167,193.04064)">
       <circle
          id="pegHole7"
          cx="0"
@@ -212,40 +212,40 @@
          r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
       <text
-         x="4.3469005"
-         y="5.8023233"
+         x="5.0363874"
+         y="5.2151031"
          font-size="4"
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text40"
          style="font-weight:bold;font-size:4px;text-anchor:middle">S</text>
       <text
-         x="-4.1750717"
-         y="5.9271646"
+         x="-3.4035287"
+         y="6.4014444"
          font-size="4"
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text42"
          style="font-weight:bold;font-size:4px;text-anchor:middle">A</text>
       <text
-         x="-6.9272366"
-         y="-2.1391344"
+         x="-7.139884"
+         y="-1.2587929"
          font-size="4"
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text44"
          style="font-weight:bold;font-size:4px;text-anchor:middle">A</text>
       <text
-         x="-0.10619596"
-         y="-7.2492223"
+         x="-1.0091622"
+         y="-7.1794214"
          font-size="4"
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text46"
          style="font-weight:bold;font-size:4px;text-anchor:middle">U</text>
       <text
-         x="6.8616037"
-         y="-2.3411312"
+         x="6.5161872"
+         y="-3.1783335"
          font-size="4"
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
@@ -484,7 +484,7 @@
     </g>
     <g
        id="peg15"
-       transform="translate(124.07224,240.7805)">
+       transform="translate(131.09339,250.01427)">
       <circle
          id="pegHole15"
          cx="0"
@@ -492,40 +492,40 @@
          r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
       <text
-         x="0.58434182"
-         y="7.2264128"
+         x="-1.7185099"
+         y="7.0433817"
          font-size="4"
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text106"
          style="font-weight:bold;font-size:4px;text-anchor:middle">T</text>
       <text
-         x="-6.6921558"
-         y="2.7888265"
+         x="-7.2297025"
+         y="0.54212451"
          font-size="4"
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text108"
          style="font-weight:bold;font-size:4px;text-anchor:middle">N</text>
       <text
-         x="-4.7203217"
-         y="-5.5028234"
+         x="-2.749692"
+         y="-6.7083302"
          font-size="4"
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text110"
          style="font-weight:bold;font-size:4px;text-anchor:middle">E</text>
       <text
-         x="3.7748365"
-         y="-6.1897583"
+         x="5.5302997"
+         y="-4.6881008"
          font-size="4"
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text112"
          style="font-weight:bold;font-size:4px;text-anchor:middle">O</text>
       <text
-         x="7.053299"
-         y="1.6773423"
+         x="6.1676049"
+         y="3.8109248"
          font-size="4"
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
@@ -534,7 +534,7 @@
     </g>
     <g
        id="peg16"
-       transform="translate(166.38946,245.66742)">
+       transform="translate(170.06819,243.55553)">
       <circle
          id="pegHole16"
          cx="0"
@@ -542,40 +542,40 @@
          r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
       <text
-         x="6.3469787"
-         y="3.5040495"
+         x="5.6399546"
+         y="4.5555911"
          font-size="4"
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text118"
          style="font-weight:bold;font-size:4px;text-anchor:middle">H</text>
       <text
-         x="-1.371225"
-         y="7.1191463"
+         x="-2.589783"
+         y="6.7716708"
          font-size="4"
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text120"
          style="font-weight:bold;font-size:4px;text-anchor:middle">N</text>
       <text
-         x="-7.1944423"
-         y="0.89582473"
+         x="-7.2405286"
+         y="-0.37046856"
          font-size="4"
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text122"
          style="font-weight:bold;font-size:4px;text-anchor:middle">T</text>
       <text
-         x="-3.0751848"
-         y="-6.565496"
+         x="-1.8851098"
+         y="-7.0006328"
          font-size="4"
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text124"
          style="font-weight:bold;font-size:4px;text-anchor:middle">A</text>
       <text
-         x="5.2938733"
-         y="-4.9535246"
+         x="6.0754666"
+         y="-3.9561605"
          font-size="4"
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
@@ -894,7 +894,7 @@
     </g>
     <g
        id="peg28"
-       transform="translate(171.9125,24.27)">
+       transform="translate(172.1492,28.05232)">
       <circle
          id="pegHole28"
          cx="0"
@@ -902,40 +902,40 @@
          r="2.18"
          style="fill:none;stroke:#000000;stroke-width:0.0127" />
       <text
-         x="0.51284474"
-         y="-7.2318387"
+         x="1.4104708"
+         y="-7.1114745"
          font-size="4"
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text202"
          style="font-weight:bold;font-size:4px;text-anchor:middle">A</text>
       <text
-         x="-6.7194095"
-         y="-2.7225053"
+         x="-6.3275547"
+         y="-3.5390041"
          font-size="4"
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text204"
          style="font-weight:bold;font-size:4px;text-anchor:middle">P</text>
       <text
-         x="-4.665668"
-         y="5.5492377"
+         x="-5.321115"
+         y="4.9242496"
          font-size="4"
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text206"
          style="font-weight:bold;font-size:4px;text-anchor:middle">C</text>
       <text
-         x="3.8358681"
-         y="6.152123"
+         x="3.0389249"
+         y="6.5823579"
          font-size="4"
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"
          id="text208"
          style="font-weight:bold;font-size:4px;text-anchor:middle">L</text>
       <text
-         x="7.036365"
-         y="-1.7470168"
+         x="7.1992736"
+         y="-0.85612899"
          font-size="4"
          alignment-baseline="middle"
          transform="matrix(1,0,0,-1,0,-1.5)"

@@ -1,10 +1,10 @@
 var drawBase = true;
-var drawTop = true;
+var drawTop = false;
 
 var toInkscapeFromBabylon = 4.045;
 var holeDeviationInInkscape = 7.25;
-var gearCenterRadiusInInkscape = 3.175;
-var pegCenterRadiusInInkscape = 2.97;
+var gearCenterRadiusInInkscape = 2.291;
+var pegCenterRadiusInInkscape = 2.18;
 var rimRadiusInInkscape = 155;
 
 var characters = [];

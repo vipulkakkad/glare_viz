@@ -27,7 +27,7 @@ var createScene = function (gameParameters) {
 
     GlareSim.Utilities.fixOuterAdjacencies(gameParameters);
 
-    //GlareSim.Utilities.rotateWholeSetup(gameParameters, 90 * Math.PI/180);    
+    GlareSim.Utilities.rotateWholeSetup(gameParameters, 90 * Math.PI/180);    
 
     var edges = GlareSim.Utilities.computeAdjacencies(
         gameParameters,
@@ -37,8 +37,8 @@ var createScene = function (gameParameters) {
 
     GlareSim.Utilities.setChiralityInBipartiteManner(gameParameters, edges);
     GlareSim.Utilities.createGearIntrinsicsFromPegSpecs(gameParameters, edges);
-    GlareSim.Utilities.setHoleParameters(gameParameters);
-
+    GlareSim.Utilities.setHoleParameters(gameParameters);    
+    
     // Add meshes
     var meshManager = new GlareSim.MeshManager();
 

@@ -43,6 +43,7 @@ module GlareSim {
             console.log("r + d = " + radialDeviation);
             console.log("x = " + clickedGear.CurrentPeg.Spec.x);
             console.log("y = " + clickedGear.CurrentPeg.Spec.y);
+            console.log("neq = " + clickedGear.Intrinsics.NotchEquivalenceClass);
             console.log("");
 
             if (this.allGearsInPlace) {

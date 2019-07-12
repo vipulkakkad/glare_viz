@@ -24,11 +24,14 @@ module GlareSim {
         }
 
         public static fixOuterAdjacencies(gameParameters: GameParameters){
-            this.fixOuterAdjacency(gameParameters, 15, 25, -0.005);
-            this.fixOuterAdjacency(gameParameters, 6, 22, 0.005);
+            this.fixOuterAdjacency(gameParameters, 15, 25, -0.005, 100);
+            this.fixOuterAdjacency(gameParameters, 6, 22, 0.005, 100);
+            this.fixOuterAdjacency(gameParameters, 16, 25, -0.005, 35);
+            this.fixOuterAdjacency(gameParameters, 7, 22, 0.005, 25);
+            this.fixOuterAdjacency(gameParameters, 28, 0, -0.005, 25);
         }
 
-        private static fixOuterAdjacency(gameParameters: GameParameters, outer: number, adjacent: number, deltaTheta: number) {
+        private static fixOuterAdjacency(gameParameters: GameParameters, outer: number, adjacent: number, deltaTheta: number, maxIter: number) {
             var xOuter = gameParameters.pegs[outer].x;
             var yOuter = gameParameters.pegs[outer].y;
 
@@ -55,7 +58,7 @@ module GlareSim {
 
                 console.log(newAngle + " | " + centerDist + " | " + xNewOuter + " | " + yNewOuter)
             }
-            while (iterCount < 100 && centerDist < 36)
+            while (iterCount < maxIter && centerDist < 36)
 
             gameParameters.pegs[outer].x = xNewOuter;
             gameParameters.pegs[outer].y = yNewOuter;
@@ -151,7 +154,7 @@ module GlareSim {
             deviationsFromZeroForUnique[7] = 1.25 * Math.PI;
             deviationsFromZeroForUnique[8] = Math.PI;
             deviationsFromZeroForUnique[11] = 1.75 * Math.PI;
-            deviationsFromZeroForUnique[12] = 0.5 * Math.PI;
+            deviationsFromZeroForUnique[14] = 0.5 * Math.PI;
 
             for (var i = 0; i < gameParams.gearIntrinsics.length; i++) {
                 var notchEquivalenceClass = gameParams.gearIntrinsics[i].NotchEquivalenceClass;
@@ -166,7 +169,7 @@ module GlareSim {
                     case 2:
                     case 7:
                     case 11:
-                    case 12:
+                    case 14:
                         gameParams.gearIntrinsics[i].HoleAngle =
                             deviationsFromZeroForUnique[notchEquivalenceClass];
                         break;
@@ -177,6 +180,8 @@ module GlareSim {
                     case 5:
                     case 4:
                     case 0:
+                    case 13:
+                    case 12:
                         gameParams.gearIntrinsics[i].InnerRadius = 0;
                         gameParams.gearIntrinsics[i].InnerToothAmplitude = 0;
                     default:

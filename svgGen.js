@@ -1,4 +1,4 @@
-var drawBase = false;
+var drawBase = true;
 var drawTop = true;
 
 var toInkscapeFromBabylon = 4.045;
@@ -26,6 +26,8 @@ characters[20]=["O","T","B","K","R",];//S
 
 var small = [0, 1, 2, 3, 4];
 var large = [0, 2, 4, 1, 3]
+
+GlareSim.Utilities.fixOuterAdjacencies(gameParameters);
 
 GlareSim.Utilities.rotateWholeSetup(gameParameters, 90 * Math.PI/180);    
 

@@ -144,17 +144,17 @@ module GlareSim {
         public static setHoleParameters(gameParams: GameParameters) {
             var deviationsFromSingleNotch = [];
             deviationsFromSingleNotch[3] = 1.5;
-            deviationsFromSingleNotch[5] = -1;
+            deviationsFromSingleNotch[7] = -1;
             deviationsFromSingleNotch[6] = -1;
 
             var deviationsFromZeroForUnique = [];
             deviationsFromZeroForUnique[0] = Math.PI;
             deviationsFromZeroForUnique[2] = 1.7 * Math.PI;
             deviationsFromZeroForUnique[4] = 0.5 * Math.PI;
-            deviationsFromZeroForUnique[7] = 1.25 * Math.PI;
-            deviationsFromZeroForUnique[8] = Math.PI;
-            deviationsFromZeroForUnique[11] = 1.75 * Math.PI;
-            deviationsFromZeroForUnique[14] = 0.5 * Math.PI;
+            deviationsFromZeroForUnique[8] = 1.25 * Math.PI;
+            deviationsFromZeroForUnique[9] = Math.PI;
+            deviationsFromZeroForUnique[12] = 1.75 * Math.PI;
+            deviationsFromZeroForUnique[15] = 0.5 * Math.PI;
 
             for (var i = 0; i < gameParams.gearIntrinsics.length; i++) {
                 var notchEquivalenceClass = gameParams.gearIntrinsics[i].NotchEquivalenceClass;
@@ -167,21 +167,23 @@ module GlareSim {
                             deviationsFromSingleNotch[notchEquivalenceClass];
                         break;
                     case 2:
-                    case 7:
-                    case 11:
-                    case 14:
+                    case 8:
+                    case 12:
+                    case 15:
                         gameParams.gearIntrinsics[i].HoleAngle =
                             deviationsFromZeroForUnique[notchEquivalenceClass];
                         break;
                     case 1:
-                    case 8:
                     case 9:
                     case 10:
-                    case 5:
+                    case 11:
+                    case 7:
                     case 4:
                     case 0:
+                    case 14:
                     case 13:
-                    case 12:
+                    case 16:
+                    case 5:
                         gameParams.gearIntrinsics[i].InnerRadius = 0;
                         gameParams.gearIntrinsics[i].InnerToothAmplitude = 0;
                     default:

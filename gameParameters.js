@@ -180,6 +180,12 @@ var gameParameters = {
             "expectedGearRadius": 3.0,
             "x": 18.5,
             "y": 45
-        }
+        },
+        {
+            "axisAngle": 0,
+            "expectedGearRadius": 3.0,
+            "x": 53.5837,
+            "y": 53.2561
+        },
     ]
 }

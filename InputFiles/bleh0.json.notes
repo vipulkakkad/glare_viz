@@ -90,3 +90,27 @@ sapendulumclock
 
 x:57.0912414286
 y:8.442192857100004
+
+// Small gear loop closure
+,
+        {
+            "axisAngle": 0,
+            "expectedGearRadius": 3.0,
+            "x": 53.5837,
+            "y": 53.2561
+        },
+
+5 -> 7
+7 -> 8
+11 -> 12
+10 -> 11
+14 -> 15
+
+// Large gear loop closure
+,
+        {
+            "axisAngle": 0,
+            "expectedGearRadius": 6.0,
+            "x": 58.2761,
+            "y": 62.1857
+        },
